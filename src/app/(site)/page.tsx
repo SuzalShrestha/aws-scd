@@ -3,6 +3,7 @@ import Navbar from "@/components/elements/Navbar";
 import Schedule from "@/components/elements/Schedule";
 import Speakers from "@/components/elements/Speakers";
 import Footer from "@/components/elements/Footer";
+import Partners from "@/components/elements/Partners";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       </main>
       <Speakers />
       <Schedule />
+      <Partners />
       <Footer />
     </>
   );
