@@ -2,6 +2,10 @@ import Hero from "@/components/elements/Hero"
 import Navbar from "@/components/elements/Navbar"
 import Schedule from "@/components/elements/Schedule"
 import Speakers from "@/components/elements/Speakers"
+import About from "@/components/elements/About"
+import Registration from "@/components/elements/Registration"
+import Team from "@/components/elements/Team"
+import Footer from "@/components/elements/Footer"
 
 export default function HomePage() {
     return (
@@ -17,8 +21,12 @@ export default function HomePage() {
                     <Hero />
                 </div>
             </main>
+            <About />
             <Speakers />
             <Schedule />
+            <Registration />
+            <Team />
+            <Footer />
         </>
     )
 }
