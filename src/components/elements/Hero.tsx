@@ -5,7 +5,7 @@ import { Button } from '../ui/button'
 
 const Hero = () => {
     return (
-        <section className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+        <section className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20" id="home">
             <div className="text-center max-w-4xl mx-auto">
                 <div className="inline-flex items-center">
                     <Image
@@ -44,7 +44,7 @@ const Hero = () => {
                     </div>
                     <div className="flex items-center justify-center text-white text-lg">
                         <MapPin className="w-5 h-5 text-orange-400 mr-3" />
-                        St.Joseph's Group of Institutions
+                        IOE Paschimanchal Campus, Pokhara
                     </div>
                 </div>
 

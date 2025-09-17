@@ -2,36 +2,29 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer
-      className="bg-gradient-to-br from-slate-700 via-slate-600
-     to-slate-800 text-white py-6"
-    >
-      <div className="max-w-6xl mx-auto px-6 text-center text-[16px] space-y-2">
-        <p>
-          For registration & referral related concerns, reach us at{" "}
-          <a
-            href="mailto:support@scdxyz.com"
-            className="text-blue-400 hover:underline"
-          >
-            support@acdnepal.com
-          </a>
-        </p>
-        <p>
-          For event related queries, reach out to{" "}
-          <a
-            href="mailto:help@scdxyz.com"
-            className="text-blue-400 hover:underline"
-          >
-            help@acdnepal.com
-          </a>
-        </p>
-        <p>
-          © Copyright <span className="font-bold">AWSSCDNEPAL</span>. Some
-          Rights Reserved
-        </p>
+    <footer className="bg-slate-800 text-white py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center">
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold text-orange-400 mb-2">AWS Student Community Day</h3>
+            <p className="text-slate-300">Pokhara 2025</p>
+          </div>
+          
+          <div className="mb-8">
+            <p className="text-slate-400 text-sm">
+              Organized by AWS Cloud Club IOE Paschimanchal Campus
+            </p>
+          </div>
+          
+          <div className="border-t border-slate-700 pt-6">
+            <p className="text-slate-500 text-sm">
+              © 2025 AWS Student Community Day Pokhara. All rights reserved.
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
 export default Footer;
