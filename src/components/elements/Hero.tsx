@@ -6,6 +6,15 @@ import { Button } from '../ui/button'
 const Hero = () => {
     return (
         <section className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20" id="home">
+            {/* Background layers */}
+            <div className="hero-spotlights" aria-hidden="true" />
+            <div className="hero-grid" aria-hidden="true" />
+            <div className="hero-vignette" aria-hidden="true" />
+
+            {/* Subtle corner orbs */}
+            <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-[var(--aws-orange)]/10 blur-3xl" aria-hidden="true" />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[var(--aws-light-blue)]/10 blur-3xl" aria-hidden="true" />
+
             <div className="text-center max-w-4xl mx-auto">
                 <div className="inline-flex items-center">
                     <Image
