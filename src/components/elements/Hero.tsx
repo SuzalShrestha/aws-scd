@@ -5,7 +5,7 @@ import { Button } from '../ui/button'
 
 const Hero = () => {
     return (
-        <section className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20" id="home">
+        <section className="relative flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-slate-800" id="home">
             {/* Background layers */}
             <div className="hero-spotlights" aria-hidden="true" />
             <div className="hero-grid" aria-hidden="true" />
@@ -35,7 +35,7 @@ const Hero = () => {
 
                 <div className="mb-12">
                     <span className="text-[var(--aws-orange)] text-lg font-medium uppercase tracking-wide">
-                        2<sup className="text-sm">nd</sup> Industry Academia Tech Conference
+                        1<sup className="text-sm">st</sup> Industry Academia Tech Conference
                     </span>
                 </div>
 
@@ -46,7 +46,7 @@ const Hero = () => {
                 <div className="mb-12 space-y-3">
                     <div className="flex items-center justify-center text-white/80 text-base">
                         <Calendar className="w-4 h-4 text-[var(--aws-orange)] mr-2" />
-                        September 20, 2025
+                       Coming Soon, 2025
                     </div>
                     <div className="flex items-center justify-center text-white/80 text-base">
                         <MapPin className="w-4 h-4 text-[var(--aws-orange)] mr-2" />
@@ -66,8 +66,8 @@ const Hero = () => {
                     </a>
                     <Button
                         size="lg"
-                        variant="outline"
-                        className="border-white/20 text-slate-800 hover:bg-white/10 px-8 py-3 text-base font-medium"
+                        variant="ghost"
+                        className="border-white/20 text-white hover:bg-white/10 px-8 py-3 text-base font-medium"
                     >
                         <Play className="w-4 h-4 mr-2" />
                         Watch Trailer
