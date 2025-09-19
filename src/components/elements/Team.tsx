@@ -1,5 +1,6 @@
 import React from 'react'
 import { EventTeam } from '@/constants/EventTeam'
+import Image from 'next/image'
 
 const Team = () => {
   return (
@@ -14,7 +15,9 @@ const Team = () => {
             <div key={member.id} className="text-center group">
               <div className="mb-4">
                 {member.imgUrl ? (
-                  <img
+                  <Image
+                    width={100}
+                    height={100}
                     src={member.imgUrl}
                     alt={member.name}
                     className="w-24 h-24 mx-auto rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
