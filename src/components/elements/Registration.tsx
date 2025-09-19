@@ -31,13 +31,7 @@ const Registration = () => {
                 
                 </div>
               </div>
-              
-              <p className="text-slate-600 text-sm mb-4">
-                Scan this QR code 
-              </p>
-            </div>
-            
-         
+            </div>          
           </div>
         </div>
       </div>

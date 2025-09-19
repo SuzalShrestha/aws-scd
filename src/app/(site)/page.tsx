@@ -22,8 +22,8 @@ export default function HomePage() {
             <About />
             <Speakers />
             <Schedule />
-            <Partners />
             <Registration />
+            <Partners />
             <Team />
             <Footer />
             <BackToTop />

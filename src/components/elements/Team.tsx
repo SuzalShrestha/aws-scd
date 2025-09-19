@@ -20,7 +20,7 @@ const Team = () => {
                     height={100}
                     src={member.imgUrl}
                     alt={member.name}
-                    className="w-24 h-24 mx-auto rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="w-24 h-24 mx-auto rounded-full object-cover"
                   />
                 ) : (
                   <div className="w-24 h-24 mx-auto rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-2xl font-medium">

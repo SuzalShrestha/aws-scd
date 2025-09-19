@@ -27,7 +27,7 @@ const PartnersSection = () => {
                                         height={60}
                                         src={partner.logo}
                                         alt={partner.name}
-                                        className="max-h-12 w-auto object-contain opacity-70 grayscale"
+                                        className="max-h-12 w-auto object-contain"
                                     />
                                 </div>
                             </div>
