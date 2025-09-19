@@ -17,51 +17,50 @@ const Hero = () => {
                     />
                 </div>
 
-                <h1 className="text-5xl md:text-6xl font-bold text-orange-400 mb-8 leading-tight">
+                <h1 className="text-5xl md:text-6xl font-bold text-[var(--aws-orange)] mb-6 leading-tight">
                     AWS Student Community Day
-                    <br />
-                    Pokhara 2025
                 </h1>
+                <h2 className="text-3xl md:text-4xl font-light text-white mb-8">
+                    Pokhara 2025
+                </h2>
 
                 <div className="mb-12">
-                    <span className="text-orange-400 text-xl font-medium">
-                        2<sup className="text-sm">nd</sup> INDUSTRY ACADEMIA TECH CONFERENCE
+                    <span className="text-[var(--aws-orange)] text-lg font-medium uppercase tracking-wide">
+                        2<sup className="text-sm">nd</sup> Industry Academia Tech Conference
                     </span>
                 </div>
 
-                <p className="text-white text-lg md:text-xl mb-16 leading-relaxed max-w-3xl mx-auto">
-                    Join the largest gathering of AWS enthusiasts, developers,
-                    <br />
-                    and cloud professionals. Learn, network, and build the
-                    <br />
-                    future together.
+                <p className="text-white/90 text-lg md:text-xl mb-16 leading-relaxed max-w-2xl mx-auto">
+                    Join the largest gathering of AWS enthusiasts, developers, and cloud professionals. Learn, network, and build the future together.
                 </p>
 
-                <div className="mb-12 space-y-4">
-                    <div className="flex items-center justify-center text-white text-lg">
-                        <Calendar className="w-5 h-5 text-orange-400 mr-3" />
+                <div className="mb-12 space-y-3">
+                    <div className="flex items-center justify-center text-white/80 text-base">
+                        <Calendar className="w-4 h-4 text-[var(--aws-orange)] mr-2" />
                         September 20, 2025
                     </div>
-                    <div className="flex items-center justify-center text-white text-lg">
-                        <MapPin className="w-5 h-5 text-orange-400 mr-3" />
+                    <div className="flex items-center justify-center text-white/80 text-base">
+                        <MapPin className="w-4 h-4 text-[var(--aws-orange)] mr-2" />
                         IOE Paschimanchal Campus, Pokhara
                     </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#register">
+                        <Button
+                            size="lg"
+                            className="bg-[var(--aws-orange)] hover:bg-[var(--aws-orange)]/90 text-white px-8 py-3 text-base font-medium"
+                        >
+                            <UserPlus className="w-4 h-4 mr-2" />
+                            Register Now
+                        </Button>
+                    </a>
                     <Button
                         size="lg"
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg font-medium rounded-lg"
+                        variant="outline"
+                        className="border-white/20 text-slate-800 hover:bg-white/10 px-8 py-3 text-base font-medium"
                     >
-                        <UserPlus className="w-5 h-5 mr-2" />
-                        Register Now
-                    </Button>
-                    <Button
-                        size="lg"
-                        variant="secondary"
-                        className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 text-lg font-medium rounded-lg"
-                    >
-                        <Play className="w-5 h-5 mr-2" />
+                        <Play className="w-4 h-4 mr-2" />
                         Watch Trailer
                     </Button>
                 </div>
