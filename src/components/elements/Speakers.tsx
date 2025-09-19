@@ -1,45 +1,45 @@
 import { EventSpeakers } from '@/constants/EventSpeakers'
 import { LinkedinIcon } from 'lucide-react'
+import Image from 'next/image'
 import React from 'react'
 
 const Speakers = () => {
   return (
-    <section className="bg-slate-50 py-20 px-4" id="speakers">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">Speakers</h2>
+    <section className="bg-gray-50 py-12 px-4" id="speakers">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Speakers</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {EventSpeakers.map((speaker) => (
             <div
               key={speaker.id}
-              className="bg-white rounded-xl shadow-sm border border-slate-200 hover:shadow-lg hover:border-slate-300 transition-all duration-300 overflow-hidden group"
+              className="bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 overflow-hidden group"
             >
-              {/* Keynote Badge
-              {speaker.isKeynoteSpeaker && (
-                <div className="bg-orange-500 text-white text-center py-2">
-                  <span className="text-sm font-semibold">Keynote Speaker</span>
-                </div>
-              )} */}
 
-              {/* Photo Placeholder */}
-              <div className="aspect-square bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-                <div className="text-center">
-                </div>
+              {/* Speaker Photo */}
+              <div className="aspect-[1/1] bg-gray-50 flex items-center justify-center overflow-hidden">
+                <Image
+                  src={speaker.image}
+                  alt={`${speaker.name} profile photo`}
+                  width={150}
+                  height={150}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
 
               {/* Speaker Info */}
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-slate-800 mb-2">
+              <div className="p-4 text-center">
+                <h3 className="text-base font-semibold text-gray-900 mb-1">
                   {speaker.name}
                 </h3>
                 
-                <div className="mb-4">
-                  <p className="text-slate-700 font-semibold text-sm mb-1">
+                <div className="mb-3">
+                  <p className="text-gray-700 font-medium text-xs mb-1">
                     {speaker.role}
                   </p>
-                  <p className="text-slate-600 text-sm">
+                  <p className="text-gray-600 text-xs">
                     {speaker.company}
                   </p>
                 </div>
@@ -47,10 +47,10 @@ const Speakers = () => {
                 {/* LinkedIn Link */}
                 <a
                   href={speaker.linkedin}
-                  className="inline-flex items-center justify-center w-10 h-10 bg-slate-100 hover:bg-orange-500 text-slate-600 hover:text-white rounded-full transition-all duration-200 hover:scale-110"
+                  className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-[var(--aws-orange)] text-gray-600 hover:text-white rounded-full transition-all duration-200"
                   aria-label={`${speaker.name}'s LinkedIn profile`}
                 >
-                  <LinkedinIcon size={18} />
+                  <LinkedinIcon size={14} />
                 </a>
               </div>
             </div>

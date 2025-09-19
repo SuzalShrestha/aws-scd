@@ -1,1 +1,0 @@
-export const Partners = ["aws", "helloworld", "this is helloworld"]
