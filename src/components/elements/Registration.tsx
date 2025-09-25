@@ -1,39 +1,48 @@
-import React from 'react'
+"use client"
+
+import { motion } from "framer-motion"
 
 const Registration = () => {
   return (
     <section className="bg-gray-50 py-20 px-4" id="register">
-      <div className="max-w-6xl mx-auto">
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid items-center gap-16 lg:grid-cols-2"
+        >
           {/* Ticket Details - Left Side */}
-          <div>
-            <h3 className="text-3xl font-semibold text-gray-900 mb-6">Register Now</h3>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              Registration for AWS Student Community Day 2025 is completely free for all students. 
-              This full-day event includes access to all technical sessions, complimentary lunch and refreshments, 
-              networking opportunities with industry experts, digital certificate of participation, and exclusive AWS learning resources. 
-              Seats are limited, so secure your spot today by scanning the QR code and registering online.
+          <div className="space-y-6">
+            <h3 className="text-3xl font-semibold text-gray-900">Register Now</h3>
+            <p className="leading-relaxed text-gray-600">
+              Registration for AWS Student Community Day 2025 is completely free for all students. This full-day event includes access to all
+              technical sessions, complimentary lunch and refreshments, networking opportunities with industry experts, digital certificate of
+              participation, and exclusive AWS learning resources. Seats are limited, so secure your spot today by scanning the QR code and
+              registering online.
             </p>
-            
-           
           </div>
 
           {/* QR Code Placeholder - Right Side */}
-          <div className="flex flex-col items-center">
-            <div className="bg-white rounded-lg p-12 shadow-sm border border-gray-100 text-center">
-
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            className="flex flex-col items-center"
+          >
+            <div className="rounded-lg border border-gray-100 bg-white p-12 text-center shadow-sm">
               {/* QR Code Placeholder */}
-              <div className="w-64 h-64 bg-gray-50 border-2 border-dashed border-gray-200 rounded-lg flex items-center justify-center mb-6">
-                <div className="text-center">
-                  
-                  <div className="text-gray-600 font-medium">QR Code</div>
-                
+              <div className="mb-6 flex h-64 w-64 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-gray-50">
+                <div className="text-center text-gray-600">
+                  <div className="text-lg font-semibold">QR Code</div>
+                  <p className="mt-2 text-xs text-gray-500">Scan to register</p>
                 </div>
               </div>
-            </div>          
-          </div>
-        </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

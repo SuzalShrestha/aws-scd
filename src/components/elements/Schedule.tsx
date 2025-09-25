@@ -1,53 +1,61 @@
-import { scheduleEvents } from '@/constants/Schedules'
-import React from 'react'
-import { Card, CardContent } from '../ui/card'
+"use client"
+
+import { scheduleEvents } from "@/constants/Schedules"
+import { motion } from "framer-motion"
+import { Card, CardContent } from "../ui/card"
 
 const Schedule = () => {
   return (
     <section className="bg-white py-20 px-4" id="schedule">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-2">Event Schedule</h2>
-        </div>
+      <div className="mx-auto max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-2 text-3xl font-semibold text-gray-900">Event Schedule</h2>
+        </motion.div>
 
         <div className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200 hidden md:block"></div>
-          
+          <div className="absolute inset-y-0 left-8 hidden w-0.5 bg-gray-200 md:block"></div>
+
           <div className="space-y-6">
             {scheduleEvents.map((event, index) => (
-              <Card
-                key={index}
-                className="bg-white shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300 cursor-pointer overflow-hidden group"
+              <motion.div
+                key={event.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
               >
-                <CardContent className="p-0">
-                  <div className="flex items-center">
-                    <div className="hidden md:flex items-center justify-center w-16 h-16 relative">
-                      <div className="w-4 h-4 bg-gray-400 rounded-full border-4 border-white shadow-sm group-hover:bg-[var(--aws-orange)] transition-all duration-300"></div>
-                    </div>
-                    
-                    <div className="flex-shrink-0 md:ml-4 ml-6 mr-6">
-                      <div className="bg-[var(--aws-orange)] text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm">
-                        {event.time}
+                <Card className="cursor-pointer overflow-hidden border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <CardContent className="p-0">
+                    <div className="flex items-center">
+                      <div className="relative hidden h-16 w-16 items-center justify-center md:flex">
+                        <span className="h-4 w-4 rounded-full border-4 border-white bg-gray-400 shadow-sm transition-colors duration-300 group-hover:bg-[var(--aws-orange)]"></span>
+                      </div>
+
+                      <div className="ml-6 mr-6 flex-shrink-0 md:ml-4">
+                        <div className="rounded-lg bg-[var(--aws-orange)] px-4 py-2 text-sm font-medium text-white shadow-sm">
+                          {event.time}
+                        </div>
+                      </div>
+
+                      <div className="flex-1 py-6 pr-6">
+                        <h3 className="mb-2 text-lg font-bold text-slate-800 transition-colors duration-300 group-hover:text-orange-600">
+                          {event.title}
+                        </h3>
+                        <p className="leading-relaxed text-slate-600">{event.description}</p>
                       </div>
                     </div>
-                    
-                    <div className="flex-1 py-6 pr-6">
-                      <h3 className="font-bold text-slate-800 text-lg mb-2 group-hover:text-orange-600 transition-colors duration-300">
-                        {event.title}
-                      </h3>
-                      <p className="text-slate-600 leading-relaxed">
-                        {event.description}
-                      </p>
-                    </div>
-                  </div>
-                  
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
-
-        
       </div>
     </section>
   )
