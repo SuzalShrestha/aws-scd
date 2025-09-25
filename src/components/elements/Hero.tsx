@@ -1,16 +1,16 @@
 "use client"
 
 import { Calendar, MapPin, Play, UserPlus } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import Image from "next/image"
 import { Button } from "../ui/button"
 
-const heroVariants = {
+const heroVariants: Variants = {
     hidden: { opacity: 0, y: 32 },
     visible: (delay: number) => ({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: "easeOut", delay },
+        transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay },
     }),
 }
 
