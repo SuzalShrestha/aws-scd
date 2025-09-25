@@ -31,11 +31,8 @@ const FAQ = () => {
         <section className="bg-slate-50 py-20 px-4" id="faq">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                    <p className="uppercase tracking-[0.3em] text-xs text-[var(--aws-orange)] mb-4">FAQ</p>
                     <h2 className="text-3xl font-semibold text-slate-900">Frequently Asked Questions</h2>
-                    <p className="text-slate-600 mt-4">
-                        Everything you need to know about AWS Student Community Day Pokhara 2025.
-                    </p>
+                   
                 </div>
 
                 <motion.div

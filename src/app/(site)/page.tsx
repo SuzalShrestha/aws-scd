@@ -19,13 +19,13 @@ export default function HomePage() {
                 <Hero />
             </main>
             <About />
-            <Countdown />
             <Speakers />
             <Schedule />
             <Registration />
             <Partners />
-            <FAQ />
+            <Countdown />
             <Team />
+            <FAQ />
             <Footer />
             <BackToTop />
         </>

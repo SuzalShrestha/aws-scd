@@ -37,7 +37,7 @@ const Registration = () => {
               <div className="mb-6 flex h-64 w-64 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 bg-gray-50">
                 <div className="text-center text-gray-600">
                   <div className="text-lg font-semibold">QR Code</div>
-                  <p className="mt-2 text-xs text-gray-500">Scan to register</p>
+                  
                 </div>
               </div>
             </div>
