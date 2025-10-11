@@ -19,7 +19,7 @@ const About = () => {
                             Who Are We?
                         </h2>
                         <h3 className='text-xl font-medium text-[var(--aws-orange)]'>
-                            AWS Cloud Club IOE Paschimanchal & <br></br>
+                            AWS Cloud Club IOE Pashchimanchal & <br></br>
                             AWS Cloud Club PNC
                         </h3>
 
@@ -40,7 +40,7 @@ const About = () => {
                             What to Expect?
                         </h2>
                         <p className='text-gray-600 leading-relaxed'>
-                            Join 200+ students for a full day of intensive
+                            Join 500+ students for a full day of intensive
                             learning with 8+ technical sessions led by 5+
                             industry experts. Experience hands-on AWS workshops,
                             real-world case studies, networking opportunities
