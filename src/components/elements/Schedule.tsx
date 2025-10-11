@@ -24,7 +24,7 @@ const Schedule = () => {
                     <div className='absolute inset-y-0 left-8 hidden w-0.5 bg-gray-200 md:block'></div>
 
                     <div className='space-y-6'>
-                        {scheduleEvents.map((event, index) => (
+                        {/* {scheduleEvents.map((event, index) => (
                             <motion.div
                                 key={event.title}
                                 initial={{ opacity: 0, y: 40 }}
@@ -61,7 +61,7 @@ const Schedule = () => {
                                     </CardContent>
                                 </Card>
                             </motion.div>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </div>

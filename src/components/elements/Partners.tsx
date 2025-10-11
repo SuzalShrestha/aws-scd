@@ -31,7 +31,7 @@ const PartnersSection = () => {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
                     >
-                        {duplicatedPartners.map((partner, index) => (
+                        {/* {duplicatedPartners.map((partner, index) => (
                             <motion.div
                                 key={`${partner.id}-${index}`}
                                 className='mx-4 flex items-center justify-center px-8'
@@ -52,7 +52,7 @@ const PartnersSection = () => {
                                     />
                                 </div>
                             </motion.div>
-                        ))}
+                        ))} */}
                     </motion.div>
                 </div>
             </div>

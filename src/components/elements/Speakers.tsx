@@ -22,7 +22,7 @@ const Speakers = () => {
                 </motion.div>
 
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
-                    {EventSpeakers.map((speaker, index) => (
+                    {/* {EventSpeakers.map((speaker, index) => (
                         <motion.div
                             key={speaker.id}
                             initial={{ opacity: 0, y: 32 }}
@@ -35,7 +35,6 @@ const Speakers = () => {
                             }}
                             className='group overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg'
                         >
-                            {/* Speaker Photo */}
                             <div className='aspect-[1/1] flex items-center justify-center overflow-hidden bg-gray-50'>
                                 <Image
                                     src={speaker.image}
@@ -46,7 +45,6 @@ const Speakers = () => {
                                 />
                             </div>
 
-                            {/* Speaker Info */}
                             <div className='p-4 text-center'>
                                 <h3 className='mb-1 text-base font-semibold text-gray-900'>
                                     {speaker.name}
@@ -60,8 +58,6 @@ const Speakers = () => {
                                         {speaker.company}
                                     </p>
                                 </div>
-
-                                {/* LinkedIn Link */}
                                 <a
                                     href={speaker.linkedin}
                                     className='inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors duration-200 hover:bg-[var(--aws-orange)] hover:text-white'
@@ -71,7 +67,7 @@ const Speakers = () => {
                                 </a>
                             </div>
                         </motion.div>
-                    ))}
+                    ))} */}
                 </div>
             </div>
         </section>
