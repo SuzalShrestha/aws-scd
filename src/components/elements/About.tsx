@@ -20,7 +20,7 @@ const About = () => {
                         </h2>
                         <h3 className='text-xl font-medium text-[var(--aws-orange)]'>
                             AWS Cloud Club IOE Pashchimanchal & <br></br>
-                            AWS Cloud Club PNC
+                            AWS Cloud Club Prithivi Narayan 
                         </h3>
 
                         <p className='text-gray-600 leading-relaxed'>
