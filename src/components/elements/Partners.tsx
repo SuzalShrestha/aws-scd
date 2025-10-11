@@ -1,48 +1,54 @@
-"use client"
+'use client';
 
-import { Partners } from "@/constants/Partners"
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { Partners } from '@/constants/Partners';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const PartnersSection = () => {
     // Duplicate the array for continuous scroll
-    const duplicatedPartners = [...Partners, ...Partners]
+    const duplicatedPartners = [...Partners, ...Partners];
 
     return (
-        <section className="bg-gray-50 py-20" id="partners">
-            <div className="mx-auto max-w-6xl px-4">
+        <section className='bg-gray-50 py-20' id='partners'>
+            <div className='mx-auto max-w-6xl px-4'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="mb-12 text-center"
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    className='mb-12 text-center'
                 >
-                    <h2 className="text-3xl font-semibold text-gray-900 mb-2">Partners</h2>
+                    <h2 className='text-4xl font-semibold text-[var(--aws-orange)] mb-2'>
+                        Partners
+                    </h2>
                 </motion.div>
 
-                <div className="overflow-hidden whitespace-nowrap">
+                <div className='overflow-hidden whitespace-nowrap'>
                     <motion.div
-                        className="inline-flex animate-marquee"
+                        className='inline-flex animate-marquee'
                         initial={{ opacity: 0, x: -60 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
                     >
                         {duplicatedPartners.map((partner, index) => (
                             <motion.div
                                 key={`${partner.id}-${index}`}
-                                className="mx-4 flex items-center justify-center px-8"
+                                className='mx-4 flex items-center justify-center px-8'
                                 whileHover={{ scale: 1.05 }}
-                                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 260,
+                                    damping: 20,
+                                }}
                             >
-                                <div className="flex h-16 w-32 items-center justify-center">
+                                <div className='flex h-16 w-32 items-center justify-center'>
                                     <Image
                                         width={120}
                                         height={60}
                                         src={partner.logo}
                                         alt={partner.name}
-                                        className="w-auto max-h-12 object-contain"
+                                        className='w-auto max-h-12 object-contain'
                                     />
                                 </div>
                             </motion.div>
@@ -51,7 +57,7 @@ const PartnersSection = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default PartnersSection
+export default PartnersSection;
