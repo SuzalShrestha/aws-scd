@@ -10,6 +10,7 @@ import Footer from '@/components/elements/Footer';
 import BackToTop from '@/components/elements/BackToTop';
 import Countdown from '@/components/elements/Countdown';
 import FAQ from '@/components/elements/FAQ';
+import PastEvents from '@/components/elements/PastEvents';
 
 export default function HomePage() {
     return (
@@ -19,6 +20,7 @@ export default function HomePage() {
                 <Hero />
             </main>
             <About />
+            <PastEvents />
             <Speakers />
             <Schedule />
             <Registration />
