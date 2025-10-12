@@ -13,6 +13,22 @@ export const metadata: Metadata = {
     title: 'AWS Student Community Day Pokhara 2025',
     description:
         'Join the largest gathering of AWS enthusiasts, developers, and cloud professionals. Learn, network, and build the future together.',
+
+    openGraph: {
+        title: "AWS Student Community Day Pokhara 2025",
+        description: "Join the largest gathering of AWS enthusiasts, developers, and cloud professionals. Learn, network, and build the future together.",
+        url: "https://aws-scd.vercel.app",
+        siteName: "AWS Student Community Day Pokhara 2025",
+        images: [
+            {
+                url: "https://aws-scd.vercel.app/opengraph-image.png",
+                width: 1200,
+                height: 630,
+                alt: "AWS Student Community Day Pokhara 2025",
+            },
+        ],
+        type: "website",
+    },
 };
 
 export default function RootLayout({
