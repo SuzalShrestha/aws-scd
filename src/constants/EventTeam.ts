@@ -7,9 +7,9 @@ export const EventTeam = [
     },
     {
         id: 2,
-        imgUrl: '/ourteam/Aayusha-adhikari.webp',
+        imgUrl: '/ourteam/Aayusha_Adhikari.webp',
         name: 'Aayusha Adhikari',
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/aayusha-adhikari-060aa6257',
     },
     {
         id: 3,
@@ -33,13 +33,13 @@ export const EventTeam = [
         id: 6,
         imgUrl: '/ourteam/Dinisha_Gnyawali.webp',
         name: 'Dinisha Gnyawali',
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/dinisha-gnyawali-9b1042317/',
     },
     {
         id: 7,
         imgUrl: '/ourteam/Sarika_Ghimire.webp',
         name: 'Sarika Ghimire',
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/sarika-ghimire/',
     },
     {
         id: 8,
@@ -61,9 +61,9 @@ export const EventTeam = [
     },
     {
         id: 11,
-        imgUrl: '/ourteam/dikshya devkota.webp',
+        imgUrl: '/ourteam/Dikshya_Devkota.webp',
         name: 'Dikshya Devkota',
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/dikshya-devkota/',
     },
     {
         id: 12,
@@ -85,20 +85,20 @@ export const EventTeam = [
     },
     {
         id: 15,
-        imgUrl: '/ourteam/samikshya ranabhat.webp',
+        imgUrl: '/ourteam/Samikshya_Ranabhat.webp',
         name: 'Samikshya Ranabhat',
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/samikshyaranabhat/',
     },
     {
         id: 16,
-        imgUrl: '/ourteam/savyata bhurtel.webp',
+        imgUrl: '/ourteam/Savyata_Bhurtel.webp',
         name: 'Savyata Bhurtel',
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/savyata-bhurtel-5b3870251/',
     },
     {
         id: 17,
-        imgUrl: '/ourteam/suresh pathak.webp',
+        imgUrl: '/ourteam/Suresh_Pathak.webp',
         name: 'Suresh Pathak',
-        linkedin: '#',
+        linkedin: 'https://linkedin.com/in/suresh867',
     },
 ];

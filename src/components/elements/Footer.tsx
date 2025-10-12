@@ -23,7 +23,7 @@ const Footer = () => {
                         Organized by AWS Cloud Club IOE Paschimanchal Campus
                     </p>
                     <p className='text-sm text-slate-400'>
-                        Collaboration with AWS Cloud Club Prithivi Narayan
+                       AWS Cloud Club Prithivi Narayan
                         Campus
                     </p>
                 </div>
