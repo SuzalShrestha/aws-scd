@@ -30,11 +30,14 @@ const faqs = [
 const FAQ = () => {
     return (
         <section className='bg-slate-50 py-20 px-4' id='faq'>
-            <div className='mx-auto max-w-4xl'>
+            <div className='max-w-4xl mx-auto'>
                 <div className='mb-10 text-center'>
-                    <h2 className='text-4xl font-semibold text-[var(--aws-orange)]'>
-                        Frequently Asked Questions
-                    </h2>
+                    <div className='inline-block space-y-3'>
+                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
+                            Frequently Asked Questions
+                        </h2>
+                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
+                    </div>
                 </div>
 
                 <motion.div

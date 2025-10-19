@@ -18,9 +18,12 @@ const PartnersSection = () => {
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                     className='mb-12 text-center'
                 >
-                    <h2 className='text-4xl font-semibold text-[var(--aws-orange)] mb-2'>
-                        Partners
-                    </h2>
+                    <div className='inline-block space-y-3'>
+                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
+                            Our Partners
+                        </h2>
+                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
+                    </div>
                 </motion.div>
 
                 <div className='overflow-hidden whitespace-nowrap'>

@@ -16,9 +16,12 @@ const Registration = () => {
                 >
                     {/* Ticket Details - Left Side */}
                     <div className='space-y-6'>
-                        <h3 className='text-4xl font-semibold text-[var(--aws-orange)]'>
-                            Join Us on Meetup
-                        </h3>
+                        <div className='space-y-2'>
+                            <h3 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
+                                Join Us on Meetup
+                            </h3>
+                            <div className='h-1 w-16 bg-[var(--aws-orange)] rounded-full'></div>
+                        </div>
                         <p className='leading-relaxed text-gray-600'>
                             Join our AWS Cloud Club Meetup group to register for
                             the AWS Student Community Day 2025! This completely

@@ -16,9 +16,12 @@ const Speakers = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     className='text-center mb-8'
                 >
-                    <h2 className='text-4xl font-semibold text-[var(--aws-orange)] mb-2'>
-                        Speakers
-                    </h2>
+                    <div className='inline-block space-y-3'>
+                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
+                            Our Speakers
+                        </h2>
+                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
+                    </div>
                 </motion.div>
 
                 <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>

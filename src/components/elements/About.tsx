@@ -15,12 +15,15 @@ const About = () => {
                 >
                     {/* Who Are We - Left Side */}
                     <div className='space-y-4'>
-                        <h2 className='text-4xl font-semibold text-[var(--aws-orange)]'>
-                            Who Are We?
-                        </h2>
+                        <div className='space-y-2'>
+                            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
+                                Who Are We?
+                            </h2>
+                            <div className='h-1 w-16 bg-[var(--aws-orange)] rounded-full'></div>
+                        </div>
                         <h3 className='text-xl font-medium text-[var(--aws-orange)]'>
                             AWS Cloud Club IOE Pashchimanchal & <br></br>
-                            AWS Cloud Club Prithivi Narayan 
+                            AWS Cloud Club Prithivi Narayan
                         </h3>
 
                         <p className='text-gray-600 leading-relaxed'>
@@ -36,9 +39,12 @@ const About = () => {
 
                     {/* What to Expect - Right Side */}
                     <div className='space-y-4'>
-                        <h2 className='text-4xl font-semibold text-[var(--aws-orange)]'>
-                            What to Expect?
-                        </h2>
+                        <div className='space-y-2'>
+                            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
+                                What to Expect?
+                            </h2>
+                            <div className='h-1 w-16 bg-[var(--aws-orange)] rounded-full'></div>
+                        </div>
                         <p className='text-gray-600 leading-relaxed'>
                             Join 500+ students for a full day of intensive
                             learning with 8+ technical sessions led by 5+

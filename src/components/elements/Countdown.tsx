@@ -64,9 +64,15 @@ const Countdown = () => {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 className='relative max-w-4xl mx-auto text-center'
             >
-                <h2 className='text-4xl font-semibold text-[var(--aws-orange)] mb-10'>
-                    Event Countdown
-                </h2>
+                <div className='inline-block space-y-3 mb-10'>
+                    <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
+                        Event Countdown
+                    </h2>
+                    <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
+                    <p className='text-slate-600 mt-3'>
+                        The big day is approaching
+                    </p>
+                </div>
                 {/* <p className='uppercase tracking-[0.3em] text-xs text-[var(--aws-orange)] mb-8 font-medium'></p> */}
                 <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
                     {countdownItems.map((item, index) => (
