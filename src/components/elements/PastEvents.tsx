@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Calendar } from 'lucide-react';
 
 type EventItem = {
     title: string;
@@ -46,6 +47,7 @@ const pncEvents: EventItem[] = [
 const OGCard = ({ item }: { item: EventItem }) => {
     const fallbackLogo = '/logos/Meetup-Logo-1300x730.png';
     const imgSrc = item.ogImage || fallbackLogo;
+    const displayDate = item.meta.split('•')[0]?.trim();
     return (
         <a
             href={item.href}
@@ -67,7 +69,15 @@ const OGCard = ({ item }: { item: EventItem }) => {
                     <h3 className='truncate text-base font-semibold text-slate-900 group-hover:text-[var(--aws-orange)]'>
                         {item.title}
                     </h3>
-                    <p className='mt-1 text-sm text-gray-600'>{item.meta}</p>
+                    {displayDate && (
+                        <div className='mt-1 inline-flex items-center gap-1.5 text-sm text-gray-600'>
+                            <Calendar
+                                className='h-4 w-4 text-gray-400'
+                                aria-hidden='true'
+                            />
+                            <span>{displayDate}</span>
+                        </div>
+                    )}
                 </div>
             </div>
         </a>

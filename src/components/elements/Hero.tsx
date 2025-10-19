@@ -113,23 +113,16 @@ const Hero = () => {
                         custom={0.6}
                         className='flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4'
                     >
-                        <a href='#register'>
+                        <a href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/'>
                             <Button
                                 size='lg'
-                                className='bg-[var(--aws-orange)] hover:bg-[var(--aws-orange)]/90 text-white px-8 py-3 text-base font-medium shadow-lg shadow-[var(--aws-orange)]/20'
+                                variant='ghost'
+                                className='border border-white/15 text-white hover:bg-white/10 px-8 py-3 text-base font-medium'
                             >
                                 <UserPlus className='mr-2 h-4 w-4' />
                                 Register Now
                             </Button>
                         </a>
-                        <Button
-                            size='lg'
-                            variant='ghost'
-                            className='border border-white/15 text-white hover:bg-white/10 px-8 py-3 text-base font-medium'
-                        >
-                            <Play className='mr-2 h-4 w-4' />
-                            Watch Trailer
-                        </Button>
                     </motion.div>
                 </div>
             </div>
