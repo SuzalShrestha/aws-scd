@@ -138,8 +138,8 @@ const PastEvents = async () => {
                 <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
                     {/* IOE Paschimanchal */}
                     <div>
-                        <h3 className='mb-4 text-lg font-semibold text-slate-900'>
-                            AWS Cloud Club — IOE Pashchimanchal Campus
+                        <h3 className='mb-4 text-xl font-semibold text-slate-900'>
+                            AWS Cloud Club IOE Pashchimanchal Campus
                         </h3>
                         <div className='space-y-4'>
                             {ioeWithOG.map((e) => (
@@ -150,8 +150,8 @@ const PastEvents = async () => {
 
                     {/* Prithvi Narayan Campus */}
                     <div>
-                        <h3 className='mb-4 text-lg font-semibold text-slate-900'>
-                            AWS Cloud Club — Prithvi Narayan Campus
+                        <h3 className='mb-4 text-xl font-semibold text-slate-900'>
+                            AWS Cloud Club Prithvi Narayan Campus
                         </h3>
                         <div className='space-y-4'>
                             {pncWithOG.map((e) => (
