@@ -53,32 +53,37 @@ const OGCard = ({ item }: { item: EventItem }) => {
             href={item.href}
             target='_blank'
             rel='noopener noreferrer'
-            className='group block rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--aws-orange)]'
+            className='group block overflow-hidden rounded-2xl border border-orange-100/60 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--aws-orange)]'
         >
-            <div className='flex items-start gap-3'>
-                <div className='shrink-0 overflow-hidden rounded-md border border-gray-100 bg-white'>
+            {/* Open Graph preview */}
+            <div className='relative'>
+                <div className='relative aspect-[16/9] w-full overflow-hidden bg-orange-50'>
                     <Image
                         src={imgSrc}
                         alt={item.title}
-                        width={96}
-                        height={54}
-                        className='h-14 w-24 object-cover'
+                        width={1200}
+                        height={630}
+                        className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]'
+                        priority={false}
                     />
                 </div>
-                <div className='min-w-0'>
-                    <h3 className='truncate text-base font-semibold text-slate-900 group-hover:text-[var(--aws-orange)]'>
-                        {item.title}
-                    </h3>
-                    {displayDate && (
-                        <div className='mt-1 inline-flex items-center gap-1.5 text-sm text-gray-600'>
-                            <Calendar
-                                className='h-4 w-4 text-gray-400'
-                                aria-hidden='true'
-                            />
-                            <span>{displayDate}</span>
-                        </div>
-                    )}
-                </div>
+                <div className='pointer-events-none absolute inset-0 bg-gradient-to-t from-black/5 via-black/0 to-black/0' />
+            </div>
+
+            {/* Content */}
+            <div className='p-4'>
+                <h3 className='line-clamp-2 text-base font-semibold text-slate-900 transition-colors group-hover:text-[var(--aws-orange)]'>
+                    {item.title}
+                </h3>
+                {displayDate && (
+                    <div className='mt-2 inline-flex items-center gap-1.5 text-sm text-gray-600'>
+                        <Calendar
+                            className='h-4 w-4 text-gray-400'
+                            aria-hidden='true'
+                        />
+                        <span>{displayDate}</span>
+                    </div>
+                )}
             </div>
         </a>
     );
@@ -122,43 +127,27 @@ const PastEvents = async () => {
             ogImage: await fetchOgImage(e.href),
         }))
     );
+    const allEvents: EventItem[] = [...ioeWithOG, ...pncWithOG];
 
     return (
-        <section className='bg-white py-20 px-4' id='past-events'>
+        <section
+            className='relative overflow-hidden bg-gradient-to-br from-orange-50/30 via-orange-50/20 to-white/10 py-20 px-4'
+            id='past-events'
+        >
             <div className='mx-auto max-w-6xl'>
                 <div className='mb-12 text-center'>
                     <div className='inline-block space-y-3'>
                         <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
                             Past Events
                         </h2>
-                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
+                        <div className='h-1 w-24 rounded-full bg-[var(--aws-orange)] mx-auto'></div>
                     </div>
                 </div>
 
-                <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
-                    {/* IOE Paschimanchal */}
-                    <div>
-                        <h3 className='mb-4 text-xl font-semibold text-slate-900'>
-                            AWS Cloud Club IOE Pashchimanchal Campus
-                        </h3>
-                        <div className='space-y-4'>
-                            {ioeWithOG.map((e) => (
-                                <OGCard key={e.href} item={e} />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Prithvi Narayan Campus */}
-                    <div>
-                        <h3 className='mb-4 text-xl font-semibold text-slate-900'>
-                            AWS Cloud Club Prithvi Narayan Campus
-                        </h3>
-                        <div className='space-y-4'>
-                            {pncWithOG.map((e) => (
-                                <OGCard key={e.href} item={e} />
-                            ))}
-                        </div>
-                    </div>
+                <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+                    {allEvents.map((e) => (
+                        <OGCard key={e.href} item={e} />
+                    ))}
                 </div>
             </div>
         </section>

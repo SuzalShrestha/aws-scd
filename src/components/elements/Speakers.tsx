@@ -1,9 +1,9 @@
 'use client';
 
-import { EventSpeakers } from '@/constants/EventSpeakers';
-import { LinkedinIcon } from 'lucide-react';
+// import { EventSpeakers } from '@/constants/EventSpeakers';
+// import { LinkedinIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const Speakers = () => {
     return (
