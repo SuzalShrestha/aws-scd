@@ -16,6 +16,8 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import { sendToDiscord } from "@/lib/sendToDiscord"
+import toast from "react-hot-toast"
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -30,9 +32,10 @@ export default function Contact() {
         setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log("Form submitted:", formData)
+        await sendToDiscord(formData)
+        toast.success("Your Form is Submitted.")
         setFormData({ name: "", email: "", subject: "", message: "" })
     }
 
