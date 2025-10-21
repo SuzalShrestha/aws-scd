@@ -8,8 +8,6 @@ interface FormData {
 }
 
 export async function sendToDiscord(data: FormData) {
-    console.log(data, "initiated")
-
     try {
         await fetch(`${process.env.NEXT_PUBLIC_DISCORD_WEBHOOK_URL}`, {
             method: "POST",
@@ -31,7 +29,6 @@ export async function sendToDiscord(data: FormData) {
                 ],
             }),
         });
-        console.log(data)
         return { success: true, sent: data };
     } catch (error) {
         console.error("Error sending to Discord:", error);

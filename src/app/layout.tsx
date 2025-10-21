@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import { Toaster } from 'react-hot-toast';
 
 const neueSans = IBM_Plex_Sans({
     variable: '--font-neue-sans',
@@ -63,6 +64,7 @@ export default function RootLayout({
             <body className={`${neueSans.variable} antialiased font-sans`}>
                 {children}
                 <Analytics />
+                <Toaster />
             </body>
         </html>
     );
