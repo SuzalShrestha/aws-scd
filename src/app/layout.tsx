@@ -25,7 +25,6 @@ export const metadata: Metadata = {
         'What is student community day?',
         'aws cloud',
         'aws scd',
-        'aws pnc',
         'AWS Cloud Club IOE Pashchimanchal',
         'AWS Cloud Club Prithivi Narayan',
         //can add more later
