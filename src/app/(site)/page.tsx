@@ -11,6 +11,8 @@ import BackToTop from '@/components/elements/BackToTop';
 import Countdown from '@/components/elements/Countdown';
 import FAQ from '@/components/elements/FAQ';
 import PastEvents from '@/components/elements/PastEvents';
+import CallForSponsors from '@/components/elements/CallForSponsors';
+import Contact from '@/components/elements/Contact';
 
 export default function HomePage() {
     return (
@@ -27,7 +29,9 @@ export default function HomePage() {
             <Partners />
             <Countdown />
             <Team />
+            <CallForSponsors />
             <FAQ />
+            <Contact />
             <Footer />
             <BackToTop />
         </>
