@@ -69,9 +69,6 @@ const Countdown = () => {
                         Event Countdown
                     </h2>
                     <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
-                    <p className='text-slate-600 mt-3'>
-                        The big day is approaching
-                    </p>
                 </div>
                 {/* <p className='uppercase tracking-[0.3em] text-xs text-[var(--aws-orange)] mb-8 font-medium'></p> */}
                 <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>

@@ -23,20 +23,26 @@ const Registration = () => {
                             <div className='h-1 w-16 bg-[var(--aws-orange)] rounded-full'></div>
                         </div>
                         <p className='leading-relaxed text-gray-600'>
-                            Join our AWS Cloud Club Meetup group to register for
-                            the AWS Student Community Day 2025! This completely
-                            free event for students includes access to all
-                            technical sessions, complimentary lunch and
+                            Join our AWS Cloud Club Meetup groups to register
+                            for the AWS Student Community Day 2025! This
+                            completely free event for students includes access
+                            to all technical sessions, complimentary lunch and
                             refreshments, networking opportunities with industry
                             experts, digital certificate of participation, and
                             exclusive AWS learning resources. Connect with
                             fellow cloud enthusiasts and stay updated on future
-                            events. Seats are limited, so click the Meetup logo
-                            to join our community and secure your spot today!
+                            events.
                         </p>
+                        <div className='mt-4 p-4 bg-orange-50 border-l-4 border-[var(--aws-orange)] rounded-lg'>
+                            <p className='text-sm font-medium text-gray-800'>
+                                <strong>Important:</strong> Please RSVP on both
+                                Meetup groups to secure your seat and book your
+                                spot for the event.
+                            </p>
+                        </div>
                     </div>
 
-                    {/* QR Code Placeholder - Right Side */}
+                    {/* Meetup Buttons - Right Side */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -46,29 +52,60 @@ const Registration = () => {
                             ease: 'easeOut',
                             delay: 0.1,
                         }}
-                        className='flex flex-col items-center'
+                        className='flex flex-col items-center space-y-6'
                     >
-                        <div className='rounded-lg border border-gray-100 bg-white p-12 text-center shadow-sm'>
-                            {/* Meetup Logo - Clickable */}
+                        {/* IOE Pashchimanchal Meetup */}
+                        <div className='rounded-lg border border-gray-100 bg-white p-8 text-center shadow-sm w-full max-w-sm'>
                             <a
                                 href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/'
                                 target='_blank'
                                 rel='noopener noreferrer'
                                 className='block transition-transform duration-300 hover:scale-105'
                             >
-                                <div className='mb-6 flex h-64 w-64 items-center justify-center rounded-lg bg-white'>
+                                <div className='mb-4 flex h-32 w-full items-center justify-center rounded-lg bg-white'>
                                     <Image
                                         src='/logos/Meetup-Logo-1300x730.png'
-                                        alt='Join us on Meetup'
-                                        width={300}
-                                        height={200}
+                                        alt='IOE Pashchimanchal Meetup'
+                                        width={200}
+                                        height={120}
                                         className='max-w-full max-h-full object-contain'
                                     />
                                 </div>
                                 <div className='text-center text-gray-700'>
-                                    <div className='text-lg font-semibold text-[var(--aws-orange)] hover:text-orange-600 transition-colors'>
-                                        Register on Meetup
+                                    <div className='text-base font-semibold text-[var(--aws-orange)] hover:text-orange-600 transition-colors mb-1'>
+                                        Register on IOE Meetup
                                     </div>
+                                    <p className='text-xs text-gray-500'>
+                                        AWS Cloud Club IOE Pashchimanchal
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+
+                        {/* PNC Meetup */}
+                        <div className='rounded-lg border border-gray-100 bg-white p-8 text-center shadow-sm w-full max-w-sm'>
+                            <a
+                                href='https://www.meetup.com/aws-cloud-club-at-prithvi-narayan-campus/'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='block transition-transform duration-300 hover:scale-105'
+                            >
+                                <div className='mb-4 flex h-32 w-full items-center justify-center rounded-lg bg-white'>
+                                    <Image
+                                        src='/logos/Meetup-Logo-1300x730.png'
+                                        alt='PNC Meetup'
+                                        width={200}
+                                        height={120}
+                                        className='max-w-full max-h-full object-contain'
+                                    />
+                                </div>
+                                <div className='text-center text-gray-700'>
+                                    <div className='text-base font-semibold text-[var(--aws-orange)] hover:text-orange-600 transition-colors mb-1'>
+                                        Register on PNC Meetup
+                                    </div>
+                                    <p className='text-xs text-gray-500'>
+                                        AWS Cloud Club Prithvi Narayan Campus
+                                    </p>
                                 </div>
                             </a>
                         </div>
