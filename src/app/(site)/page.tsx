@@ -23,9 +23,9 @@ export default function HomePage() {
             <PastEvents />
             {/* <Speakers /> */}
             {/* <Schedule /> */}
+            <Countdown />
             <Registration />
             {/* <Partners /> */}
-            <Countdown />
             <Team />
             <FAQ />
             <Footer />
