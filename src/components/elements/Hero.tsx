@@ -98,7 +98,7 @@ const Hero = () => {
                     >
                         <div className='flex items-center justify-center text-sm sm:text-base'>
                             <Calendar className='mr-2 h-4 w-4 text-[var(--aws-orange)]' />
-                            Dec 14, 2025
+                            Dec 20, 2025
                         </div>
                         <div className='flex items-center justify-center text-sm sm:text-base'>
                             <MapPin className='mr-2 h-4 w-4 text-[var(--aws-orange)]' />

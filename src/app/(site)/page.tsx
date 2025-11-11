@@ -21,10 +21,10 @@ export default function HomePage() {
             </main>
             <About />
             <PastEvents />
-            <Speakers />
-            <Schedule />
+            {/* <Speakers /> */}
+            {/* <Schedule /> */}
             <Registration />
-            <Partners />
+            {/* <Partners /> */}
             <Countdown />
             <Team />
             <FAQ />
