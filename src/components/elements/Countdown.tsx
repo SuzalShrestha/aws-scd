@@ -54,7 +54,7 @@ const Countdown = () => {
 
     return (
         <section
-            className='relative overflow-hidden bg-gradient-to-br from-orange-50/30 via-orange-50/20 to-white/10 py-12 px-4'
+            className='relative overflow-hidden bg-gradient-to-br from-orange-50/30 via-orange-50/20 to-white/10 py-12 px-4 sm:px-6 lg:px-8 xl:px-16'
             id='countdown'
         >
             <motion.div
@@ -62,7 +62,7 @@ const Countdown = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
-                className='relative max-w-4xl mx-auto text-center'
+                className='relative max-w-6xl mx-auto text-center'
             >
                 <div className='inline-block space-y-3 mb-10'>
                     <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>

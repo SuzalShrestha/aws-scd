@@ -29,8 +29,11 @@ const faqs = [
 
 const FAQ = () => {
     return (
-        <section className='bg-slate-50 py-20 px-4' id='faq'>
-            <div className='max-w-4xl mx-auto'>
+        <section
+            className='bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            id='faq'
+        >
+            <div className='max-w-5xl mx-auto'>
                 <div className='mb-10 text-center'>
                     <div className='inline-block space-y-3'>
                         <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>

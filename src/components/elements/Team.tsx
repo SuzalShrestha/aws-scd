@@ -7,8 +7,8 @@ import { Linkedin } from 'lucide-react';
 
 const Team = () => {
     return (
-        <section className='bg-white py-20 px-4' id='team'>
-            <div className='mx-auto max-w-6xl'>
+        <section className='bg-white py-20 px-4 sm:px-6 lg:px-8 xl:px-16' id='team'>
+            <div className='mx-auto max-w-7xl'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}

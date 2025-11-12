@@ -7,8 +7,11 @@ import { motion } from 'framer-motion';
 
 const Speakers = () => {
     return (
-        <section className='bg-gray-50 py-12 px-4' id='speakers'>
-            <div className='max-w-5xl mx-auto'>
+        <section
+            className='bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 xl:px-16'
+            id='speakers'
+        >
+            <div className='max-w-6xl mx-auto'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}

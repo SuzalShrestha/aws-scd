@@ -9,8 +9,11 @@ const PartnersSection = () => {
     const duplicatedPartners = [...Partners, ...Partners];
 
     return (
-        <section className='bg-gray-50 py-20' id='partners'>
-            <div className='mx-auto max-w-6xl px-4'>
+        <section
+            className='bg-gray-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            id='partners'
+        >
+            <div className='mx-auto max-w-7xl'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}

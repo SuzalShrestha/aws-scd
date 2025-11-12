@@ -5,8 +5,11 @@ import Image from 'next/image';
 
 const Registration = () => {
     return (
-        <section className='bg-gray-50 py-20 px-4' id='register'>
-            <div className='mx-auto max-w-6xl'>
+        <section
+            className='bg-gray-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            id='register'
+        >
+            <div className='mx-auto max-w-7xl'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +58,7 @@ const Registration = () => {
                         className='flex flex-col items-center space-y-6'
                     >
                         {/* IOE Pashchimanchal Meetup */}
-                        <div className='rounded-lg border border-gray-100 bg-white p-8 text-center shadow-sm w-full max-w-sm'>
+                        <div className='rounded-lg border border-gray-100 bg-white py-8 text-center shadow-sm w-full max-w-sm'>
                             <a
                                 href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/events/311973692/'
                                 target='_blank'

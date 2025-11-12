@@ -131,10 +131,10 @@ const PastEvents = async () => {
 
     return (
         <section
-            className='relative overflow-hidden bg-gradient-to-br from-orange-50/30 via-orange-50/20 to-white/10 py-20 px-4'
+            className='relative overflow-hidden bg-gradient-to-br from-orange-50/30 via-orange-50/20 to-white/10 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
             id='past-events'
         >
-            <div className='mx-auto max-w-6xl'>
+            <div className='mx-auto max-w-7xl'>
                 <div className='mb-12 text-center'>
                     <div className='inline-block space-y-3'>
                         <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>

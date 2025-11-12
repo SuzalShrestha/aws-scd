@@ -55,13 +55,13 @@ const Footer = () => {
     ];
 
     return (
-        <footer className='bg-slate-900 py-14 px-4 text-slate-200'>
+        <footer className='bg-slate-900 py-14 px-4 sm:px-6 lg:px-8 xl:px-16 text-slate-200'>
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
-                className='mx-auto max-w-6xl'
+                className='mx-auto max-w-7xl'
             >
                 <div className='grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4'>
                     <div>
@@ -151,7 +151,7 @@ const Footer = () => {
                             Contact
                         </h4>
                         <ul className='mt-4 space-y-2 text-sm text-slate-400'>
-                            <li>Pokhara, Nepal</li>
+                            <li>Ranjit Event Center, Pokhara</li>
                             <li>
                                 <a
                                     href='#'

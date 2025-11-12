@@ -6,8 +6,11 @@ import { Card, CardContent } from '../ui/card';
 
 const Schedule = () => {
     return (
-        <section className='bg-white py-20 px-4' id='schedule'>
-            <div className='mx-auto max-w-4xl'>
+        <section
+            className='bg-white py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            id='schedule'
+        >
+            <div className='mx-auto max-w-6xl'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
