@@ -57,7 +57,7 @@ const Registration = () => {
                         {/* IOE Pashchimanchal Meetup */}
                         <div className='rounded-lg border border-gray-100 bg-white p-8 text-center shadow-sm w-full max-w-sm'>
                             <a
-                                href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/'
+                                href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/events/311973692/'
                                 target='_blank'
                                 rel='noopener noreferrer'
                                 className='block transition-transform duration-300 hover:scale-105'

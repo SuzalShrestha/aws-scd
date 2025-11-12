@@ -113,7 +113,7 @@ const Hero = () => {
                         custom={0.6}
                         className='flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4'
                     >
-                        <a href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/'>
+                        <a href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/events/311973692/'>
                             <Button
                                 size='lg'
                                 variant='ghost'
