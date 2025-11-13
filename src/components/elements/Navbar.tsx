@@ -27,7 +27,7 @@ const Navbar = () => {
                         >
                             About
                         </a>
-                        <a
+                        {/* <a
                             href='#speakers'
                             className='text-gray-600 hover:text-[var(--aws-orange)] font-medium text-sm transition-colors duration-200'
                         >
@@ -38,24 +38,30 @@ const Navbar = () => {
                             className='text-gray-600 hover:text-[var(--aws-orange)] font-medium text-sm transition-colors duration-200'
                         >
                             Schedule
-                        </a>
-                        <a
+                        </a> */}
+                        {/* <a
                             href='#partners'
                             className='text-gray-600 hover:text-[var(--aws-orange)] font-medium text-sm transition-colors duration-200'
                         >
                             Partners
-                        </a>
+                        </a> */}
                         <a
-                            href='#team'
+                            href='#past-events'
                             className='text-gray-600 hover:text-[var(--aws-orange)] font-medium text-sm transition-colors duration-200'
                         >
-                            Team
+                            Past Events
                         </a>
                         <a
                             href='#register'
                             className='text-gray-600 hover:text-[var(--aws-orange)] font-medium text-sm transition-colors duration-200'
                         >
                             Register
+                        </a>
+                        <a
+                            href='#team'
+                            className='text-gray-600 hover:text-[var(--aws-orange)] font-medium text-sm transition-colors duration-200'
+                        >
+                            Team
                         </a>
                     </nav>
                 </div>
