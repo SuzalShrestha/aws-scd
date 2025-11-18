@@ -49,7 +49,7 @@ const FAQ = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                    <Accordion className='rounded-2xl border border-slate-200 bg-white shadow-sm'>
+                    <Accordion className='rounded-2xl border border-slate-200 bg-white shadow-sm mb-12'>
                         {faqs.map((faq, index) => (
                             <AccordionItem
                                 key={faq.question}
@@ -65,6 +65,51 @@ const FAQ = () => {
                             </AccordionItem>
                         ))}
                     </Accordion>
+
+                    {/* Still Have Questions Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 0.6,
+                            ease: 'easeOut',
+                            delay: 0.2,
+                        }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        className='text-center bg-white rounded-2xl border border-slate-200 shadow-sm p-8'
+                    >
+                        <h3 className='text-2xl font-bold text-slate-900 mb-4'>
+                            Still Have Questions?
+                        </h3>
+                        <p className='text-slate-600 mb-6 max-w-md mx-auto'>
+                            Don&apos;t hesitate to reach out! We&apos;re here to
+                            help and answer any questions you may have.
+                        </p>
+                        <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+                            <button
+                                onClick={() =>
+                                    window.open(
+                                        'mailto:awscc@ioepas.edu.np',
+                                        '_blank'
+                                    )
+                                }
+                                className='inline-flex items-center justify-center gap-2 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange)]/90 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg'
+                            >
+                                Email Us
+                            </button>
+                            <button
+                                onClick={() =>
+                                    window.open(
+                                        'https://www.linkedin.com/company/aws-cloud-club-ioe-pashchimanchal-campus',
+                                        '_blank'
+                                    )
+                                }
+                                className='inline-flex items-center justify-center gap-2 border border-[var(--aws-orange)] text-[var(--aws-orange)] hover:bg-[var(--aws-orange)] hover:text-white px-6 py-3 rounded-full font-semibold transition-all duration-300'
+                            >
+                                Message on LinkedIn
+                            </button>
+                        </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
