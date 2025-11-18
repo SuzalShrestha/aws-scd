@@ -2,7 +2,6 @@
 
 import { scheduleEvents } from '@/constants/Schedules';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '../ui/card';
 
 const Schedule = () => {
     return (
@@ -10,7 +9,7 @@ const Schedule = () => {
             className='bg-white py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
             id='schedule'
         >
-            <div className='mx-auto max-w-6xl'>
+            <div className='mx-auto max-w-4xl'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -26,50 +25,54 @@ const Schedule = () => {
                     </div>
                 </motion.div>
 
-                <div className='relative'>
-                    <div className='absolute inset-y-0 left-8 hidden w-0.5 bg-gray-200 md:block'></div>
-
-                    <div className='space-y-6'>
-                        {/* {scheduleEvents.map((event, index) => (
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className='bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm'
+                >
+                    <div className='divide-y divide-gray-100'>
+                        {scheduleEvents.map((event, index) => (
                             <motion.div
                                 key={event.title}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.3 }}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
                                 transition={{
-                                    duration: 0.5,
-                                    delay: index * 0.05,
+                                    duration: 0.4,
+                                    delay: index * 0.03,
                                     ease: 'easeOut',
                                 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                className='grid grid-cols-4 hover:bg-orange-50/30 transition-colors duration-200'
                             >
-                                <Card className='cursor-pointer overflow-hidden border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'>
-                                    <CardContent className='p-0'>
-                                        <div className='flex items-center'>
-                                            <div className='relative hidden h-16 w-16 items-center justify-center md:flex'>
-                                                <span className='h-4 w-4 rounded-full border-4 border-white bg-gray-400 shadow-sm transition-colors duration-300 group-hover:bg-[var(--aws-orange)]'></span>
-                                            </div>
+                                {/* Time Column */}
+                                <div className='col-span-1 p-6 flex items-center justify-center border-r border-gray-100'>
+                                    <div className='text-center'>
+                                        <span className='inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-[var(--aws-orange)]/10 text-[var(--aws-orange)]'>
+                                            {event.time}
+                                        </span>
+                                    </div>
+                                </div>
 
-                                            <div className='ml-6 mr-6 flex-shrink-0 md:ml-4'>
-                                                <div className='rounded-lg bg-[var(--aws-orange)] px-4 py-2 text-sm font-medium text-white shadow-sm'>
-                                                    {event.time}
-                                                </div>
-                                            </div>
+                                {/* Content Column */}
+                                <div className='col-span-3 p-6'>
+                                    <div className='space-y-2'>
+                                        {/* Description on top */}
+                                        <h3 className='text-lg font-semibold text-gray-900 leading-tight'>
+                                            {event.title}
+                                        </h3>
 
-                                            <div className='flex-1 py-6 pr-6'>
-                                                <h3 className='mb-2 text-lg font-bold text-slate-800 transition-colors duration-300 group-hover:text-orange-600'>
-                                                    {event.title}
-                                                </h3>
-                                                <p className='leading-relaxed text-slate-600'>
-                                                    {event.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </CardContent>
-                                </Card>
+                                        {/* Session description */}
+                                        <p className='text-sm text-gray-600 leading-relaxed'>
+                                            {event.description}
+                                        </p>
+                                    </div>
+                                </div>
                             </motion.div>
-                        ))} */}
+                        ))}
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

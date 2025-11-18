@@ -16,17 +16,6 @@ const MeetupIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const Footer = () => {
-    const quickLinks = [
-        { label: 'About', href: '#about' },
-        { label: 'Schedule', href: '#schedule' },
-        { label: 'Speakers', href: '#speakers' },
-        { label: 'Partners', href: '#partners' },
-        { label: 'Registration', href: '#registration' },
-        { label: 'FAQ', href: '#faq' },
-        { label: 'Team', href: '#team' },
-        { label: 'Past Events', href: '#past-events' },
-    ];
-
     const socialLinks = [
         {
             name: 'Meetup',
@@ -63,7 +52,7 @@ const Footer = () => {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 className='mx-auto max-w-7xl'
             >
-                <div className='grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4'>
+                <div className='grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3'>
                     <div>
                         <h3 className='text-2xl font-semibold tracking-tight text-[var(--aws-orange)]'>
                             AWS Student Community Day
@@ -96,71 +85,79 @@ const Footer = () => {
 
                     <div>
                         <h4 className='text-sm font-semibold uppercase tracking-wider text-slate-300'>
-                            Quick Links
+                            Contact Us
                         </h4>
-                        <ul className='mt-4 space-y-2 text-sm'>
-                            {quickLinks.slice(0, 4).map((l) => (
-                                <li key={l.label}>
-                                    <a
-                                        href={l.href}
-                                        className='text-slate-400 transition-colors hover:text-white'
-                                    >
-                                        {l.label}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                        <div className='mt-4 space-y-4 text-sm'>
+                            <div>
+                                <h5 className='font-medium text-slate-300 mb-2'>
+                                    Event Coordinators
+                                </h5>
+                                <div className='space-y-2 text-slate-400'>
+                                    <div>
+                                        <p className='font-medium'>
+                                            Yojana Ghimire
+                                        </p>
+                                        <a
+                                            href='tel:+9779866212789'
+                                            className='text-slate-400 hover:text-white transition-colors'
+                                        >
+                                            +977 9866212789
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <p className='font-medium'>
+                                            Aayusha Adhikari
+                                        </p>
+                                        <a
+                                            href='tel:+9779703322118'
+                                            className='text-slate-400 hover:text-white transition-colors'
+                                        >
+                                            +977 9703322118
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <p className='font-medium'>
+                                            Savyata Bhurtel
+                                        </p>
+                                        <a
+                                            href='tel:+9779846917029'
+                                            className='text-slate-400 hover:text-white transition-colors'
+                                        >
+                                            +977 9846917029
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div>
                         <h4 className='text-sm font-semibold uppercase tracking-wider text-slate-300'>
-                            Event
+                            Email
                         </h4>
-                        <ul className='mt-4 space-y-2 text-sm'>
-                            {quickLinks.slice(4).map((l) => (
-                                <li key={l.label}>
-                                    <a
-                                        href={l.href}
-                                        className='text-slate-400 transition-colors hover:text-white'
-                                    >
-                                        {l.label}
-                                    </a>
-                                </li>
-                            ))}
-                            <li>
+                        <div className='mt-4 space-y-2 text-sm text-slate-400'>
+                            <div>
                                 <a
-                                    href='#'
-                                    className='text-slate-400 transition-colors hover:text-white'
+                                    href='mailto:awscc@ioepas.edu.np'
+                                    className='transition-colors hover:text-white block'
                                 >
-                                    Code of Conduct
+                                    awscc@ioepas.edu.np
                                 </a>
-                            </li>
-                            <li>
+                            </div>
+                            <div>
                                 <a
-                                    href='#'
-                                    className='text-slate-400 transition-colors hover:text-white'
+                                    href='mailto:awscloudclub.pncampus@gmail.com'
+                                    className='transition-colors hover:text-white block'
                                 >
-                                    Privacy Policy
+                                    awscloudclub.pncampus@gmail.com
                                 </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className='text-sm font-semibold uppercase tracking-wider text-slate-300'>
-                            Contact
-                        </h4>
-                        <ul className='mt-4 space-y-2 text-sm text-slate-400'>
-                            <li>Ranjit Event Center, Pokhara</li>
-                            <li>
-                                <a
-                                    href='#'
-                                    className='transition-colors hover:text-white'
-                                >
-                                    Reach out on social media
-                                </a>
-                            </li>
-                        </ul>
+                            </div>
+                            <div className='mt-4'>
+                                <p className='text-slate-400'>
+                                    Ranjit Event Center, Pokhara
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -168,6 +165,9 @@ const Footer = () => {
                     <p className='text-center text-sm text-slate-500'>
                         © 2025 AWS Student Community Day Pokhara. All rights
                         reserved.
+                    </p>
+                    <p className='text-center text-md text-slate-500'>
+                        Designed by Technical Team
                     </p>
                 </div>
             </motion.div>
