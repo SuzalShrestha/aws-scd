@@ -17,7 +17,7 @@ import CallForSpeakers from '@/components/elements/CallForSpeakers';
 export default function HomePage() {
     return (
         <>
-            <main className='relative pt-16'>
+            <main className='relative'>
                 <Navbar />
                 <Hero />
             </main>
