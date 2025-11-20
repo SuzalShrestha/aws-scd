@@ -30,7 +30,7 @@ const faqs = [
 const FAQ = () => {
     return (
         <section
-            className='bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            className='bg-slate-900 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
             id='faq'
         >
             <div className='max-w-5xl mx-auto'>
@@ -49,17 +49,17 @@ const FAQ = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                    <Accordion className='rounded-2xl border border-slate-200 bg-white shadow-sm mb-12'>
+                    <Accordion className='rounded-2xl border border-slate-700 bg-slate-800 shadow-sm mb-12'>
                         {faqs.map((faq, index) => (
                             <AccordionItem
                                 key={faq.question}
                                 value={`faq-${index}`}
-                                className='first:rounded-t-2xl last:rounded-b-2xl'
+                                className='first:rounded-t-2xl last:rounded-b-2xl border-slate-700'
                             >
-                                <AccordionTrigger className='text-left text-base font-medium text-slate-900'>
+                                <AccordionTrigger className='text-left text-base font-medium text-slate-100 hover:text-[var(--aws-orange)]'>
                                     {faq.question}
                                 </AccordionTrigger>
-                                <AccordionContent className='text-slate-600'>
+                                <AccordionContent className='text-slate-300'>
                                     {faq.answer}
                                 </AccordionContent>
                             </AccordionItem>
@@ -76,12 +76,12 @@ const FAQ = () => {
                             delay: 0.2,
                         }}
                         viewport={{ once: true, amount: 0.3 }}
-                        className='text-center bg-white rounded-2xl border border-slate-200 shadow-sm p-8'
+                        className='text-center bg-slate-800 rounded-2xl border border-slate-700 shadow-sm p-8'
                     >
-                        <h3 className='text-2xl font-bold text-slate-900 mb-4'>
+                        <h3 className='text-2xl font-bold text-slate-100 mb-4'>
                             Still Have Questions?
                         </h3>
-                        <p className='text-slate-600 mb-6 max-w-md mx-auto'>
+                        <p className='text-slate-300 mb-6 max-w-md mx-auto'>
                             Don&apos;t hesitate to reach out! We&apos;re here to
                             help and answer any questions you may have.
                         </p>
