@@ -19,7 +19,7 @@ const Footer = () => {
     const socialLinks = [
         {
             name: 'Meetup',
-            href: 'https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/',
+            href: 'https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/events/311973692',
             Icon: MeetupIcon,
             color: 'text-[#F64060]',
         },
@@ -144,15 +144,11 @@ const Footer = () => {
                                     awscc@ioepas.edu.np
                                 </a>
                             </div>
-                            <div>
-                                <a
-                                    href='mailto:awscloudclub.pncampus@gmail.com'
-                                    className='transition-colors hover:text-white block'
-                                >
-                                    awscloudclub.pncampus@gmail.com
-                                </a>
-                            </div>
+
                             <div className='mt-4'>
+                                <h4 className='text-sm font-semibold uppercase tracking-wider text-slate-300'>
+                                    Venue
+                                </h4>
                                 <p className='text-slate-400'>
                                     Ranjit Event Center, Pokhara
                                 </p>
@@ -167,7 +163,7 @@ const Footer = () => {
                         reserved.
                     </p>
                     <p className='text-center text-md text-slate-500'>
-                        Designed by Technical Team
+                        Designed by Sujal Shrestha
                     </p>
                 </div>
             </motion.div>
