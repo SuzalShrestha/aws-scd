@@ -82,8 +82,8 @@ const FAQ = () => {
                             Still Have Questions?
                         </h3>
                         <p className='text-slate-300 mb-6 max-w-md mx-auto'>
-                            Don&apos;t hesitate to reach out! We&apos;re here to
-                            help and answer any questions you may have.
+                            We&apos;re here to help and answer any questions you
+                            may have.
                         </p>
                         <div className='flex flex-col sm:flex-row gap-4 justify-center'>
                             <button
