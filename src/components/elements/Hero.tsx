@@ -83,8 +83,7 @@ const Hero = () => {
                                 className='text-lg sm:text-xl text-white/80 max-w-2xl mx-auto lg:mx-0 leading-relaxed'
                             >
                                 Join the largest gathering of AWS enthusiasts,
-                                developers, and cloud professionals. Learn,
-                                network, and build the future together.
+                                developers, and cloud professionals.
                             </motion.p>
 
                             <motion.div
