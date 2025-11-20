@@ -7,7 +7,10 @@ import { Linkedin } from 'lucide-react';
 
 const Team = () => {
     return (
-        <section className='bg-white py-20 px-4 sm:px-6 lg:px-8 xl:px-16' id='team'>
+        <section
+            className='bg-gradient-to-br from-orange-50 to-slate-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            id='team'
+        >
             <div className='mx-auto max-w-7xl'>
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}

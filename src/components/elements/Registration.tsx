@@ -6,7 +6,7 @@ import Image from 'next/image';
 const Registration = () => {
     return (
         <section
-            className='bg-gray-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            className='bg-gradient-to-br from-orange-50 to-slate-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
             id='register'
         >
             <div className='mx-auto max-w-7xl'>
