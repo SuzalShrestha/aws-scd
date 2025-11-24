@@ -58,7 +58,7 @@ const Accordion = ({
 
     return (
         <AccordionContext.Provider value={contextValue}>
-            <div className={cn('divide-y divide-slate-200', className)}>
+            <div className={cn('divide-y divide-slate-700', className)}>
                 {children}
             </div>
         </AccordionContext.Provider>
@@ -116,9 +116,9 @@ const AccordionTrigger = ({
         <button
             type='button'
             className={cn(
-                'flex w-full items-center justify-between gap-4 bg-transparent px-6 py-5 text-left text-base sm:text-lg font-medium text-slate-900 transition-colors rounded-md',
-                'hover:text-[var(--aws-orange)] data-[state=open]:bg-slate-50',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--aws-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-white',
+                'flex w-full items-center justify-between gap-4 bg-transparent px-6 py-5 text-left text-base sm:text-lg font-medium text-slate-100 transition-colors rounded-md',
+                'hover:text-[var(--aws-orange)]',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--aws-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900',
                 className
             )}
             aria-expanded={isOpen}
@@ -189,7 +189,7 @@ const AccordionContent = ({ children, className }: AccordionContentProps) => {
                             open: { opacity: 1, y: 0 },
                         }}
                         transition={{ duration: 0.24, ease: 'easeOut' }}
-                        className='px-6 pb-6 pt-2 text-slate-600'
+                        className='px-6 pb-6 pt-2 text-slate-300'
                     >
                         {children}
                     </motion.div>
