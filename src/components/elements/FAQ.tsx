@@ -7,6 +7,7 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion';
 import { motion } from 'framer-motion';
+import { Mail, MapPin, MessageCircle } from 'lucide-react';
 
 const faqs = [
     {
@@ -30,62 +31,80 @@ const faqs = [
 const FAQ = () => {
     return (
         <section
-            className='bg-slate-900 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            className='relative py-24 sm:py-32 bg-[var(--aws-navy)] overflow-hidden'
             id='faq'
         >
-            <div className='max-w-5xl mx-auto'>
-                <div className='mb-10 text-center'>
-                    <div className='inline-block space-y-3'>
-                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
-                            Frequently Asked Questions
-                        </h2>
-                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
-                    </div>
-                </div>
+            {/* Background elements */}
+            <div className='absolute inset-0'>
+                <div className='absolute bottom-0 left-1/4 w-96 h-96 bg-[var(--aws-orange)]/5 rounded-full blur-3xl' />
+                <div className='absolute top-1/4 right-0 w-80 h-80 bg-[var(--aws-light-blue)]/5 rounded-full blur-3xl' />
+            </div>
+            <div className='noise-overlay' />
 
+            <div className='relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12'>
+                {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className='text-center max-w-2xl mx-auto mb-12'
+                >
+                    <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-6'>
+                        Frequently Asked Questions
+                    </h2>
+                </motion.div>
+
+                {/* FAQ Accordion */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: 0.1,
+                    }}
                 >
-                    <Accordion className='rounded-2xl border border-slate-700 bg-slate-800 shadow-sm mb-12'>
+                    <Accordion className='rounded-2xl bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] overflow-hidden'>
                         {faqs.map((faq, index) => (
                             <AccordionItem
                                 key={faq.question}
                                 value={`faq-${index}`}
-                                className='first:rounded-t-2xl last:rounded-b-2xl border-slate-700'
+                                className='border-white/[0.08]'
                             >
-                                <AccordionTrigger className='text-left text-base font-medium text-slate-100 hover:text-[var(--aws-orange)]'>
+                                <AccordionTrigger className='text-left text-base font-medium text-white hover:text-[var(--aws-orange)] px-6 py-5'>
                                     {faq.question}
                                 </AccordionTrigger>
-                                <AccordionContent className='text-slate-300'>
+                                <AccordionContent className='text-white/60 px-6 pb-5'>
                                     {faq.answer}
                                 </AccordionContent>
                             </AccordionItem>
                         ))}
                     </Accordion>
+                </motion.div>
 
-                    {/* Still Have Questions Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.6,
-                            ease: 'easeOut',
-                            delay: 0.2,
-                        }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        className='text-center bg-slate-800 rounded-2xl border border-slate-700 shadow-sm p-8'
-                    >
-                        <h3 className='text-2xl font-bold text-slate-100 mb-4'>
+                {/* Contact Card */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: 0.2,
+                    }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className='mt-12 grid sm:grid-cols-2 gap-5'
+                >
+                    {/* Contact CTA */}
+                    <div className='bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-6'>
+                        <h3 className='text-lg font-semibold text-white mb-3'>
                             Still Have Questions?
                         </h3>
-                        <p className='text-slate-300 mb-6 max-w-md mx-auto'>
-                            We&apos;re here to help and answer any questions you
-                            may have.
+                        <p className='text-white/50 text-sm mb-5'>
+                            We&apos;re here to help. Reach out to us directly.
                         </p>
-                        <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+                        <div className='flex flex-wrap gap-3'>
                             <button
                                 onClick={() =>
                                     window.open(
@@ -93,8 +112,9 @@ const FAQ = () => {
                                         '_blank'
                                     )
                                 }
-                                className='inline-flex items-center justify-center gap-2 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange)]/90 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg'
+                                className='inline-flex items-center gap-2 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-light)] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300'
                             >
+                                <Mail className='w-4 h-4' />
                                 Email Us
                             </button>
                             <button
@@ -104,64 +124,59 @@ const FAQ = () => {
                                         '_blank'
                                     )
                                 }
-                                className='inline-flex items-center justify-center gap-2 border border-[var(--aws-orange)] text-[var(--aws-orange)] hover:bg-[var(--aws-orange)] hover:text-white px-6 py-3 rounded-full font-semibold transition-all duration-300'
+                                className='inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 border border-white/10'
                             >
-                                Message on LinkedIn
+                                <MessageCircle className='w-4 h-4' />
+                                LinkedIn
                             </button>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Venue Location Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.6,
-                            ease: 'easeOut',
-                            delay: 0.4,
-                        }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        className='mt-8 bg-slate-800 rounded-2xl border border-slate-700 shadow-sm overflow-hidden'
-                    >
-                        <div className='px-8 py-8'>
-                            <div className='rounded-xl overflow-hidden border border-slate-600'>
-                                <iframe
-                                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.649137562213!2d83.99287337548567!3d28.217970675893802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995944a78d39543%3A0x3b989ec37763a940!2sRanjit%20Event%20Center!5e0!3m2!1sen!2snp!4v1763623515886!5m2!1sen!2snp'
-                                    width='100%'
-                                    height='300'
-                                    style={{ border: 0 }}
-                                    allowFullScreen
-                                    loading='lazy'
-                                    referrerPolicy='no-referrer-when-downgrade'
-                                    className='w-full'
-                                />
-                            </div>
-                            <div className='mt-4 text-center'>
-                                <button
-                                    onClick={() =>
-                                        window.open(
-                                            'https://maps.app.goo.gl/fC1ibr8kUCiyjWpZA',
-                                            '_blank'
-                                        )
-                                    }
-                                    className='inline-flex items-center justify-center gap-2 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange)]/90 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg'
-                                >
-                                    <svg
-                                        className='w-4 h-4'
-                                        fill='currentColor'
-                                        viewBox='0 0 20 20'
-                                    >
-                                        <path
-                                            fillRule='evenodd'
-                                            d='M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z'
-                                            clipRule='evenodd'
-                                        />
-                                    </svg>
-                                    Get Directions
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
+                    {/* Venue Card */}
+                    <div className='bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-6'>
+                        <h3 className='text-lg font-semibold text-white mb-3'>
+                            Event Venue
+                        </h3>
+                        <p className='text-white/50 text-sm mb-5'>
+                            Ranjit Event Center, Pokhara, Nepal
+                        </p>
+                        <button
+                            onClick={() =>
+                                window.open(
+                                    'https://maps.app.goo.gl/fC1ibr8kUCiyjWpZA',
+                                    '_blank'
+                                )
+                            }
+                            className='inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 border border-white/10'
+                        >
+                            <MapPin className='w-4 h-4' />
+                            Get Directions
+                        </button>
+                    </div>
+                </motion.div>
+
+                {/* Map */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: 0.3,
+                    }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className='mt-6 rounded-2xl overflow-hidden border border-white/[0.08]'
+                >
+                    <iframe
+                        src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.649137562213!2d83.99287337548567!3d28.217970675893802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995944a78d39543%3A0x3b989ec37763a940!2sRanjit%20Event%20Center!5e0!3m2!1sen!2snp!4v1763623515886!5m2!1sen!2snp'
+                        width='100%'
+                        height='280'
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading='lazy'
+                        referrerPolicy='no-referrer-when-downgrade'
+                        className='w-full grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500'
+                    />
                 </motion.div>
             </div>
         </section>

@@ -8,77 +8,83 @@ import { Linkedin } from 'lucide-react';
 const Team = () => {
     return (
         <section
-            className='bg-gradient-to-br from-orange-50 to-slate-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            className='relative py-24 sm:py-32 bg-white overflow-hidden'
             id='team'
         >
-            <div className='mx-auto max-w-7xl'>
+            {/* Background */}
+            <div className='absolute inset-0 grid-pattern opacity-30' />
+
+            <div className='relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12'>
+                {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true, amount: 0.3 }}
-                    className='mb-16 text-center'
+                    className='text-center max-w-2xl mx-auto mb-16'
                 >
-                    <div className='inline-block space-y-3'>
-                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
-                            Our Team
-                        </h2>
-                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
-                    </div>
+                    <h2 className='section-title text-neutral-900 mb-6'>
+                        Meet Our Team
+                    </h2>
                 </motion.div>
 
-                <div className='grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
+                {/* Team Grid */}
+                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-5'>
                     {EventTeam.map((member, index) => {
                         const hasLinkedin =
                             !!member.linkedin && member.linkedin !== '#';
                         return (
                             <motion.div
                                 key={member.id}
-                                initial={{ opacity: 0, y: 32 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.3 }}
+                                viewport={{ once: true, amount: 0.2 }}
                                 transition={{
-                                    duration: 0.45,
-                                    delay: index * 0.04,
-                                    ease: 'easeOut',
+                                    duration: 0.4,
+                                    delay: Math.min(index * 0.03, 0.4),
+                                    ease: [0.16, 1, 0.3, 1],
                                 }}
                                 className='group'
                             >
-                                <div className='rounded-xl border border-black/5 bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-md'>
-                                    <div className='relative aspect-square overflow-hidden rounded-lg bg-gray-100'>
+                                <div className='relative bg-neutral-50 rounded-2xl p-3 transition-all duration-300 hover:bg-white hover:shadow-lg hover:shadow-neutral-200/50 border border-transparent hover:border-neutral-100'>
+                                    {/* Image */}
+                                    <div className='relative aspect-square overflow-hidden rounded-xl bg-neutral-100'>
                                         {member.imgUrl ? (
                                             <Image
                                                 src={member.imgUrl}
                                                 alt={member.name}
                                                 fill
                                                 sizes='(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 200px'
-                                                className='object-cover transition-transform duration-300 group-hover:scale-[1.03]'
+                                                className='object-cover transition-transform duration-500 group-hover:scale-105'
                                                 priority={index < 6}
                                             />
                                         ) : (
-                                            <div className='flex h-full w-full items-center justify-center bg-gray-100 text-2xl font-semibold text-gray-400'>
+                                            <div className='flex h-full w-full items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200 text-3xl font-bold text-neutral-400'>
                                                 {member.name
                                                     ?.charAt(0)
                                                     ?.toUpperCase()}
                                             </div>
                                         )}
 
+                                        {/* LinkedIn overlay */}
                                         {hasLinkedin && (
                                             <a
                                                 href={member.linkedin}
                                                 target='_blank'
                                                 rel='noopener noreferrer'
-                                                aria-label={`Open ${member.name}'s LinkedIn profile`}
-                                                className='absolute bottom-3 right-3 inline-flex size-8 items-center justify-center rounded-md bg-white/90 text-[#0A66C2] ring-1 ring-black/5 shadow-sm transition-colors hover:bg-white'
-                                                title='LinkedIn'
+                                                aria-label={`${member.name}'s LinkedIn`}
+                                                className='absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-300'
                                             >
-                                                <Linkedin className='size-4' />
+                                                <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-lg'>
+                                                    <Linkedin className='w-5 h-5 text-[#0A66C2]' />
+                                                </div>
                                             </a>
                                         )}
                                     </div>
 
-                                    <div className='mt-3 sm:mt-4 text-center'>
-                                        <h3 className='text-sm sm:text-base font-medium text-gray-900 tracking-tight'>
+                                    {/* Name */}
+                                    <div className='mt-3 text-center'>
+                                        <h3 className='text-sm font-medium text-neutral-900 truncate px-1'>
                                             {member.name}
                                         </h3>
                                     </div>
