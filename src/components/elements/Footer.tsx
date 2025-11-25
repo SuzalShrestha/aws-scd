@@ -1,8 +1,15 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
-// Minimal Meetup icon (since lucide-react doesn't include it)
+import { motion } from 'framer-motion';
+import {
+    Facebook,
+    Instagram,
+    Linkedin,
+    Mail,
+    MapPin,
+    Phone,
+} from 'lucide-react';
+
 const MeetupIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         viewBox='0 0 24 24'
@@ -15,158 +22,187 @@ const MeetupIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const socialLinks = [
+    {
+        name: 'Meetup',
+        href: 'https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/events/311973692',
+        Icon: MeetupIcon,
+    },
+    {
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/posts/aws-cloud-club-ioe-pashchimanchal-campus_awscloudclubs-awsccioepas-awsccpnc-activity-7375541946628476928-hQDJ',
+        Icon: Linkedin,
+    },
+    {
+        name: 'Facebook',
+        href: 'https://www.facebook.com/share/p/1BRAvghNGh/',
+        Icon: Facebook,
+    },
+    {
+        name: 'Instagram',
+        href: 'https://www.instagram.com/p/DO3kFNkCODh',
+        Icon: Instagram,
+    },
+];
+
+const quickLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Schedule', href: '#schedule' },
+    { name: 'Speakers', href: '#speakers' },
+    { name: 'Register', href: '#register' },
+    { name: 'FAQ', href: '#faq' },
+];
+
 const Footer = () => {
-    const socialLinks = [
-        {
-            name: 'Meetup',
-            href: 'https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/events/311973692',
-            Icon: MeetupIcon,
-            color: 'text-[#F64060]',
-        },
-        {
-            name: 'LinkedIn',
-            href: 'https://www.linkedin.com/posts/aws-cloud-club-ioe-pashchimanchal-campus_awscloudclubs-awsccioepas-awsccpnc-activity-7375541946628476928-hQDJ',
-            Icon: Linkedin,
-            color: 'text-[#0A66C2]',
-        },
-        {
-            name: 'Facebook',
-            href: 'https://www.facebook.com/share/p/1BRAvghNGh/',
-            Icon: Facebook,
-            color: 'text-[#1877F2]',
-        },
-        {
-            name: 'Instagram',
-            href: 'https://www.instagram.com/p/DO3kFNkCODh',
-            Icon: Instagram,
-            color: 'text-[#E4405F]',
-        },
-    ];
-
     return (
-        <footer className='bg-slate-900 py-14 px-4 sm:px-6 lg:px-8 xl:px-16 text-slate-200'>
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                className='mx-auto max-w-7xl'
-            >
-                <div className='grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3'>
-                    <div>
-                        <h3 className='text-2xl font-semibold tracking-tight text-[var(--aws-orange)]'>
-                            AWS Student Community Day
-                        </h3>
-                        <p className='mt-1 text-sm text-slate-400'>
-                            Pokhara 2025
-                        </p>
-                        <p className='mt-4 text-sm leading-6 text-slate-400'>
-                            Organized by AWS Cloud Club IOE Paschimanchal Campus
-                            and AWS Cloud Club Prithivi Narayan Campus.
+        <footer className='relative bg-neutral-900 overflow-hidden'>
+            {/* Top gradient line */}
+            <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--aws-orange)]/50 to-transparent' />
+
+            <div className='max-w-7xl mx-auto px-6 sm:px-8 lg:px-12'>
+                {/* Main Footer */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className='py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8'
+                >
+                    {/* Brand */}
+                    <div className='lg:col-span-1'>
+                        <div className='mb-6'>
+                            <span className='text-xl font-bold'>
+                                <span className='text-[var(--aws-orange)]'>
+                                    AWS
+                                </span>
+                                <span className='text-white'> SCD</span>
+                            </span>
+                            <p className='text-neutral-500 text-sm mt-1'>
+                                Pokhara 2025
+                            </p>
+                        </div>
+                        <p className='text-neutral-400 text-sm leading-relaxed mb-6'>
+                            Organized by AWS Cloud Club IOE Pashchimanchal & AWS
+                            Cloud Club Prithvi Narayan Campus.
                         </p>
 
-                        <div className='mt-5 flex items-center gap-2'>
-                            {socialLinks.map(({ name, href, Icon, color }) => (
+                        {/* Social Links */}
+                        <div className='flex items-center gap-2'>
+                            {socialLinks.map(({ name, href, Icon }) => (
                                 <a
                                     key={name}
                                     href={href}
                                     target='_blank'
                                     rel='noopener noreferrer'
                                     aria-label={name}
-                                    title={name}
-                                    className={`inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/90 ${color} ring-1 ring-white/20 shadow-sm transition-colors hover:bg-white`}
+                                    className='w-10 h-10 rounded-xl bg-white/5 hover:bg-[var(--aws-orange)]/20 flex items-center justify-center text-neutral-400 hover:text-[var(--aws-orange)] transition-all duration-300 border border-white/5 hover:border-[var(--aws-orange)]/20'
                                 >
-                                    <Icon className='h-5 w-5' />
-                                    <span className='sr-only'>{name}</span>
+                                    <Icon className='w-5 h-5' />
                                 </a>
                             ))}
                         </div>
                     </div>
 
+                    {/* Quick Links */}
                     <div>
-                        <h4 className='text-sm font-semibold uppercase tracking-wider text-slate-300'>
-                            Contact Us
+                        <h4 className='text-sm font-semibold text-white uppercase tracking-wider mb-5'>
+                            Quick Links
                         </h4>
-                        <div className='mt-4 space-y-4 text-sm'>
-                            <div>
-                                <h5 className='font-medium text-slate-300 mb-2'>
-                                    Event Coordinators
-                                </h5>
-                                <div className='space-y-2 text-slate-400'>
-                                    <div>
-                                        <p className='font-medium'>
-                                            Yojana Ghimire
-                                        </p>
-                                        <a
-                                            href='tel:+9779866212789'
-                                            className='text-slate-400 hover:text-white transition-colors'
-                                        >
-                                            +977 9866212789
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <p className='font-medium'>
-                                            Aayusha Adhikari
-                                        </p>
-                                        <a
-                                            href='tel:+9779703322118'
-                                            className='text-slate-400 hover:text-white transition-colors'
-                                        >
-                                            +977 9703322118
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <p className='font-medium'>
-                                            Savyata Bhurtel
-                                        </p>
-                                        <a
-                                            href='tel:+9779846917029'
-                                            className='text-slate-400 hover:text-white transition-colors'
-                                        >
-                                            +977 9846917029
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ul className='space-y-3'>
+                            {quickLinks.map((link) => (
+                                <li key={link.name}>
+                                    <a
+                                        href={link.href}
+                                        className='text-neutral-400 hover:text-white text-sm transition-colors'
+                                    >
+                                        {link.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
+                    {/* Contact */}
                     <div>
-                        <h4 className='text-sm font-semibold uppercase tracking-wider text-slate-300'>
-                            Email
+                        <h4 className='text-sm font-semibold text-white uppercase tracking-wider mb-5'>
+                            Contact
                         </h4>
-                        <div className='mt-4 space-y-2 text-sm text-slate-400'>
-                            <div>
+                        <ul className='space-y-4'>
+                            <li>
                                 <a
                                     href='mailto:awscc@ioepas.edu.np'
-                                    className='transition-colors hover:text-white block'
+                                    className='flex items-center gap-3 text-neutral-400 hover:text-white text-sm transition-colors group'
                                 >
+                                    <Mail className='w-4 h-4 text-neutral-500 group-hover:text-[var(--aws-orange)]' />
                                     awscc@ioepas.edu.np
                                 </a>
-                            </div>
+                            </li>
+                            <li className='flex items-start gap-3 text-neutral-400 text-sm'>
+                                <MapPin className='w-4 h-4 text-neutral-500 mt-0.5' />
+                                <span>Ranjit Event Center, Pokhara, Nepal</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <div className='mt-4'>
-                                <h4 className='text-sm font-semibold uppercase tracking-wider text-slate-300'>
-                                    Venue
-                                </h4>
-                                <p className='text-slate-400'>
-                                    Ranjit Event Center, Pokhara
-                                </p>
-                            </div>
-                        </div>
+                    {/* Coordinators */}
+                    <div>
+                        <h4 className='text-sm font-semibold text-white uppercase tracking-wider mb-5'>
+                            Coordinators
+                        </h4>
+                        <ul className='space-y-3'>
+                            {[
+                                {
+                                    name: 'Yojana Ghimire',
+                                    phone: '+977 9866212789',
+                                },
+                                {
+                                    name: 'Aayusha Adhikari',
+                                    phone: '+977 9703322118',
+                                },
+                                {
+                                    name: 'Savyata Bhurtel',
+                                    phone: '+977 9846917029',
+                                },
+                            ].map((person) => (
+                                <li key={person.name}>
+                                    <p className='text-neutral-300 text-sm font-medium'>
+                                        {person.name}
+                                    </p>
+                                    <a
+                                        href={`tel:${person.phone.replace(
+                                            /\s/g,
+                                            ''
+                                        )}`}
+                                        className='flex items-center gap-2 text-neutral-500 hover:text-[var(--aws-orange)] text-xs transition-colors mt-0.5'
+                                    >
+                                        <Phone className='w-3 h-3' />
+                                        {person.phone}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </motion.div>
+
+                {/* Bottom Bar */}
+                <div className='py-6 border-t border-white/5'>
+                    <div className='flex flex-col sm:flex-row items-center justify-between gap-4'>
+                        <p className='text-neutral-500 text-sm'>
+                            © 2025 AWS Student Community Day Pokhara. All rights
+                            reserved.
+                        </p>
+                        <p className='text-neutral-600 text-sm'>
+                            Designed with ♥ by{' '}
+                            <a
+                                href='#'
+                                className='text-neutral-400 hover:text-[var(--aws-orange)] transition-colors'
+                            >
+                                Sujal Shrestha
+                            </a>
+                        </p>
                     </div>
                 </div>
-
-                <div className='mt-10 border-t border-slate-800 pt-6'>
-                    <p className='text-center text-sm text-slate-500'>
-                        © 2025 AWS Student Community Day Pokhara. All rights
-                        reserved.
-                    </p>
-                    <p className='text-center text-md text-slate-500'>
-                        Designed by Sujal Shrestha
-                    </p>
-                </div>
-            </motion.div>
+            </div>
         </footer>
     );
 };

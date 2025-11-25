@@ -58,9 +58,7 @@ const Accordion = ({
 
     return (
         <AccordionContext.Provider value={contextValue}>
-            <div className={cn('divide-y divide-slate-700', className)}>
-                {children}
-            </div>
+            <div className={cn('divide-y', className)}>{children}</div>
         </AccordionContext.Provider>
     );
 };
@@ -116,9 +114,8 @@ const AccordionTrigger = ({
         <button
             type='button'
             className={cn(
-                'flex w-full items-center justify-between gap-4 bg-transparent px-6 py-5 text-left text-base sm:text-lg font-medium text-slate-100 transition-colors rounded-md',
-                'hover:text-[var(--aws-orange)]',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--aws-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900',
+                'flex w-full items-center justify-between gap-4 bg-transparent text-left text-base font-medium transition-all duration-200 rounded-md',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--aws-orange)] focus-visible:ring-offset-2',
                 className
             )}
             aria-expanded={isOpen}
@@ -131,10 +128,10 @@ const AccordionTrigger = ({
             <span>{children}</span>
             <motion.span
                 aria-hidden='true'
-                className='text-slate-400'
+                className='text-current opacity-50'
                 initial={false}
                 animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ type: 'spring', stiffness: 220, damping: 24 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 20 }}
             >
                 <ChevronDown className='h-5 w-5' />
             </motion.span>
@@ -177,19 +174,22 @@ const AccordionContent = ({ children, className }: AccordionContentProps) => {
                         open: { height: 'auto', opacity: 1 },
                         collapsed: { height: 0, opacity: 0 },
                     }}
-                    transition={{ duration: 0.28, ease: 'easeInOut' }}
-                    className={cn('overflow-hidden text-sm', className)}
+                    transition={{
+                        duration: 0.3,
+                        ease: [0.04, 0.62, 0.23, 0.98],
+                    }}
+                    className='overflow-hidden'
                     id={contentId}
                     role='region'
                     aria-labelledby={triggerId}
                 >
                     <motion.div
                         variants={{
-                            collapsed: { opacity: 0, y: -8 },
+                            collapsed: { opacity: 0, y: -10 },
                             open: { opacity: 1, y: 0 },
                         }}
-                        transition={{ duration: 0.24, ease: 'easeOut' }}
-                        className='px-6 pb-6 pt-2 text-slate-300'
+                        transition={{ duration: 0.3 }}
+                        className={cn('text-sm pt-1 pb-2', className)}
                     >
                         {children}
                     </motion.div>

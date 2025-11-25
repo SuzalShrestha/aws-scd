@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Calendar } from 'lucide-react';
+import { Calendar, ArrowUpRight } from 'lucide-react';
 
 type EventItem = {
     title: string;
@@ -44,46 +44,53 @@ const pncEvents: EventItem[] = [
     },
 ];
 
-const OGCard = ({ item }: { item: EventItem }) => {
+const OGCard = ({ item, index }: { item: EventItem; index: number }) => {
     const fallbackLogo = '/logos/Meetup-Logo-1300x730.png';
     const imgSrc = item.ogImage || fallbackLogo;
     const displayDate = item.meta.split('•')[0]?.trim();
+
     return (
         <a
             href={item.href}
             target='_blank'
             rel='noopener noreferrer'
-            className='group block overflow-hidden rounded-2xl border border-orange-100/60 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--aws-orange)]'
+            className='group block'
+            style={{ animationDelay: `${index * 100}ms` }}
         >
-            {/* Open Graph preview */}
-            <div className='relative'>
-                <div className='relative aspect-[16/9] w-full overflow-hidden bg-orange-50'>
+            <div className='relative overflow-hidden rounded-2xl bg-white border border-neutral-100 transition-all duration-500 hover:border-[var(--aws-orange)]/20 hover:shadow-xl hover:shadow-neutral-200/50 hover:-translate-y-1'>
+                {/* Image */}
+                <div className='relative aspect-[16/9] w-full overflow-hidden bg-neutral-50'>
                     <Image
                         src={imgSrc}
                         alt={item.title}
                         width={1200}
                         height={630}
-                        className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]'
+                        className='h-full w-full object-cover transition-transform duration-700 group-hover:scale-105'
                         priority={false}
                     />
-                </div>
-                <div className='pointer-events-none absolute inset-0 bg-gradient-to-t from-black/5 via-black/0 to-black/0' />
-            </div>
+                    <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 
-            {/* Content */}
-            <div className='p-4'>
-                <h3 className='line-clamp-2 text-base font-semibold text-slate-900 transition-colors group-hover:text-[var(--aws-orange)]'>
-                    {item.title}
-                </h3>
-                {displayDate && (
-                    <div className='mt-2 inline-flex items-center gap-1.5 text-sm text-gray-600'>
-                        <Calendar
-                            className='h-4 w-4 text-gray-400'
-                            aria-hidden='true'
-                        />
-                        <span>{displayDate}</span>
+                    {/* Hover arrow */}
+                    <div className='absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300'>
+                        <ArrowUpRight className='w-5 h-5 text-neutral-700' />
                     </div>
-                )}
+                </div>
+
+                {/* Content */}
+                <div className='p-5'>
+                    <h3 className='line-clamp-2 text-base font-semibold text-neutral-900 mb-3 leading-snug group-hover:text-[var(--aws-orange)] transition-colors'>
+                        {item.title}
+                    </h3>
+                    {displayDate && (
+                        <div className='inline-flex items-center gap-2 text-sm text-neutral-500'>
+                            <Calendar
+                                className='h-4 w-4 text-neutral-400'
+                                aria-hidden='true'
+                            />
+                            <span>{displayDate}</span>
+                        </div>
+                    )}
+                </div>
             </div>
         </a>
     );
@@ -91,7 +98,7 @@ const OGCard = ({ item }: { item: EventItem }) => {
 
 async function fetchOgImage(url: string): Promise<string | null> {
     try {
-        const res = await fetch(url, { next: { revalidate: 21600 } }); // revalidate every 6h
+        const res = await fetch(url, { next: { revalidate: 21600 } });
         if (!res.ok) return null;
         const html = await res.text();
         const matchProperty = html.match(
@@ -105,7 +112,6 @@ async function fetchOgImage(url: string): Promise<string | null> {
         );
         const og = matchProperty?.[1] || matchName?.[1] || linkRel?.[1] || null;
         if (!og) return null;
-        // Normalize protocol-relative URLs
         if (og.startsWith('//')) return `https:${og}`;
         return og;
     } catch {
@@ -114,7 +120,6 @@ async function fetchOgImage(url: string): Promise<string | null> {
 }
 
 const PastEvents = async () => {
-    // Fetch OG images server-side for both lists
     const ioeWithOG: EventItem[] = await Promise.all(
         ioeEvents.map(async (e) => ({
             ...e,
@@ -131,22 +136,24 @@ const PastEvents = async () => {
 
     return (
         <section
-            className='relative overflow-hidden bg-gradient-to-br from-orange-50/30 via-orange-50/20 to-white/10 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
+            className='relative py-24 sm:py-32 bg-neutral-50 overflow-hidden'
             id='past-events'
         >
-            <div className='mx-auto max-w-7xl'>
-                <div className='mb-12 text-center'>
-                    <div className='inline-block space-y-3'>
-                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
-                            Past Events
-                        </h2>
-                        <div className='h-1 w-24 rounded-full bg-[var(--aws-orange)] mx-auto'></div>
-                    </div>
+            {/* Background */}
+            <div className='absolute inset-0 grid-pattern opacity-40' />
+
+            <div className='relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12'>
+                {/* Section Header */}
+                <div className='text-center max-w-2xl mx-auto mb-16'>
+                    <h2 className='section-title text-neutral-900 mb-6'>
+                        Past Events
+                    </h2>
                 </div>
 
-                <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-                    {allEvents.map((e) => (
-                        <OGCard key={e.href} item={e} />
+                {/* Events Grid */}
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+                    {allEvents.map((e, index) => (
+                        <OGCard key={e.href} item={e} index={index} />
                     ))}
                 </div>
             </div>

@@ -1,17 +1,16 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Speakers', href: '#speakers' },
     { name: 'Schedule', href: '#schedule' },
-    { name: 'Past Events', href: '#past-events' },
+    { name: 'Speakers', href: '#speakers' },
+    { name: 'Events', href: '#past-events' },
     { name: 'Team', href: '#team' },
     { name: 'FAQ', href: '#faq' },
 ];
@@ -22,129 +21,180 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            setIsScrolled(window.scrollY > 50);
         };
 
         handleScroll();
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileMenuOpen]);
 
     return (
         <header
             className={cn(
-                'fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b',
-                isScrolled
-                    ? 'bg-white/90 backdrop-blur-md border-gray-200 shadow-sm py-2'
-                    : 'bg-transparent border-transparent py-4'
+                'fixed top-0 inset-x-0 z-50 transition-all duration-500',
+                isScrolled ? 'py-3' : 'py-5'
             )}
         >
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                <div className='flex items-center justify-between'>
+            <div className='max-w-7xl mx-auto px-6 sm:px-8 lg:px-12'>
+                <nav
+                    className={cn(
+                        'flex items-center justify-between rounded-2xl transition-all duration-500',
+                        isScrolled
+                            ? 'glass px-6 py-3 shadow-lg shadow-black/[0.03] border border-black/[0.04]'
+                            : 'px-2 py-2'
+                    )}
+                >
                     {/* Logo */}
-                    <div className='flex items-center flex-shrink-0'>
-                        <a href='#' className='group flex items-center gap-2'>
-                            <div className='font-bold text-xl tracking-tight'>
+                    <a href='#home' className='flex items-center gap-2 group'>
+                        <div className='flex items-center gap-2'>
+                            <span className='text-lg font-bold tracking-tight'>
                                 <span className='text-[var(--aws-orange)]'>
                                     AWS
                                 </span>
                                 <span
                                     className={cn(
-                                        'ml-2 transition-colors duration-300',
+                                        'ml-1.5 transition-colors duration-300',
                                         isScrolled
-                                            ? 'text-slate-800'
+                                            ? 'text-neutral-800'
                                             : 'text-white'
                                     )}
                                 >
-                                    Student Community Day
+                                    SCD
                                 </span>
-                            </div>
-                        </a>
-                    </div>
+                            </span>
+                            <span
+                                className={cn(
+                                    'hidden sm:inline-block text-xs px-2 py-0.5 rounded-full font-medium transition-colors duration-300',
+                                    isScrolled
+                                        ? 'bg-[var(--aws-orange)]/10 text-[var(--aws-orange)]'
+                                        : 'bg-white/10 text-white/80'
+                                )}
+                            >
+                                Pokhara 2025
+                            </span>
+                        </div>
+                    </a>
 
                     {/* Desktop Navigation */}
-                    <nav className='hidden md:flex items-center space-x-1'>
+                    <div className='hidden lg:flex items-center gap-1'>
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
                                 className={cn(
-                                    'px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
+                                    'relative px-4 py-2 text-sm font-medium transition-all duration-200 rounded-xl group',
                                     isScrolled
-                                        ? 'text-slate-600 hover:text-[var(--aws-orange)] hover:bg-slate-50'
-                                        : 'text-slate-200 hover:text-white hover:bg-white/10'
+                                        ? 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
+                                        : 'text-white/70 hover:text-white hover:bg-white/10'
                                 )}
                             >
                                 {link.name}
                             </a>
                         ))}
-                        <div className='pl-4'>
-                            <Button
-                                className='bg-[var(--aws-orange)] hover:bg-[var(--aws-orange)]/90 text-white rounded-full px-6'
-                                onClick={() =>
-                                    (window.location.href = '#register')
-                                }
-                            >
-                                Register Now
-                            </Button>
-                        </div>
-                    </nav>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className='hidden lg:block'>
+                        <a
+                            href='#register'
+                            className='inline-flex items-center gap-2 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[var(--aws-orange)]/20'
+                        >
+                            Register
+                            <ArrowRight className='w-4 h-4' />
+                        </a>
+                    </div>
 
                     {/* Mobile Menu Button */}
-                    <div className='md:hidden'>
-                        <button
-                            onClick={() =>
-                                setIsMobileMenuOpen(!isMobileMenuOpen)
-                            }
-                            className={cn(
-                                'p-2 rounded-md transition-colors',
-                                isScrolled ? 'text-slate-800' : 'text-white'
-                            )}
-                        >
-                            {isMobileMenuOpen ? (
-                                <X className='h-6 w-6' />
-                            ) : (
-                                <Menu className='h-6 w-6' />
-                            )}
-                        </button>
-                    </div>
-                </div>
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className={cn(
+                            'lg:hidden p-2.5 rounded-xl transition-colors duration-200',
+                            isScrolled
+                                ? 'text-neutral-800 hover:bg-neutral-100'
+                                : 'text-white hover:bg-white/10'
+                        )}
+                        aria-label='Toggle menu'
+                    >
+                        {isMobileMenuOpen ? (
+                            <X className='h-5 w-5' />
+                        ) : (
+                            <Menu className='h-5 w-5' />
+                        )}
+                    </button>
+                </nav>
             </div>
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className='md:hidden bg-white border-b border-gray-200 overflow-hidden'
-                    >
-                        <div className='px-4 pt-2 pb-6 space-y-1'>
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className='block px-4 py-3 text-base font-medium text-slate-600 hover:text-[var(--aws-orange)] hover:bg-slate-50 rounded-lg transition-colors'
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
-                            <div className='pt-4 px-4'>
-                                <Button
-                                    className='w-full bg-[var(--aws-orange)] hover:bg-[var(--aws-orange)]/90 text-white rounded-full'
-                                    onClick={() => {
-                                        window.location.href = '#register';
-                                        setIsMobileMenuOpen(false);
-                                    }}
-                                >
-                                    Register Now
-                                </Button>
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className='fixed inset-0 bg-black/20 backdrop-blur-sm lg:hidden'
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        />
+
+                        {/* Menu Panel */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: [0.16, 1, 0.3, 1],
+                            }}
+                            className='absolute top-full left-4 right-4 mt-2 lg:hidden'
+                        >
+                            <div className='bg-white rounded-2xl shadow-xl border border-black/[0.04] overflow-hidden'>
+                                <div className='p-4 space-y-1'>
+                                    {navLinks.map((link, index) => (
+                                        <motion.a
+                                            key={link.name}
+                                            href={link.href}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.05 }}
+                                            onClick={() =>
+                                                setIsMobileMenuOpen(false)
+                                            }
+                                            className='block px-4 py-3 text-base font-medium text-neutral-700 hover:text-[var(--aws-orange)] hover:bg-neutral-50 rounded-xl transition-colors'
+                                        >
+                                            {link.name}
+                                        </motion.a>
+                                    ))}
+                                </div>
+                                <div className='p-4 pt-2 border-t border-neutral-100'>
+                                    <a
+                                        href='#register'
+                                        onClick={() =>
+                                            setIsMobileMenuOpen(false)
+                                        }
+                                        className='flex items-center justify-center gap-2 w-full bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white px-5 py-3 rounded-xl text-base font-semibold transition-colors'
+                                    >
+                                        Register Now
+                                        <ArrowRight className='w-4 h-4' />
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </header>
