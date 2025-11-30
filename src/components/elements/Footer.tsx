@@ -194,7 +194,7 @@ const Footer = () => {
                         <p className='text-neutral-600 text-sm'>
                             Designed with ♥ by{' '}
                             <a
-                                href='#'
+                                href='https://www.linkedin.com/in/shresthasujal'
                                 className='text-neutral-400 hover:text-[var(--aws-orange)] transition-colors'
                             >
                                 Sujal Shrestha
