@@ -8,8 +8,6 @@ import {
     Award,
     Trophy,
     Medal,
-    Target,
-    Package,
     CheckCircle,
 } from 'lucide-react';
 

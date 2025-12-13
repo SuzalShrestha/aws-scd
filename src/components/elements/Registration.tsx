@@ -13,26 +13,18 @@ const perks = [
 
 const Registration = () => {
     return (
-        <section
-            className='relative py-24 sm:py-32 bg-white overflow-hidden'
-            id='register'
-        >
-            {/* Background */}
-            <div className='absolute inset-0 grid-pattern opacity-30' />
-
-            <div className='relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12'>
+        <section className='section surface' id='register'>
+            <div className='page-container'>
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true, amount: 0.3 }}
-                    className='text-center max-w-2xl mx-auto mb-16'
+                    className='section-header'
                 >
-                    <h2 className='section-title text-neutral-900 mb-6'>
-                        Reserve Your Spot
-                    </h2>
-                    <p className='section-subtitle mx-auto text-neutral-500'>
+                    <h2 className='section-title mb-6'>Reserve Your Spot</h2>
+                    <p className='section-subtitle mx-auto'>
                         Join us on Meetup to register
                     </p>
                 </motion.div>
@@ -58,7 +50,7 @@ const Registration = () => {
                         </div>
 
                         <div className='space-y-4'>
-                            <h3 className='text-2xl sm:text-3xl font-bold text-neutral-900'>
+                            <h3 className='text-2xl sm:text-3xl font-semibold'>
                                 What&apos;s Included?
                             </h3>
 
@@ -73,7 +65,7 @@ const Registration = () => {
                                             delay: index * 0.1,
                                         }}
                                         viewport={{ once: true }}
-                                        className='flex items-center gap-3 text-neutral-600'
+                                        className='flex items-center gap-3 text-muted-foreground'
                                     >
                                         <CheckCircle2 className='w-5 h-5 text-green-500 flex-shrink-0' />
                                         <span>{perk}</span>
@@ -113,31 +105,29 @@ const Registration = () => {
                             rel='noopener noreferrer'
                             className='group block'
                         >
-                            <div className='relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#F64060] to-[#E02E56] p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#F64060]/20 hover:-translate-y-1'>
-                                <div className='noise-overlay opacity-10' />
-
-                                <div className='relative flex items-center justify-between'>
-                                    <div className='flex items-center gap-4'>
-                                        <div className='w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center'>
+                            <div className='rounded-2xl border border-border bg-card p-6 sm:p-7 transition-colors duration-200 hover:border-[var(--aws-orange)]/25'>
+                                <div className='flex items-center justify-between gap-4'>
+                                    <div className='flex items-center gap-4 min-w-0'>
+                                        <div className='w-12 h-12 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
                                             <Image
                                                 src='/logos/Meetup-Logo-1300x730.png'
                                                 alt='Meetup'
-                                                width={40}
-                                                height={40}
+                                                width={34}
+                                                height={34}
                                                 className='object-contain'
                                             />
                                         </div>
-                                        <div>
-                                            <p className='text-white/60 text-sm mb-1'>
-                                                Register on
+                                        <div className='min-w-0'>
+                                            <p className='text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1'>
+                                                Register on Meetup
                                             </p>
-                                            <h4 className='text-white font-semibold text-lg'>
+                                            <h4 className='font-semibold text-base sm:text-lg truncate'>
                                                 IOE Pashchimanchal
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className='w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors'>
-                                        <ArrowUpRight className='w-5 h-5 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+                                    <div className='w-10 h-10 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
+                                        <ArrowUpRight className='w-5 h-5 text-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
                                     </div>
                                 </div>
                             </div>
@@ -150,31 +140,29 @@ const Registration = () => {
                             rel='noopener noreferrer'
                             className='group block'
                         >
-                            <div className='relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#F64060] to-[#E02E56] p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#F64060]/20 hover:-translate-y-1'>
-                                <div className='noise-overlay opacity-10' />
-
-                                <div className='relative flex items-center justify-between'>
-                                    <div className='flex items-center gap-4'>
-                                        <div className='w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center'>
+                            <div className='rounded-2xl border border-border bg-card p-6 sm:p-7 transition-colors duration-200 hover:border-[var(--aws-orange)]/25'>
+                                <div className='flex items-center justify-between gap-4'>
+                                    <div className='flex items-center gap-4 min-w-0'>
+                                        <div className='w-12 h-12 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
                                             <Image
                                                 src='/logos/Meetup-Logo-1300x730.png'
                                                 alt='Meetup'
-                                                width={40}
-                                                height={40}
+                                                width={34}
+                                                height={34}
                                                 className='object-contain'
                                             />
                                         </div>
-                                        <div>
-                                            <p className='text-white/60 text-sm mb-1'>
-                                                Register on
+                                        <div className='min-w-0'>
+                                            <p className='text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1'>
+                                                Register on Meetup
                                             </p>
-                                            <h4 className='text-white font-semibold text-lg'>
+                                            <h4 className='font-semibold text-base sm:text-lg truncate'>
                                                 Prithvi Narayan Campus
                                             </h4>
                                         </div>
                                     </div>
-                                    <div className='w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors'>
-                                        <ArrowUpRight className='w-5 h-5 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+                                    <div className='w-10 h-10 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
+                                        <ArrowUpRight className='w-5 h-5 text-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
                                     </div>
                                 </div>
                             </div>

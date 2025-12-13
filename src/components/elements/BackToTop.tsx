@@ -36,14 +36,8 @@ const BackToTop = () => {
                     className='fixed bottom-8 right-8 z-50 group'
                     aria-label='Back to top'
                 >
-                    <div className='relative'>
-                        {/* Glow effect */}
-                        <div className='absolute inset-0 bg-[var(--aws-orange)] rounded-2xl blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-300' />
-
-                        {/* Button */}
-                        <div className='relative flex items-center justify-center w-12 h-12 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-light)] text-white rounded-2xl shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:shadow-[var(--aws-orange)]/25'>
-                            <ArrowUp className='w-5 h-5 transition-transform group-hover:-translate-y-0.5' />
-                        </div>
+                    <div className='flex items-center justify-center w-12 h-12 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white rounded-2xl shadow-sm transition-colors duration-200'>
+                        <ArrowUp className='w-5 h-5 transition-transform group-hover:-translate-y-0.5' />
                     </div>
                 </motion.button>
             )}

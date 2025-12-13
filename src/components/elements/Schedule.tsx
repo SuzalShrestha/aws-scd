@@ -16,31 +16,23 @@ const getEventIcon = (title: string) => {
 
 const Schedule = () => {
     return (
-        <section
-            className='relative py-24 sm:py-32 bg-white overflow-hidden'
-            id='schedule'
-        >
-            {/* Subtle background */}
-            <div className='absolute inset-0 grid-pattern opacity-30' />
-
-            <div className='relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12'>
+        <section className='section surface-muted' id='schedule'>
+            <div className='page-container max-w-5xl'>
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true, amount: 0.3 }}
-                    className='text-center max-w-2xl mx-auto mb-16'
+                    className='section-header'
                 >
-                    <h2 className='section-title text-neutral-900 mb-6'>
-                        Full Day Schedule
-                    </h2>
+                    <h2 className='section-title mb-6'>Full Day Schedule</h2>
                 </motion.div>
 
                 {/* Timeline */}
                 <div className='relative'>
                     {/* Timeline line */}
-                    <div className='absolute left-[27px] sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--aws-orange)]/20 via-[var(--aws-orange)]/40 to-[var(--aws-orange)]/20' />
+                    <div className='absolute left-[27px] sm:left-8 top-0 bottom-0 w-px bg-border' />
 
                     <div className='space-y-1'>
                         {scheduleEvents.map((event, index) => {
@@ -67,8 +59,8 @@ const Schedule = () => {
                                         <div
                                             className={`relative z-10 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl transition-all duration-300 ${
                                                 isBreak
-                                                    ? 'bg-amber-50 group-hover:bg-amber-100'
-                                                    : 'bg-[var(--aws-orange)]/5 group-hover:bg-[var(--aws-orange)]/10'
+                                                    ? 'bg-amber-50'
+                                                    : 'bg-[var(--aws-orange)]/10'
                                             }`}
                                         >
                                             <Icon
@@ -93,7 +85,7 @@ const Schedule = () => {
                                             className={`rounded-2xl p-5 sm:p-6 transition-all duration-300 ${
                                                 isBreak
                                                     ? 'bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-100/50'
-                                                    : 'bg-neutral-50 hover:bg-white hover:shadow-lg hover:shadow-neutral-200/50 border border-transparent hover:border-neutral-100'
+                                                    : 'bg-card border border-border'
                                             }`}
                                         >
                                             <div className='flex flex-wrap items-center gap-3 mb-3'>
@@ -108,11 +100,11 @@ const Schedule = () => {
                                                 </span>
                                             </div>
 
-                                            <h3 className='text-lg font-semibold text-neutral-900 mb-2 leading-snug'>
+                                            <h3 className='text-lg font-semibold mb-2 leading-snug'>
                                                 {event.title}
                                             </h3>
 
-                                            <p className='text-sm text-neutral-500 leading-relaxed'>
+                                            <p className='text-sm text-muted-foreground leading-relaxed'>
                                                 {event.description}
                                             </p>
                                         </div>
