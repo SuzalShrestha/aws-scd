@@ -57,7 +57,7 @@ const OGCard = ({ item, index }: { item: EventItem; index: number }) => {
             className='group block'
             style={{ animationDelay: `${index * 100}ms` }}
         >
-            <div className='relative overflow-hidden rounded-2xl bg-white border border-neutral-100 transition-all duration-500 hover:border-[var(--aws-orange)]/20 hover:shadow-xl hover:shadow-neutral-200/50 hover:-translate-y-1'>
+            <div className='relative overflow-hidden rounded-2xl bg-card border border-border transition-colors duration-200 hover:border-[var(--aws-orange)]/25'>
                 {/* Image */}
                 <div className='relative aspect-[16/9] w-full overflow-hidden bg-neutral-50'>
                     <Image
@@ -65,7 +65,7 @@ const OGCard = ({ item, index }: { item: EventItem; index: number }) => {
                         alt={item.title}
                         width={1200}
                         height={630}
-                        className='h-full w-full object-cover transition-transform duration-700 group-hover:scale-105'
+                        className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]'
                         priority={false}
                     />
                     <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
@@ -135,19 +135,11 @@ const PastEvents = async () => {
     const allEvents: EventItem[] = [...ioeWithOG, ...pncWithOG];
 
     return (
-        <section
-            className='relative py-24 sm:py-32 bg-neutral-50 overflow-hidden'
-            id='past-events'
-        >
-            {/* Background */}
-            <div className='absolute inset-0 grid-pattern opacity-40' />
-
-            <div className='relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12'>
+        <section className='section surface-muted' id='past-events'>
+            <div className='page-container'>
                 {/* Section Header */}
-                <div className='text-center max-w-2xl mx-auto mb-16'>
-                    <h2 className='section-title text-neutral-900 mb-6'>
-                        Past Events
-                    </h2>
+                <div className='section-header'>
+                    <h2 className='section-title mb-6'>Past Events</h2>
                 </div>
 
                 {/* Events Grid */}

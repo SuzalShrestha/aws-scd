@@ -4,23 +4,16 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     return (
-        <section
-            className='relative py-24 sm:py-32 bg-white overflow-hidden'
-            id='about'
-        >
-            {/* Subtle grid pattern */}
-            <div className='absolute inset-0 grid-pattern opacity-50' />
-
-            <div className='relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12'>
-                {/* Section Header */}
+        <section className='section surface' id='about'>
+            <div className='page-container'>
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true, amount: 0.3 }}
-                    className='text-center max-w-3xl mx-auto mb-20'
+                    className='section-header'
                 >
-                    <h2 className='section-title text-neutral-900 mb-6'>
+                    <h2 className='section-title mb-6'>
                         Nepal&apos;s Premier Student
                         <br />
                         <span className='text-[var(--aws-orange)]'>
@@ -29,105 +22,64 @@ const About = () => {
                     </h2>
                 </motion.div>
 
-                {/* Two Column Content */}
-                <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-start mb-20'>
-                    {/* Who We Are */}
+                <div className='grid lg:grid-cols-2 gap-6 lg:gap-8 items-start'>
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        className='space-y-6'
+                        initial={{ opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        className='rounded-2xl border border-border bg-card p-7 sm:p-8'
                     >
-                        {/* <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--aws-orange)]/5 border border-[var(--aws-orange)]/10'>
-                            <div className='w-1.5 h-1.5 rounded-full bg-[var(--aws-orange)]' />
-                            <span className='text-xs font-semibold text-[var(--aws-orange)] uppercase tracking-wider'>
-                                Who We Are
-                            </span>
-                        </div> */}
-
-                        <h3 className='text-2xl sm:text-3xl font-bold text-neutral-900 leading-tight'>
+                        <h3 className='text-xl sm:text-2xl font-semibold leading-tight'>
                             AWS Cloud Club
-                            <br />
-                            <span className='text-neutral-500 font-normal'>
+                            <span className='block text-muted-foreground font-normal'>
                                 IOE Pashchimanchal & PNC
                             </span>
                         </h3>
-
-                        <p className='text-neutral-600 leading-relaxed'>
-                            We are a vibrant community of students passionate
-                            about cloud computing and emerging technologies. Our
-                            clubs bridge academic learning with industry
-                            practices, fostering innovation and technical
-                            excellence among students in Nepal&apos;s growing
-                            tech landscape.
+                        <p className='mt-4 text-muted-foreground leading-relaxed'>
+                            We are a student community passionate about cloud
+                            computing and emerging technologies. We bridge
+                            academic learning with industry practice, fostering
+                            innovation and technical excellence.
                         </p>
-
-                        <div className='flex items-center gap-4 pt-2'>
-                            <div className='flex -space-x-3'>
-                                {[1, 2, 3, 4].map((i) => (
-                                    <div
-                                        key={i}
-                                        className='w-10 h-10 rounded-full bg-gradient-to-br from-[var(--aws-orange)] to-[var(--aws-orange-dark)] border-2 border-white flex items-center justify-center'
-                                    >
-                                        <span className='text-white text-xs font-bold'>
-                                            ☁️
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                            <span className='text-sm text-neutral-500'>
-                                Two campuses, one mission
-                            </span>
-                        </div>
                     </motion.div>
 
-                    {/* What to Expect */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{
-                            duration: 0.6,
+                            duration: 0.45,
                             ease: [0.16, 1, 0.3, 1],
-                            delay: 0.1,
+                            delay: 0.05,
                         }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        className='space-y-6'
+                        viewport={{ once: true, amount: 0.25 }}
+                        className='rounded-2xl border border-border bg-card p-7 sm:p-8'
                     >
-                        {/* <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--aws-orange)]/5 border border-[var(--aws-orange)]/10'>
-                            <div className='w-1.5 h-1.5 rounded-full bg-[var(--aws-orange)]' />
-                            <span className='text-xs font-semibold text-[var(--aws-orange)] uppercase tracking-wider'>
-                                What to Expect
-                            </span>
-                        </div> */}
-
-                        <h3 className='text-2xl sm:text-3xl font-bold text-neutral-900 leading-tight'>
+                        <h3 className='text-xl sm:text-2xl font-semibold leading-tight'>
                             A Full Day of
-                            <br />
-                            <span className='text-neutral-500 font-normal'>
+                            <span className='block text-muted-foreground font-normal'>
                                 Learning & Networking
                             </span>
                         </h3>
 
-                        <p className='text-neutral-600 leading-relaxed'>
-                            Experience hands-on AWS workshops, real-world case
-                            studies, networking opportunities with
-                            professionals, and insights into cloud career paths
-                            that will shape your future in technology.
+                        <p className='mt-4 text-muted-foreground leading-relaxed'>
+                            Expect practical sessions, workshops, and networking
+                            with professionals—plus clear guidance on cloud
+                            career paths.
                         </p>
 
-                        <ul className='space-y-3 pt-2'>
+                        <ul className='mt-5 space-y-3'>
                             {[
                                 'Technical sessions by industry experts',
                                 'Hands-on workshops',
                                 'Networking opportunities',
                                 'Career guidance',
-                            ].map((item, i) => (
+                            ].map((item) => (
                                 <li
-                                    key={i}
-                                    className='flex items-center gap-3 text-neutral-600'
+                                    key={item}
+                                    className='flex items-start gap-3 text-muted-foreground'
                                 >
-                                    <span className='flex items-center justify-center w-5 h-5 rounded-full bg-[var(--aws-orange)]/10'>
+                                    <span className='mt-0.5 flex items-center justify-center w-5 h-5 rounded-full bg-[var(--aws-orange)]/10'>
                                         <svg
                                             className='w-3 h-3 text-[var(--aws-orange)]'
                                             fill='none'
@@ -142,7 +94,7 @@ const About = () => {
                                             />
                                         </svg>
                                     </span>
-                                    {item}
+                                    <span>{item}</span>
                                 </li>
                             ))}
                         </ul>

@@ -16,7 +16,7 @@ const heroVariants: Variants = {
 const Hero = () => {
     return (
         <section
-            className='relative min-h-screen overflow-hidden bg-[var(--aws-navy)]'
+            className='relative min-h-[100svh] overflow-hidden bg-[var(--aws-navy)]'
             id='home'
         >
             {/* Hero Background Image with premium overlay */}
@@ -26,19 +26,12 @@ const Hero = () => {
                 aria-hidden='true'
             />
 
-            {/* Premium gradient overlay */}
+            {/* Readability overlay */}
             <div className='hero-gradient-overlay' />
-
-            {/* Ambient glow effects */}
-            <div className='hero-glow' />
-            <div className='hero-glow-blue' />
-
-            {/* Noise texture for premium feel */}
-            <div className='noise-overlay' />
 
             {/* Content Container */}
             <div className='relative z-10 min-h-screen flex items-center'>
-                <div className='w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24'>
+                <div className='w-full page-container pt-28 pb-20 sm:pt-32 sm:pb-24'>
                     <div className='grid lg:grid-cols-12 gap-12 lg:gap-8 items-center'>
                         {/* Left Column - Content */}
                         <div className='lg:col-span-7 space-y-10 text-center lg:text-left order-2 lg:order-1'>
@@ -63,7 +56,7 @@ const Hero = () => {
                                 custom={0.1}
                                 className='space-y-4'
                             >
-                                <h1 className='text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[-0.03em] leading-[0.95]'>
+                                <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] leading-[0.98]'>
                                     <span className='text-white'>AWS</span>{' '}
                                     <span className='text-[var(--aws-orange)]'>
                                         Student
@@ -91,7 +84,7 @@ const Hero = () => {
                                 initial='hidden'
                                 animate='visible'
                                 custom={0.2}
-                                className='text-lg sm:text-xl text-white/50 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light'
+                                className='text-base sm:text-lg text-white/60 max-w-xl mx-auto lg:mx-0 leading-relaxed'
                             >
                                 Join the largest gathering of AWS enthusiasts,
                                 developers, and cloud professionals in Pokhara.
@@ -145,19 +138,10 @@ const Hero = () => {
                             >
                                 <a
                                     href='#register'
-                                    className='inline-block group'
+                                    className='inline-flex items-center gap-3 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white px-7 py-3.5 text-base font-semibold rounded-xl transition-colors duration-200'
                                 >
-                                    <motion.button
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className='relative flex items-center gap-3 bg-[var(--aws-orange)] text-white px-8 py-4 text-base font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,153,0,0.3)]'
-                                    >
-                                        <span className='relative z-10'>
-                                            Register Now
-                                        </span>
-                                        <ArrowRight className='relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1' />
-                                        <div className='absolute inset-0 bg-gradient-to-r from-[var(--aws-orange)] to-[var(--aws-orange-light)] opacity-0 group-hover:opacity-100 transition-opacity' />
-                                    </motion.button>
+                                    Register Now
+                                    <ArrowRight className='w-5 h-5' />
                                 </a>
                             </motion.div>
                         </div>
@@ -171,29 +155,15 @@ const Hero = () => {
                             className='lg:col-span-5 flex items-center justify-center relative order-1 lg:order-2'
                         >
                             <div className='relative'>
-                                {/* Glow behind logo */}
-                                <div className='absolute inset-0 scale-150 blur-3xl opacity-20'>
-                                    <div className='w-full h-full rounded-full bg-gradient-to-br from-[var(--aws-orange)] to-[var(--aws-light-blue)]' />
-                                </div>
-
                                 {/* Logo */}
-                                <motion.div
-                                    animate={{ y: [0, -8, 0] }}
-                                    transition={{
-                                        duration: 4,
-                                        repeat: Infinity,
-                                        ease: 'easeInOut',
-                                    }}
-                                >
-                                    <Image
-                                        src='/logo.png'
-                                        alt='AWS Student Community Day logo'
-                                        width={500}
-                                        height={300}
-                                        className='relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-contain drop-shadow-2xl'
-                                        priority
-                                    />
-                                </motion.div>
+                                <Image
+                                    src='/logo.png'
+                                    alt='AWS Student Community Day logo'
+                                    width={500}
+                                    height={300}
+                                    className='relative w-52 h-52 sm:w-64 sm:h-64 lg:w-72 lg:h-72 object-contain'
+                                    priority
+                                />
                             </div>
                         </motion.div>
                     </div>

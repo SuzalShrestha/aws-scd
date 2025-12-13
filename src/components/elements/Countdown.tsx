@@ -53,30 +53,19 @@ const Countdown = () => {
     );
 
     return (
-        <section
-            className='relative py-20 sm:py-24 bg-[var(--aws-navy)] overflow-hidden'
-            id='countdown'
-        >
-            {/* Background elements */}
-            <div className='absolute inset-0'>
-                <div className='absolute top-0 left-1/4 w-96 h-96 bg-[var(--aws-orange)]/5 rounded-full blur-3xl' />
-                <div className='absolute bottom-0 right-1/4 w-80 h-80 bg-[var(--aws-light-blue)]/5 rounded-full blur-3xl' />
-            </div>
-            <div className='noise-overlay' />
-
+        <section className='section-tight surface-muted' id='countdown'>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className='relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center'
+                className='page-container text-center'
             >
                 {/* Header */}
-
-                <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4'>
+                <h2 className='text-3xl sm:text-4xl font-semibold tracking-tight mb-3'>
                     Event Starts In
                 </h2>
-                <p className='text-white/40 text-lg mb-12 max-w-md mx-auto'>
+                <p className='text-muted-foreground text-base sm:text-lg mb-10 max-w-xl mx-auto'>
                     December 20, 2025 • Ranjit Event Center, Pokhara
                 </p>
 
@@ -93,17 +82,14 @@ const Countdown = () => {
                                 delay: index * 0.1,
                                 ease: [0.16, 1, 0.3, 1],
                             }}
-                            className='relative group'
+                            className='rounded-2xl border border-border bg-card p-6 sm:p-7'
                         >
-                            <div className='absolute inset-0 bg-gradient-to-b from-[var(--aws-orange)]/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500' />
-                            <div className='relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:border-[var(--aws-orange)]/30'>
-                                <div className='text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-2 tabular-nums'>
-                                    {item.value}
-                                </div>
-                                <span className='text-xs sm:text-sm uppercase tracking-[0.15em] text-white/40 font-medium'>
-                                    {item.label}
-                                </span>
+                            <div className='text-4xl sm:text-5xl font-semibold tabular-nums tracking-tight'>
+                                {item.value}
                             </div>
+                            <span className='mt-2 block text-xs sm:text-sm uppercase tracking-[0.18em] text-muted-foreground font-medium'>
+                                {item.label}
+                            </span>
                         </motion.div>
                     ))}
                 </div>
@@ -118,7 +104,7 @@ const Countdown = () => {
                 >
                     <a
                         href='#register'
-                        className='inline-flex items-center gap-2 px-8 py-4 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-light)] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[var(--aws-orange)]/25'
+                        className='inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white font-semibold rounded-xl transition-colors duration-200'
                     >
                         Reserve Your Spot
                         <svg

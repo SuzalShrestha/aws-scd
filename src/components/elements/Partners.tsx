@@ -1,13 +1,8 @@
 'use client';
 
-import { Partners } from '@/constants/Partners';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 const PartnersSection = () => {
-    // Duplicate the array for continuous scroll
-    const duplicatedPartners = [...Partners, ...Partners];
-
     return (
         <section
             className='bg-gray-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
