@@ -5,9 +5,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const PartnersSection = () => {
+    const isCenteredSingleLogoCategory = (title: string) => {
+        return title.startsWith('Training') || title.startsWith('Media');
+    };
+
     const getGridClass = (title: string) => {
         if (title === 'Sponsors')
-            return 'grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5';
+            return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5';
         if (title === 'Community Partners')
             return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5';
         return 'grid grid-cols-1';
@@ -74,8 +78,7 @@ const PartnersSection = () => {
 
                             <div
                                 className={
-                                    category.title === 'Training Partners' ||
-                                    category.title === 'Media Partners'
+                                    isCenteredSingleLogoCategory(category.title)
                                         ? 'grid grid-cols-1 place-items-center'
                                         : getGridClass(category.title)
                                 }
@@ -97,9 +100,9 @@ const PartnersSection = () => {
                                         className={`rounded-2xl bg-background ${getCardPaddingClass(
                                             category.title
                                         )} ${
-                                            category.title ===
-                                                'Training Partners' ||
-                                            category.title === 'Media Partners'
+                                            isCenteredSingleLogoCategory(
+                                                category.title
+                                            )
                                                 ? 'w-full max-w-2xl'
                                                 : ''
                                         }`}

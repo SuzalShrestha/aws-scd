@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 
-const targetDate = new Date('2025-12-20T00:00:00').getTime();
+const targetDate = new Date('2025-12-20T08:00:00').getTime();
 
 type TimeLeft = {
     days: string;
