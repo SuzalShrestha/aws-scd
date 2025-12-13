@@ -14,6 +14,11 @@ export const partnerCategories: PartnerCategory[] = [
         title: 'Sponsors',
         items: [
             {
+                id: 'aws',
+                name: 'Amazon Web Services',
+                logo: '/Sponsors%20Logo/aws.png',
+            },
+            {
                 id: 'github-education',
                 name: 'GitHub Education',
                 logo: '/Sponsors%20Logo/github%20education.png',
@@ -67,22 +72,22 @@ export const partnerCategories: PartnerCategory[] = [
         ],
     },
     {
-        title: 'Training Partner',
-        items: [
-            {
-                id: 'aws-pathaway',
-                name: 'AWS Pathaway',
-                logo: '/Training%20Partner/AWs%20pathaway%20png%20log.png',
-            },
-        ],
-    },
-    {
         title: 'Media Partner',
         items: [
             {
                 id: 'parichay',
                 name: 'Parichay',
                 logo: '/Media%20Partners/parichay.jpg',
+            },
+        ],
+    },
+    {
+        title: 'Training Partner',
+        items: [
+            {
+                id: 'aws-pathaway',
+                name: 'AWS Pathaway',
+                logo: '/Training%20Partner/AWs%20pathaway%20png%20log.png',
             },
         ],
     },
