@@ -31,7 +31,7 @@ const benefits = [
 
 const CallForSpeakers = () => {
     return (
-        <section className='section surface' id='speakers'>
+        <section className='section surface' id='call-for-speakers'>
             <div className='page-container'>
                 {/* Section Header */}
                 <motion.div

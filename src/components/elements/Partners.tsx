@@ -1,60 +1,134 @@
 'use client';
 
+import { partnerCategories } from '@/constants/Partners';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const PartnersSection = () => {
+    const getGridClass = (title: string) => {
+        if (title === 'Sponsors')
+            return 'grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5';
+        if (title === 'Community Partners')
+            return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5';
+        return 'grid grid-cols-1';
+    };
+
+    const getLogoHeightClass = (title: string) => {
+        if (title === 'Sponsors') return 'h-24 sm:h-28';
+        if (title === 'Community Partners') return 'h-40 sm:h-48';
+        return 'h-24 sm:h-28';
+    };
+
+    const shouldShrinkLogo = (id: string, logoPath: string) => {
+        return (
+            id === 'girls-tech' ||
+            id === 'ices' ||
+            id === 'robotics-club' ||
+            /girlstech/i.test(logoPath) ||
+            /i-?ces/i.test(logoPath)
+        );
+    };
+
+    const getCardPaddingClass = (title: string) => {
+        if (title === 'Sponsors') return 'p-6 sm:p-8';
+        if (title === 'Community Partners') return 'p-5 sm:p-6';
+        return 'p-7 sm:p-10';
+    };
+
     return (
-        <section
-            className='bg-gray-50 py-20 px-4 sm:px-6 lg:px-8 xl:px-16'
-            id='partners'
-        >
-            <div className='mx-auto max-w-7xl'>
+        <section className='section surface-muted' id='partners'>
+            <div className='page-container'>
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
-                    className='mb-12 text-center'
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className='section-header'
                 >
-                    <div className='inline-block space-y-3'>
-                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
-                            Our Partners
-                        </h2>
-                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
-                    </div>
+                    <h2 className='section-title mb-6'>Partners</h2>
+                    <p className='section-subtitle mx-auto'>
+                        Amazing partners are joining us to make AWS Student
+                        Community Day Pokhara possible
+                    </p>
                 </motion.div>
 
-                <div className='overflow-hidden whitespace-nowrap'>
-                    <motion.div
-                        className='inline-flex animate-marquee'
-                        initial={{ opacity: 0, x: -60 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.8, ease: 'easeOut' }}
-                    >
-                        {/* {duplicatedPartners.map((partner, index) => (
-                            <motion.div
-                                key={`${partner.id}-${index}`}
-                                className='mx-4 flex items-center justify-center px-8'
-                                whileHover={{ scale: 1.05 }}
-                                transition={{
-                                    type: 'spring',
-                                    stiffness: 260,
-                                    damping: 20,
-                                }}
+                <div className='space-y-8 sm:space-y-10'>
+                    {partnerCategories.map((category, categoryIndex) => (
+                        <motion.div
+                            key={category.title}
+                            initial={{ opacity: 0, y: 18 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{
+                                duration: 0.45,
+                                delay: Math.min(categoryIndex * 0.05, 0.2),
+                                ease: [0.16, 1, 0.3, 1],
+                            }}
+                            className='rounded-3xl border border-border bg-card p-6 sm:p-8'
+                        >
+                            <div className='flex items-end justify-between gap-6 mb-6'>
+                                <h3 className='text-lg sm:text-xl font-semibold text-[var(--aws-orange)]'>
+                                    {category.title}
+                                </h3>
+                            </div>
+
+                            <div
+                                className={
+                                    category.title === 'Training Partners' ||
+                                    category.title === 'Media Partners'
+                                        ? 'grid grid-cols-1 place-items-center'
+                                        : getGridClass(category.title)
+                                }
                             >
-                                <div className='flex h-16 w-32 items-center justify-center'>
-                                    <Image
-                                        width={120}
-                                        height={60}
-                                        src={partner.logo}
-                                        alt={partner.name}
-                                        className='w-auto max-h-12 object-contain'
-                                    />
-                                </div>
-                            </motion.div>
-                        ))} */}
-                    </motion.div>
+                                {category.items.map((item, itemIndex) => (
+                                    <motion.div
+                                        key={item.id}
+                                        initial={{ opacity: 0, scale: 0.98 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true, amount: 0.2 }}
+                                        transition={{
+                                            duration: 0.35,
+                                            delay: Math.min(
+                                                itemIndex * 0.02,
+                                                0.2
+                                            ),
+                                            ease: [0.16, 1, 0.3, 1],
+                                        }}
+                                        className={`rounded-2xl bg-background ${getCardPaddingClass(
+                                            category.title
+                                        )} ${
+                                            category.title ===
+                                                'Training Partners' ||
+                                            category.title === 'Media Partners'
+                                                ? 'w-full max-w-2xl'
+                                                : ''
+                                        }`}
+                                    >
+                                        <div
+                                            className={`relative ${getLogoHeightClass(
+                                                category.title
+                                            )} w-full`}
+                                        >
+                                            <Image
+                                                src={item.logo}
+                                                alt={item.name}
+                                                fill
+                                                sizes='(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 420px'
+                                                className={`object-contain ${
+                                                    shouldShrinkLogo(
+                                                        item.id,
+                                                        item.logo
+                                                    )
+                                                        ? 'scale-[0.67] origin-center'
+                                                        : ''
+                                                }`}
+                                            />
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>

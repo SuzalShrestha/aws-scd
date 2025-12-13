@@ -62,9 +62,9 @@ const Countdown = () => {
                 className='page-container text-center'
             >
                 {/* Header */}
-                <h2 className='text-3xl sm:text-4xl font-semibold tracking-tight mb-3'>
+                <h1 className='section-title sm:text-4xl font-semibold tracking-tight mb-3 text-[var(--aws-orange)]'>
                     Event Starts In
-                </h2>
+                </h1>
                 <p className='text-muted-foreground text-base sm:text-lg mb-10 max-w-xl mx-auto'>
                     December 20, 2025 • Ranjit Event Center, Pokhara
                 </p>
