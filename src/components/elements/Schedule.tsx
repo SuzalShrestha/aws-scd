@@ -27,6 +27,10 @@ const Schedule = () => {
                     className='section-header'
                 >
                     <h2 className='section-title mb-6'>Full Day Schedule</h2>
+                    <p className='section-subtitle mx-auto'>
+                        A day full of learning, networking, and innovation with
+                        AWS
+                    </p>
                 </motion.div>
 
                 {/* Timeline */}

@@ -8,11 +8,12 @@ import { cn } from '@/lib/utils';
 const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Schedule', href: '#schedule' },
-    { name: 'Speakers', href: '#speakers' },
     { name: 'Events', href: '#past-events' },
+    { name: 'Register', href: '#register' },
+    { name: 'Speakers', href: '#speakers' },
+    { name: 'Schedule', href: '#schedule' },
+    { name: 'Partners', href: '#partners' },
     { name: 'Team', href: '#team' },
-    { name: 'FAQ', href: '#faq' },
 ];
 
 const Navbar = () => {

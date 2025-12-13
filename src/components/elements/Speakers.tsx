@@ -1,79 +1,74 @@
 'use client';
 
-// import { EventSpeakers } from '@/constants/EventSpeakers';
-// import { LinkedinIcon } from 'lucide-react';
+import { EventSpeakers } from '@/constants/EventSpeakers';
+import { Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 const Speakers = () => {
+    const shouldZoomPhoto = (speakerId: number) => {
+        return speakerId === 1;
+    };
+
     return (
-        <section
-            className='bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 xl:px-16'
-            id='speakers'
-        >
-            <div className='max-w-6xl mx-auto'>
+        <section className='section surface' id='speakers'>
+            <div className='page-container'>
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true, amount: 0.3 }}
-                    className='text-center mb-8'
+                    className='section-header'
                 >
-                    <div className='inline-block space-y-3'>
-                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--aws-orange)] tracking-tight'>
-                            Our Speakers
-                        </h2>
-                        <div className='h-1 w-24 bg-[var(--aws-orange)] rounded-full mx-auto'></div>
-                    </div>
+                    <h2 className='section-title mb-6'>Featured Speakers</h2>
+                    <p className='section-subtitle mx-auto'>
+                        Brilliant AWS experts, industry leaders you’ll hear from
+                    </p>
                 </motion.div>
 
-                <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4'>
-                    {/* {EventSpeakers.map((speaker, index) => (
-                        <motion.div
+                <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5'>
+                    {EventSpeakers.map((speaker, index) => (
+                        <motion.a
                             key={speaker.id}
-                            initial={{ opacity: 0, y: 32 }}
+                            href={speaker.linkedin}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            initial={{ opacity: 0, y: 14 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{
-                                duration: 0.45,
-                                delay: index * 0.05,
-                                ease: 'easeOut',
+                                duration: 0.4,
+                                delay: Math.min(index * 0.03, 0.25),
+                                ease: [0.16, 1, 0.3, 1],
                             }}
-                            className='group overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg'
+                            className='rounded-2xl border border-border bg-card p-3'
+                            aria-label={`${speaker.name} on LinkedIn`}
                         >
-                            <div className='aspect-[1/1] flex items-center justify-center overflow-hidden bg-gray-50'>
+                            <div className='relative aspect-square overflow-hidden rounded-xl bg-muted'>
                                 <Image
                                     src={speaker.image}
-                                    alt={`${speaker.name} profile photo`}
-                                    width={150}
-                                    height={150}
-                                    className='h-full w-full object-cover transition-transform duration-300 group-hover:scale-105'
+                                    alt={speaker.name}
+                                    fill
+                                    sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 240px'
+                                    className={`object-cover ${
+                                        shouldZoomPhoto(speaker.id)
+                                            ? 'scale-[1.08]'
+                                            : ''
+                                    }`}
+                                    priority={index < 6}
                                 />
+                                <div className='absolute top-3 right-3 flex items-center justify-center w-9 h-9 rounded-xl bg-background/90 backdrop-blur border border-border'>
+                                    <Linkedin className='w-4 h-4 text-[#0A66C2]' />
+                                </div>
                             </div>
 
-                            <div className='p-4 text-center'>
-                                <h3 className='mb-1 text-base font-semibold text-gray-900'>
+                            <div className='mt-3 flex items-center justify-center gap-3'>
+                                <h3 className='text-sm font-medium truncate'>
                                     {speaker.name}
                                 </h3>
-
-                                <div className='mb-3 space-y-1'>
-                                    <p className='text-xs font-medium text-gray-700'>
-                                        {speaker.role}
-                                    </p>
-                                    <p className='text-xs text-gray-600'>
-                                        {speaker.company}
-                                    </p>
-                                </div>
-                                <a
-                                    href={speaker.linkedin}
-                                    className='inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors duration-200 hover:bg-[var(--aws-orange)] hover:text-white'
-                                    aria-label={`${speaker.name}'s LinkedIn profile`}
-                                >
-                                    <LinkedinIcon size={14} />
-                                </a>
                             </div>
-                        </motion.div>
-                    ))} */}
+                        </motion.a>
+                    ))}
                 </div>
             </div>
         </section>

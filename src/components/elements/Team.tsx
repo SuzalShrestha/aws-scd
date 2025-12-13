@@ -21,7 +21,7 @@ const Team = () => {
                 </motion.div>
 
                 {/* Team Grid */}
-                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-5'>
+                <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5'>
                     {EventTeam.map((member, index) => {
                         const hasLinkedin =
                             !!member.linkedin && member.linkedin !== '#';
@@ -46,7 +46,7 @@ const Team = () => {
                                                 src={member.imgUrl}
                                                 alt={member.name}
                                                 fill
-                                                sizes='(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 200px'
+                                                sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 240px'
                                                 className='object-cover transition-transform duration-500 group-hover:scale-[1.02]'
                                                 priority={index < 6}
                                             />
