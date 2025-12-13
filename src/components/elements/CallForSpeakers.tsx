@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mic, Users, Award, Network, ArrowUpRight } from 'lucide-react';
+import { Mic, Users, Award, Network } from 'lucide-react';
 
 const benefits = [
     {
@@ -30,13 +30,6 @@ const benefits = [
 ];
 
 const CallForSpeakers = () => {
-    const handleApplyClick = () => {
-        window.open(
-            'https://docs.google.com/forms/d/e/1FAIpQLScofPsOeUJXeKtwrndEcY-S4qwaK4w9f7xH_x1RAuODhJ1Dkg/viewform',
-            '_blank'
-        );
-    };
-
     return (
         <section className='section surface' id='speakers'>
             <div className='page-container'>
@@ -50,9 +43,8 @@ const CallForSpeakers = () => {
                 >
                     <h2 className='section-title mb-6'>Call for Speakers</h2>
                     <p className='section-subtitle mx-auto'>
-                        Are you passionate about AWS and cloud technologies?
-                        We&apos;re looking for dynamic speakers to join our
-                        event.
+                        Thank you for your interest! Speaker applications are
+                        now closed. Stay tuned for our confirmed speaker lineup.
                     </p>
                 </motion.div>
 
@@ -116,11 +108,11 @@ const CallForSpeakers = () => {
                     <div className='flex flex-col lg:flex-row items-center justify-between gap-8'>
                         <div className='text-center lg:text-left'>
                             <h3 className='text-2xl sm:text-3xl font-semibold mb-3'>
-                                Ready to Share Your Story?
+                                Applications Closed
                             </h3>
                             <p className='text-muted-foreground max-w-md'>
-                                Submit your proposal and join us on stage at AWS
-                                Student Community Day Pokhara 2025.
+                                Speaker selection is complete. We&apos;ll
+                                announce our amazing lineup soon!
                             </p>
 
                             {/* Stats */}
@@ -146,11 +138,10 @@ const CallForSpeakers = () => {
                         </div>
 
                         <button
-                            onClick={handleApplyClick}
-                            className='group flex items-center gap-3 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-colors duration-200'
+                            disabled
+                            className='flex items-center gap-3 bg-muted text-muted-foreground px-8 py-4 rounded-2xl font-semibold text-lg cursor-not-allowed'
                         >
-                            Apply Now
-                            <ArrowUpRight className='w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+                            Applications Closed
                         </button>
                     </div>
                 </motion.div>
