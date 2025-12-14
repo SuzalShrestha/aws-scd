@@ -50,24 +50,30 @@ export const EventSpeakers: EventSpeaker[] = [
     },
     {
         id: 8,
+        name: 'Raju Mandal',
+        image: '/speaker%20photos/Raju%20Mandal.jpeg',
+        linkedin: 'https://www.linkedin.com/in/raju-mandal/',
+    },
+    {
+        id: 9,
         name: 'Rashika Karki',
         image: '/speaker%20photos/Rashika%20Karki.jpg',
         linkedin: 'https://www.linkedin.com/in/rashikakarki/',
     },
     {
-        id: 9,
+        id: 10,
         name: 'Sushovan Paudyal',
         image: '/speaker%20photos/Sushovan%20Paudyal.jpg',
         linkedin: 'https://www.linkedin.com/in/sushovan-paudyal-941600203/',
     },
     {
-        id: 10,
+        id: 11,
         name: 'Tara Prasad Gurung',
         image: '/speaker%20photos/Tara%20Prasad%20Gurung.jpg',
         linkedin: 'https://www.linkedin.com/in/taragurung/',
     },
     {
-        id: 11,
+        id: 12,
         name: 'Upendra Prasad Neupane',
         image: '/speaker%20photos/Upendra%20Prasad%20Neupane.jpeg',
         linkedin: 'https://www.linkedin.com/in/upendrapn/',
