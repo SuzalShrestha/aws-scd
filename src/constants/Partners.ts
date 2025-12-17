@@ -82,6 +82,16 @@ export const partnerCategories: PartnerCategory[] = [
         ],
     },
     {
+        title: 'Internet Partner',
+        items: [
+            {
+                id: 'worldlink',
+                name: 'Worldlink',
+                logo: '/Internet%20Partner/worldlink-logo.jpg',
+            },
+        ],
+    },
+    {
         title: 'Training Partner',
         items: [
             {
@@ -91,4 +101,5 @@ export const partnerCategories: PartnerCategory[] = [
             },
         ],
     },
+    
 ];

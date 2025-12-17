@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const PartnersSection = () => {
     const isCenteredSingleLogoCategory = (title: string) => {
-        return title.startsWith('Training') || title.startsWith('Media');
+        return title.startsWith('Training') || title.startsWith('Media') || title.startsWith('Internet');
     };
 
     const getGridClass = (title: string) => {

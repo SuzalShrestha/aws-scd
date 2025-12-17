@@ -34,6 +34,7 @@ const Speakers = () => {
             name: s.name,
             image: s.image,
             linkedin: s.linkedin,
+            designation: s.designation,
             isKeynote: false,
         })),
     ];

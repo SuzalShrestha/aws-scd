@@ -79,6 +79,13 @@ const Team = () => {
                                         <h3 className='text-sm font-medium text-neutral-900 truncate px-1'>
                                             {member.name}
                                         </h3>
+                                        {(member.faculty || member.club) ? (
+                                            <p className='mt-1 text-xs text-muted-foreground truncate px-1'>
+                                                {member.faculty && member.club 
+                                                    ? `${member.faculty} | ${member.club}`
+                                                    : member.faculty || member.club}
+                                            </p>
+                                        ) : null}
                                     </div>
                                 </div>
                             </motion.div>
