@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { EventSpeakers } from "@/constants/EventSpeakers";
 import { KeynoteSpeakers } from "@/constants/KeynoteSpeakers";
 import { Linkedin } from "lucide-react";
@@ -29,7 +28,6 @@ const Speakers = () => {
       linkedin: s.linkedin,
       designation: s.designation,
       isKeynote: true,
-      descriptioin: s.description || "",
     })),
     ...EventSpeakers.map((s) => ({
       id: s.id,
