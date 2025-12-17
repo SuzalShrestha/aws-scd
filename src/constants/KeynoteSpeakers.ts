@@ -4,6 +4,7 @@ export type KeynoteSpeaker = {
     designation: string;
     image: string;
     linkedin: string;
+    description? : string
 };
 
 export const KeynoteSpeakers: KeynoteSpeaker[] = [

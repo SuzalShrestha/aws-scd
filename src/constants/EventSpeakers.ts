@@ -19,7 +19,7 @@ export const EventSpeakers: EventSpeaker[] = [
         name: 'Bishworaj Poudel',
         image: '/speaker%20photos/Bishworaj%20Poudel.png',
         linkedin: 'https://www.linkedin.com/in/bishworajpoudelofficial/',
-        designation: 'Content Creator',
+        designation: 'Creator of Technology Channel',
     },
     {
         id: 3,
