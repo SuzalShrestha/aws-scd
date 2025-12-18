@@ -38,14 +38,13 @@ const Registration = () => {
                         viewport={{ once: true, amount: 0.3 }}
                         className='space-y-8'
                     >
-                        {/* Free badge */}
-                        <div className='inline-flex items-center gap-3 px-4 py-2 rounded-full bg-green-50 border border-green-100'>
+                        {/* Closed badge */}
+                        <div className='inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gray-50 border border-gray-200'>
                             <span className='flex h-2 w-2'>
-                                <span className='animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75'></span>
-                                <span className='relative inline-flex rounded-full h-2 w-2 bg-green-500'></span>
+                                <span className='relative inline-flex rounded-full h-2 w-2 bg-gray-400'></span>
                             </span>
-                            <span className='text-sm font-semibold text-green-700'>
-                                Registration Open • Free Entry
+                            <span className='text-sm font-semibold text-gray-700'>
+                                Registration Closed
                             </span>
                         </div>
 
@@ -99,13 +98,8 @@ const Registration = () => {
                         className='space-y-5'
                     >
                         {/* IOE Card */}
-                        <a
-                            href='https://www.meetup.com/aws-cloud-club-at-institute-of-engineering-pashchimanchal/events/311973692/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='group block'
-                        >
-                            <div className='rounded-2xl border border-border bg-card p-6 sm:p-7 transition-colors duration-200 hover:border-[var(--aws-orange)]/25'>
+                        <div className='group block cursor-not-allowed opacity-60'>
+                            <div className='rounded-2xl border border-border bg-card p-6 sm:p-7'>
                                 <div className='flex items-center justify-between gap-4'>
                                     <div className='flex items-center gap-4 min-w-0'>
                                         <div className='w-12 h-12 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
@@ -119,7 +113,7 @@ const Registration = () => {
                                         </div>
                                         <div className='min-w-0'>
                                             <p className='text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1'>
-                                                Register on Meetup
+                                                Registration Closed
                                             </p>
                                             <h4 className='font-semibold text-base sm:text-lg truncate'>
                                                 IOE Pashchimanchal
@@ -127,20 +121,15 @@ const Registration = () => {
                                         </div>
                                     </div>
                                     <div className='w-10 h-10 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
-                                        <ArrowUpRight className='w-5 h-5 text-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+                                        <ArrowUpRight className='w-5 h-5 text-foreground' />
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
 
                         {/* PNC Card */}
-                        <a
-                            href='https://www.meetup.com/aws-cloud-club-at-prithvi-narayan-campus/events/311973847/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='group block'
-                        >
-                            <div className='rounded-2xl border border-border bg-card p-6 sm:p-7 transition-colors duration-200 hover:border-[var(--aws-orange)]/25'>
+                        <div className='group block cursor-not-allowed opacity-60'>
+                            <div className='rounded-2xl border border-border bg-card p-6 sm:p-7'>
                                 <div className='flex items-center justify-between gap-4'>
                                     <div className='flex items-center gap-4 min-w-0'>
                                         <div className='w-12 h-12 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
@@ -154,7 +143,7 @@ const Registration = () => {
                                         </div>
                                         <div className='min-w-0'>
                                             <p className='text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1'>
-                                                Register on Meetup
+                                                Registration Closed
                                             </p>
                                             <h4 className='font-semibold text-base sm:text-lg truncate'>
                                                 Prithvi Narayan Campus
@@ -162,11 +151,11 @@ const Registration = () => {
                                         </div>
                                     </div>
                                     <div className='w-10 h-10 rounded-xl bg-muted flex items-center justify-center flex-shrink-0'>
-                                        <ArrowUpRight className='w-5 h-5 text-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+                                        <ArrowUpRight className='w-5 h-5 text-foreground' />
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </motion.div>
                 </div>
             </div>
