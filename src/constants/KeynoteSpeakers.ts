@@ -4,6 +4,7 @@ export type KeynoteSpeaker = {
     designation: string;
     image: string;
     linkedin: string;
+    description? : string
 };
 
 export const KeynoteSpeakers: KeynoteSpeaker[] = [
@@ -17,7 +18,7 @@ export const KeynoteSpeakers: KeynoteSpeaker[] = [
     {
         id: 2,
         name: 'Lisa Bagley',
-        designation: 'Global Lead | AWS Cloud Clubs | AWS',
+        designation: 'Global Lead of AWS Cloud Clubs',
         image: '/keynote%20speakers/lisa-bagley.jpg',
         linkedin: 'https://www.linkedin.com/in/lisa-bagley-cpacc-0b16b47/',
     },
