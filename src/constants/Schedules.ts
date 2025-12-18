@@ -41,14 +41,21 @@ export const scheduleTables: {
     },
     {
                     id: 'keynote-1',
-                    time: '9:30 – 9:45',
-                    topic: 'Keynote Session',
+                    time: '9:30 – 9:40',
+                    topic: 'The Power of Community',
                     type: 'Keynote',
-                    speaker: 'Lisa and William',
+                    speaker: 'Lisa Bagley',
+    },
+    {
+                    id: 'keynote-2',
+                    time: '9:45 – 9:55',
+                    topic: 'What future did you study for? ',
+                    type: 'Keynote',
+                    speaker: 'William Antonio',
     },
     {
                     id: 'morning-break-1',
-                    time: '9:45 – 10:00',
+                    time: '9:55 – 10:00',
                     topic: 'Break',
                     isBreak: true,
                 },
@@ -74,8 +81,8 @@ export const scheduleTables: {
     {
                     id: 'panel-discussion',
                     time: '11:40 – 12:25',
-                    topic: 'Panel Discussion',
-                    speaker: 'Panelists: Lajah, Upendra, Yojana, Desh Deepak',
+                    topic: 'Navigating AWS ecosystem: Certification, Clubs and Real Opportunities',
+                    speaker: 'Panelists: Lajah, Upendra, Raju Mandal , Desh Deepak',
     },
     {
                     id: 'lunch-break',
