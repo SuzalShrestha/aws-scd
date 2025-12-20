@@ -61,9 +61,9 @@ export const scheduleTables: {
                 {
                     id: 'virtual-experience-sharing',
                     time: '10:00 – 10:25',
-                    topic: 'Virtual Experience Sharing',
+                    topic: 'Sponsor Keynote',
                     type: 'Keynote',
-                    speaker: 'Anjani Phuyal',
+                    speaker: 'Upendra Prasad Neupane',
                 },
                 {
                     id: 'ice-breaking',
