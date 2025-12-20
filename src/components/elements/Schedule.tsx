@@ -60,39 +60,6 @@ const renderScheduleRow = (item: ScheduleItem, opts?: RenderRowOptions) => {
     );
 };
 
-const ScheduleTableView = ({ table }: { table: ScheduleTable }) => {
-    return (
-        <div className='rounded-2xl border border-border bg-card overflow-hidden'>
-            <div className='px-5 py-4 border-b border-border'>
-                <h3 className='text-base sm:text-lg font-semibold leading-tight'>
-                    {table.title}
-                </h3>
-                {table.subtitle ? (
-                    <p className='mt-1 text-sm text-muted-foreground'>
-                        {table.subtitle}
-                    </p>
-                ) : null}
-            </div>
-
-            <div className='overflow-x-auto'>
-                <table className='w-full text-left'>
-                    <thead className='bg-muted/60'>
-                        <tr className='text-xs text-muted-foreground'>
-                            <th className='w-28 sm:w-36 px-5 py-3 font-medium'>
-                                Time
-                            </th>
-                            <th className='px-5 py-3 font-medium'>Topic</th>
-                        </tr>
-                    </thead>
-                    <tbody className='text-sm'>
-                        {table.items.map((item) => renderScheduleRow(item))}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    );
-};
-
 const ScheduleTableWithParallelTracks = ({
     table,
 }: {
