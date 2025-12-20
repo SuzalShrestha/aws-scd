@@ -99,7 +99,7 @@ export const scheduleTables: {
                 {
                     id: 'virtual-session',
                     time: '3:35 – 4:00',
-                    topic: 'Virtual Session',
+                    topic: 'Industry insights from AWS experience',
                     type: 'Virtual Session',
                     speaker: 'Anjani Phuyal',
                 },
@@ -151,7 +151,7 @@ export const scheduleTables: {
             ],
         },
         side: {
-            title: 'Sidehall Sessions',
+            title: 'Side Hall Sessions',
             items: [
                 {
                     id: 'gh-actions-deployment',
