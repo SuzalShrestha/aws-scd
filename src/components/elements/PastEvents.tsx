@@ -1,10 +1,12 @@
 import Image from 'next/image';
-import { Calendar, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { Reveal, SectionHead } from '@/components/motion';
 
 type EventItem = {
     title: string;
     href: string;
     meta: string;
+    club?: string;
     ogImage?: string | null;
 };
 
@@ -45,54 +47,40 @@ const pncEvents: EventItem[] = [
 ];
 
 const OGCard = ({ item, index }: { item: EventItem; index: number }) => {
-    const fallbackLogo = '/logos/Meetup-Logo-1300x730.png';
-    const imgSrc = item.ogImage || fallbackLogo;
+    const imgSrc = item.ogImage || '/logos/Meetup-Logo-1300x730.png';
     const displayDate = item.meta.split('•')[0]?.trim();
 
     return (
-        <a
-            href={item.href}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='group block'
-            style={{ animationDelay: `${index * 100}ms` }}
-        >
-            <div className='relative overflow-hidden rounded-2xl bg-card border border-border transition-colors duration-200 hover:border-[var(--aws-orange)]/25'>
-                {/* Image */}
-                <div className='relative aspect-[16/9] w-full overflow-hidden bg-neutral-50'>
+        <Reveal delay={(index % 3) * 0.06} className='h-full'>
+            <a
+                href={item.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='group card flex h-full flex-col overflow-hidden bg-white'
+            >
+                <div className='relative aspect-[16/9] overflow-hidden bg-mist'>
                     <Image
                         src={imgSrc}
                         alt={item.title}
-                        width={1200}
-                        height={630}
-                        className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]'
-                        priority={false}
+                        fill
+                        sizes='(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'
+                        className='object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105'
                     />
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
-
-                    {/* Hover arrow */}
-                    <div className='absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300'>
-                        <ArrowUpRight className='w-5 h-5 text-neutral-700' />
+                    <span className='absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-ink backdrop-blur'>
+                        {item.club}
+                    </span>
+                </div>
+                <div className='flex flex-1 items-start justify-between gap-4 p-6'>
+                    <div>
+                        <p className='font-mono text-[11px] uppercase tracking-wider text-stone'>{displayDate}</p>
+                        <h3 className='mt-2 line-clamp-2 font-medium leading-snug tracking-tight'>
+                            {item.title}
+                        </h3>
                     </div>
+                    <ArrowUpRight className='size-5 shrink-0 text-stone transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink' />
                 </div>
-
-                {/* Content */}
-                <div className='p-5'>
-                    <h3 className='line-clamp-2 text-base font-semibold text-neutral-900 mb-3 leading-snug group-hover:text-[var(--aws-orange)] transition-colors'>
-                        {item.title}
-                    </h3>
-                    {displayDate && (
-                        <div className='inline-flex items-center gap-2 text-sm text-neutral-500'>
-                            <Calendar
-                                className='h-4 w-4 text-neutral-400'
-                                aria-hidden='true'
-                            />
-                            <span>{displayDate}</span>
-                        </div>
-                    )}
-                </div>
-            </div>
-        </a>
+            </a>
+        </Reveal>
     );
 };
 
@@ -123,27 +111,37 @@ const PastEvents = async () => {
     const ioeWithOG: EventItem[] = await Promise.all(
         ioeEvents.map(async (e) => ({
             ...e,
+            club: 'IOE',
             ogImage: await fetchOgImage(e.href),
         }))
     );
     const pncWithOG: EventItem[] = await Promise.all(
         pncEvents.map(async (e) => ({
             ...e,
+            club: 'PNC',
             ogImage: await fetchOgImage(e.href),
         }))
     );
     const allEvents: EventItem[] = [...ioeWithOG, ...pncWithOG];
 
     return (
-        <section className='section surface-muted' id='past-events'>
-            <div className='page-container'>
-                {/* Section Header */}
-                <div className='section-header'>
-                    <h2 className='section-title mb-6'>Past Events</h2>
-                </div>
+        <section id='past-events' className='section bg-mist'>
+            <div className='shell'>
+                <SectionHead
+                    index='07'
+                    label='Year-round'
+                    title={
+                        <>
+                            The clubs never <span className='accent text-glow-deep'>log off.</span>
+                        </>
+                    }
+                >
+                    Between conferences, both clubs run workshops, meetups and
+                    launch events — online and on campus. A few from last
+                    year:
+                </SectionHead>
 
-                {/* Events Grid */}
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+                <div className='mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
                     {allEvents.map((e, index) => (
                         <OGCard key={e.href} item={e} index={index} />
                     ))}

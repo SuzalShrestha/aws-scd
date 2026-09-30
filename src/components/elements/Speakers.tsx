@@ -1,123 +1,99 @@
-"use client";
-import { EventSpeakers } from "@/constants/EventSpeakers";
-import { KeynoteSpeakers } from "@/constants/KeynoteSpeakers";
-import { Linkedin } from "lucide-react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import { ArrowUpRight, Linkedin } from 'lucide-react';
+import { Reveal, SectionHead } from '@/components/motion';
+import { EventSpeakers } from '@/constants/EventSpeakers';
+import { KeynoteSpeakers } from '@/constants/KeynoteSpeakers';
 
 const Speakers = () => {
-  const shouldZoomPhoto = (speakerId: number) => {
-    return speakerId === 1;
-  };
+    return (
+        <section id='speakers' className='section bg-snow'>
+            <div className='shell'>
+                <SectionHead
+                    index='03'
+                    label='Voices'
+                    title={
+                        <>
+                            Learn from people{' '}
+                            <span className='accent text-glow-deep'>shipping on AWS.</span>
+                        </>
+                    }
+                >
+                    <span className='mb-4 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-ink/70'>
+                        <span className='size-1.5 rounded-full bg-glow' />
+                        2025 lineup · 2026 announced soon
+                    </span>
+                    <p>
+                        Last year brought AWS Community Builders, principal
+                        engineers and founders to Pokhara. The 2026 lineup
+                        will be announced here first.
+                    </p>
+                </SectionHead>
 
-  type CombinedSpeaker = {
-    id: number;
-    name: string;
-    image: string;
-    linkedin: string;
-    isKeynote: boolean;
-    designation?: string;
-  };
-
-  const speakers: CombinedSpeaker[] = [
-    ...KeynoteSpeakers.map((s) => ({
-      id: 100 + s.id,
-      name: s.name,
-      image: s.image,
-      linkedin: s.linkedin,
-      designation: s.designation,
-      isKeynote: true,
-    })),
-    ...EventSpeakers.map((s) => ({
-      id: s.id,
-      name: s.name,
-      image: s.image,
-      linkedin: s.linkedin,
-      designation: s.designation,
-      isKeynote: false,
-    })),
-  ];
-  return (
-    <section className="section surface" id="speakers">
-      <div className="page-container">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="section-header"
-        >
-          <h2 className="section-title mb-6">Featured Speakers</h2>
-          <p className="section-subtitle mx-auto">
-            Brilliant AWS experts, industry leaders you’ll hear from
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-          {speakers.map((speaker, index) => (
-            <motion.a
-              key={speaker.id}
-              // href={speaker.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.4,
-                delay: Math.min(index * 0.03, 0.25),
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className={`relative rounded-2xl border bg-card p-3 transition-shadow ${
-                speaker.isKeynote
-                  ? "border-[var(--aws-orange)]/30 shadow-sm"
-                  : "border-border"
-              }`}
-              aria-label={`${speaker.name} on LinkedIn`}
-            >
-              {speaker.isKeynote ? (
-                <div className="absolute -top-3 left-4 z-10">
-                  <div className="inline-flex items-center rounded-full border border-[var(--aws-orange)]/30 bg-card px-3 py-1 text-[11px] font-semibold leading-none text-[var(--aws-orange)]">
-                    Keynote
-                  </div>
+                {/* Keynotes */}
+                <div className='mt-16 grid gap-4 md:grid-cols-3'>
+                    {KeynoteSpeakers.map((s, i) => (
+                        <Reveal key={s.id} delay={i * 0.08}>
+                            <a
+                                href={s.linkedin}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='group relative block aspect-[4/5] overflow-hidden rounded-[28px] bg-ink'
+                            >
+                                <Image
+                                    src={s.image}
+                                    alt={s.name}
+                                    fill
+                                    sizes='(min-width: 768px) 33vw, 100vw'
+                                    className='object-cover transition-all [@media(hover:hover)]:grayscale-[35%] duration-[1.2s] ease-out-expo group-hover:scale-105 [@media(hover:hover)]:group-hover:grayscale-0'
+                                />
+                                <div className='absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent' />
+                                <span className='absolute left-5 top-5 rounded-full bg-glow px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-ink'>
+                                    Keynote
+                                </span>
+                                <span className='absolute right-5 top-5 grid size-10 place-items-center rounded-full bg-white/10 text-white backdrop-blur-md transition-colors group-hover:bg-white group-hover:text-ink'>
+                                    <ArrowUpRight className='size-4' />
+                                </span>
+                                <div className='absolute inset-x-0 bottom-0 p-6 text-white'>
+                                    <h3 className='text-2xl font-medium tracking-tight'>{s.name}</h3>
+                                    <p className='mt-1 text-sm text-white/65'>{s.designation}</p>
+                                </div>
+                            </a>
+                        </Reveal>
+                    ))}
                 </div>
-              ) : null}
 
-              <div className="relative aspect-square overflow-hidden rounded-xl bg-muted">
-                <Image
-                  src={speaker.image}
-                  alt={speaker.name}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 240px"
-                  className={`object-cover ${
-                    shouldZoomPhoto(speaker.id) ? "scale-[1.08]" : ""
-                  }`}
-                  priority={index < 6}
-                />
-                <div className="absolute top-3 right-3 flex items-center justify-center w-9 h-9 rounded-xl bg-background/90 backdrop-blur border border-border">
-                  <Link href={speaker.linkedin} target="_blank">
-                    <Linkedin className="w-4 h-4 text-[#0A66C2]" />
-                  </Link>
+                {/* Speakers */}
+                <div className='mt-4 grid grid-cols-2 gap-x-4 gap-y-10 pt-10 md:grid-cols-3 lg:grid-cols-4'>
+                    {EventSpeakers.map((s, i) => (
+                        <Reveal key={s.id} delay={(i % 4) * 0.06}>
+                            <a
+                                href={s.linkedin}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='group block'
+                                aria-label={`${s.name} on LinkedIn`}
+                            >
+                                <div className='relative aspect-square overflow-hidden rounded-3xl bg-mist'>
+                                    <Image
+                                        src={s.image}
+                                        alt={s.name}
+                                        fill
+                                        sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw'
+                                        className='object-cover transition-all [@media(hover:hover)]:grayscale duration-700 ease-out-expo group-hover:scale-105 [@media(hover:hover)]:group-hover:grayscale-0'
+                                    />
+                                    <span className='absolute bottom-3 right-3 grid size-9 translate-y-2 place-items-center rounded-full bg-white text-ink opacity-0 shadow-lg transition-all duration-500 ease-out-expo group-hover:translate-y-0 group-hover:opacity-100'>
+                                        <Linkedin className='size-4' />
+                                    </span>
+                                </div>
+                                <h3 className='mt-4 font-medium tracking-tight'>{s.name}</h3>
+                                <p className='mt-1 line-clamp-2 text-sm text-stone'>{s.designation}</p>
+                            </a>
+                        </Reveal>
+                    ))}
                 </div>
-              </div>
-
-              <div className="mt-3 flex flex-col items-center justify-center gap-1">
-                <h3 className="text-sm font-medium truncate text-center w-full">
-                  {speaker.name}
-                </h3>
-                {speaker.designation ? (
-                  <p className="text-xs text-muted-foreground leading-snug text-center line-clamp-2">
-                    {speaker.designation}
-                  </p>
-                ) : null}
-              </div>
-            </motion.a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 };
 
 export default Speakers;

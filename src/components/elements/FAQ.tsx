@@ -1,171 +1,82 @@
-'use client';
-
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from '@/components/ui/accordion';
-import { motion } from 'framer-motion';
-import { Mail, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, Mail, Plus } from 'lucide-react';
+import { Reveal } from '@/components/motion';
+import { EVENT } from '@/constants/Event';
 
 const faqs = [
     {
-        question: 'Who can attend AWS Student Community Day Pokhara?',
-        answer: 'The event is open to students, developers, and cloud enthusiasts from all backgrounds. Beginners are welcome—no prior AWS experience required!',
+        q: 'Who can attend?',
+        a: 'Students, developers and cloud enthusiasts from any background. Beginners are very welcome — no prior AWS experience required.',
     },
     {
-        question: 'Is there any registration fee?',
-        answer: 'No, the event is free to attend. You only need to register in advance to secure your spot as seats are limited.',
+        q: 'How much does it cost?',
+        a: "Nothing. It's free — you only need to register in advance, and seats are limited.",
     },
     {
-        question: 'What should I bring to the event?',
-        answer: 'Bring a valid student or government-issued ID, your laptop if you want to participate in hands-on sessions, and lots of curiosity!',
+        q: 'When and where is it?',
+        a: `${EVENT.dateLong}, in Pokhara. We'll announce the venue soon — the 2025 edition was held at Ranjit Event Center.`,
     },
     {
-        question: 'Will there be networking opportunities?',
-        answer: 'Absolutely. You will meet AWS experts, community leaders, and fellow students throughout the day, especially during breaks and the networking mixer.',
+        q: 'What should I bring?',
+        a: 'A valid student or government-issued ID, your laptop if you want to join hands-on sessions, and lots of curiosity.',
+    },
+    {
+        q: 'Will there be networking?',
+        a: 'Absolutely. You’ll meet AWS experts, community leaders and fellow students all day — especially during breaks and the closing hi-tea.',
+    },
+    {
+        q: 'I’m coming from outside Pokhara. Any tips?',
+        a: 'Pokhara is about 25 minutes by air or 6–8 hours by road from Kathmandu. Arrive a day early — sunrise from Sarangkot is worth it.',
+    },
+    {
+        q: 'How can I speak or sponsor?',
+        a: `Email us at ${EVENT.email}. The call for speakers and partnership packages open in the coming months.`,
     },
 ];
 
 const FAQ = () => {
     return (
-        <section className='section surface-muted' id='faq'>
-            <div className='page-container max-w-5xl'>
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className='section-header'
-                >
-                    <h2 className='section-title mb-6'>FAQs</h2>
-                </motion.div>
-
-                {/* FAQ Accordion */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{
-                        duration: 0.6,
-                        ease: [0.16, 1, 0.3, 1],
-                        delay: 0.1,
-                    }}
-                >
-                    <Accordion className='rounded-2xl bg-card border border-border overflow-hidden'>
-                        {faqs.map((faq, index) => (
-                            <AccordionItem
-                                key={faq.question}
-                                value={`faq-${index}`}
-                                className='border-border'
-                            >
-                                <AccordionTrigger className='text-left text-base font-medium px-6 py-5 hover:text-[var(--aws-orange)]'>
-                                    {faq.question}
-                                </AccordionTrigger>
-                                <AccordionContent className='text-muted-foreground px-6 pb-5'>
-                                    {faq.answer}
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </motion.div>
-
-                {/* Contact Card */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.6,
-                        ease: [0.16, 1, 0.3, 1],
-                        delay: 0.2,
-                    }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className='mt-12 grid sm:grid-cols-2 gap-5'
-                >
-                    {/* Contact CTA */}
-                    <div className='bg-card border border-border rounded-2xl p-6'>
-                        <h3 className='text-lg font-semibold mb-3'>
-                            Still Have Questions?
-                        </h3>
-                        <p className='text-muted-foreground text-sm mb-5'>
-                            We&apos;re here to help. Reach out to us directly.
+        <section id='faq' className='section border-t border-ink/[0.06] bg-snow'>
+            <div className='shell grid gap-12 lg:grid-cols-12'>
+                <Reveal className='lg:col-span-5'>
+                    <p className='eyebrow mb-6 flex items-center gap-3 text-stone'>
+                        <span className='text-glow'>09</span>
+                        <span className='h-px w-8 bg-ink/20' />
+                        FAQ
+                    </p>
+                    <h2 className='display text-[clamp(2.5rem,6vw,5rem)]'>
+                        Questions, <span className='accent text-glow-deep'>answered.</span>
+                    </h2>
+                    <div className='card mt-10 p-7'>
+                        <p className='font-medium'>Still curious?</p>
+                        <p className='mt-1 text-sm text-stone'>
+                            We reply faster than the Pokhara breeze.
                         </p>
-                        <div className='flex flex-wrap gap-3'>
-                            <button
-                                onClick={() =>
-                                    window.open(
-                                        'mailto:awscc@ioepas.edu.np',
-                                        '_blank'
-                                    )
-                                }
-                                className='inline-flex items-center gap-2 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-200'
-                            >
-                                <Mail className='w-4 h-4' />
-                                Email Us
-                            </button>
-                            <button
-                                onClick={() =>
-                                    window.open(
-                                        'https://www.linkedin.com/company/aws-cloud-club-ioe-pashchimanchal-campus',
-                                        '_blank'
-                                    )
-                                }
-                                className='inline-flex items-center gap-2 bg-background hover:bg-muted text-foreground px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-200 border border-border'
-                            >
-                                <MessageCircle className='w-4 h-4' />
-                                LinkedIn
-                            </button>
+                        <div className='mt-6 flex flex-wrap gap-3'>
+                            <a href={`mailto:${EVENT.email}`} className='btn-ink'>
+                                <Mail className='size-4' /> Email us
+                            </a>
+                            <a href={EVENT.linkedin} target='_blank' rel='noopener noreferrer' className='btn-line'>
+                                LinkedIn <ArrowUpRight className='size-4' />
+                            </a>
                         </div>
                     </div>
+                </Reveal>
 
-                    {/* Venue Card */}
-                    <div className='bg-card border border-border rounded-2xl p-6'>
-                        <h3 className='text-lg font-semibold mb-3'>
-                            Event Venue
-                        </h3>
-                        <p className='text-muted-foreground text-sm mb-5'>
-                            Ranjit Event Center, Pokhara, Nepal
-                        </p>
-                        <button
-                            onClick={() =>
-                                window.open(
-                                    'https://maps.app.goo.gl/fC1ibr8kUCiyjWpZA',
-                                    '_blank'
-                                )
-                            }
-                            className='inline-flex items-center gap-2 bg-background hover:bg-muted text-foreground px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-200 border border-border'
-                        >
-                            <MapPin className='w-4 h-4' />
-                            Get Directions
-                        </button>
+                <Reveal delay={0.1} className='lg:col-span-7'>
+                    <div className='border-b border-ink/10'>
+                        {faqs.map((f, i) => (
+                            <details key={f.q} className='group border-t border-ink/10' open={i === 0}>
+                                <summary className='flex cursor-pointer items-center justify-between gap-6 py-6 text-lg font-medium tracking-tight transition-colors hover:text-glow-deep'>
+                                    {f.q}
+                                    <span className='grid size-9 shrink-0 place-items-center rounded-full border border-ink/10 transition-all duration-300 group-open:rotate-45 group-open:border-glow group-open:bg-glow'>
+                                        <Plus className='size-4' />
+                                    </span>
+                                </summary>
+                                <p className='max-w-xl pb-6 pr-12 leading-relaxed text-stone'>{f.a}</p>
+                            </details>
+                        ))}
                     </div>
-                </motion.div>
-
-                {/* Map */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.6,
-                        ease: [0.16, 1, 0.3, 1],
-                        delay: 0.3,
-                    }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    className='mt-6 rounded-2xl overflow-hidden border border-border bg-card'
-                >
-                    <iframe
-                        src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.649137562213!2d83.99287337548567!3d28.217970675893802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995944a78d39543%3A0x3b989ec37763a940!2sRanjit%20Event%20Center!5e0!3m2!1sen!2snp!4v1763623515886!5m2!1sen!2snp'
-                        width='100%'
-                        height='280'
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading='lazy'
-                        referrerPolicy='no-referrer-when-downgrade'
-                        className='w-full grayscale opacity-90 hover:opacity-100 transition-opacity duration-300'
-                    />
-                </motion.div>
+                </Reveal>
             </div>
         </section>
     );
