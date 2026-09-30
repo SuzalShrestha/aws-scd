@@ -1,136 +1,68 @@
-'use client';
-
-import { partnerCategories } from '@/constants/Partners';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Reveal, SectionHead } from '@/components/motion';
+import { partnerCategories } from '@/constants/Partners';
 
-const PartnersSection = () => {
-    const isCenteredSingleLogoCategory = (title: string) => {
-        return title.startsWith('Training') || title.startsWith('Media') || title.startsWith('Internet');
-    };
+const [sponsors, ...rest] = partnerCategories;
+const others = rest.flatMap((c) =>
+    c.items.map((item) => ({ ...item, category: c.title.replace(/s$/, '') }))
+);
 
-    const getGridClass = (title: string) => {
-        if (title === 'Sponsors')
-            return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5';
-        if (title === 'Community Partners')
-            return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5';
-        return 'grid grid-cols-1';
-    };
-
-    const getLogoHeightClass = (title: string) => {
-        if (title === 'Sponsors') return 'h-24 sm:h-28';
-        if (title === 'Community Partners') return 'h-40 sm:h-48';
-        return 'h-24 sm:h-28';
-    };
-
-    const shouldShrinkLogo = (id: string, logoPath: string) => {
-        return (
-            id === 'girls-tech' ||
-            id === 'ices' ||
-            id === 'robotics-club' ||
-            /girlstech/i.test(logoPath) ||
-            /i-?ces/i.test(logoPath)
-        );
-    };
-
-    const getCardPaddingClass = (title: string) => {
-        if (title === 'Sponsors') return 'p-6 sm:p-8';
-        if (title === 'Community Partners') return 'p-5 sm:p-6';
-        return 'p-7 sm:p-10';
-    };
-
+const Partners = () => {
     return (
-        <section className='section surface-muted' id='partners'>
-            <div className='page-container'>
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className='section-header'
+        <section id='partners' className='section border-t border-ink/[0.06] bg-snow'>
+            <div className='shell'>
+                <SectionHead
+                    index='06'
+                    label='Partners'
+                    title={
+                        <>
+                            Backed by people who{' '}
+                            <span className='accent text-glow-deep'>believe in students.</span>
+                        </>
+                    }
                 >
-                    <h2 className='section-title mb-6'>Partners</h2>
-                    <p className='section-subtitle mx-auto'>
-                        Amazing partners are joining us to make AWS Student
-                        Community Day Pokhara possible
-                    </p>
-                </motion.div>
+                    Thank you to everyone who made the 2025 edition possible.
+                    Partnerships for 2026 are open.
+                </SectionHead>
 
-                <div className='space-y-8 sm:space-y-10'>
-                    {partnerCategories.map((category, categoryIndex) => (
-                        <motion.div
-                            key={category.title}
-                            initial={{ opacity: 0, y: 18 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            transition={{
-                                duration: 0.45,
-                                delay: Math.min(categoryIndex * 0.05, 0.2),
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
-                            className='rounded-3xl border border-border bg-card p-6 sm:p-8'
-                        >
-                            <div className='flex items-end justify-between gap-6 mb-6'>
-                                <h3 className='text-lg sm:text-xl font-semibold text-[var(--aws-orange)]'>
-                                    {category.title}
-                                </h3>
+                <p className='eyebrow mb-4 mt-16 text-stone'>{sponsors.title} · 2025</p>
+                <div className='grid gap-4 sm:grid-cols-3'>
+                    {sponsors.items.map((p, i) => (
+                        <Reveal key={p.id} delay={i * 0.06}>
+                            <div className='group card grid h-44 place-items-center bg-white p-8'>
+                                <div className='relative h-20 w-full max-w-[220px]'>
+                                    <Image
+                                        src={p.logo}
+                                        alt={p.name}
+                                        fill
+                                        sizes='220px'
+                                        className='object-contain transition-all [@media(hover:hover)]:grayscale duration-500 group-hover:scale-105 [@media(hover:hover)]:group-hover:grayscale-0'
+                                    />
+                                </div>
                             </div>
+                        </Reveal>
+                    ))}
+                </div>
 
-                            <div
-                                className={
-                                    isCenteredSingleLogoCategory(category.title)
-                                        ? 'grid grid-cols-1 place-items-center'
-                                        : getGridClass(category.title)
-                                }
-                            >
-                                {category.items.map((item, itemIndex) => (
-                                    <motion.div
-                                        key={item.id}
-                                        initial={{ opacity: 0, scale: 0.98 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true, amount: 0.2 }}
-                                        transition={{
-                                            duration: 0.35,
-                                            delay: Math.min(
-                                                itemIndex * 0.02,
-                                                0.2
-                                            ),
-                                            ease: [0.16, 1, 0.3, 1],
-                                        }}
-                                        className={`rounded-2xl bg-background ${getCardPaddingClass(
-                                            category.title
-                                        )} ${
-                                            isCenteredSingleLogoCategory(
-                                                category.title
-                                            )
-                                                ? 'w-full max-w-2xl'
-                                                : ''
-                                        }`}
-                                    >
-                                        <div
-                                            className={`relative ${getLogoHeightClass(
-                                                category.title
-                                            )} w-full`}
-                                        >
-                                            <Image
-                                                src={item.logo}
-                                                alt={item.name}
-                                                fill
-                                                sizes='(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 420px'
-                                                className={`object-contain ${
-                                                    shouldShrinkLogo(
-                                                        item.id,
-                                                        item.logo
-                                                    )
-                                                        ? 'scale-[0.67] origin-center'
-                                                        : ''
-                                                }`}
-                                            />
-                                        </div>
-                                    </motion.div>
-                                ))}
+                <p className='eyebrow mb-4 mt-12 text-stone'>Community, media & more</p>
+                <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5'>
+                    {others.map((p, i) => (
+                        <Reveal key={p.id} delay={(i % 5) * 0.05}>
+                            <div className='group card relative grid h-40 place-items-center bg-white px-6 pb-5 pt-8'>
+                                <span className='absolute left-4 top-3 font-mono text-[10px] uppercase tracking-wider text-stone/70'>
+                                    {p.category}
+                                </span>
+                                <div className='relative mt-3 h-20 w-full'>
+                                    <Image
+                                        src={p.logo}
+                                        alt={p.name}
+                                        fill
+                                        sizes='200px'
+                                        className='object-contain transition-all [@media(hover:hover)]:grayscale duration-500 [@media(hover:hover)]:group-hover:grayscale-0'
+                                    />
+                                </div>
                             </div>
-                        </motion.div>
+                        </Reveal>
                     ))}
                 </div>
             </div>
@@ -138,4 +70,4 @@ const PartnersSection = () => {
     );
 };
 
-export default PartnersSection;
+export default Partners;

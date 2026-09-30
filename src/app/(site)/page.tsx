@@ -1,37 +1,33 @@
+import About from '@/components/elements/About';
+import Agenda from '@/components/elements/Agenda';
+import FAQ from '@/components/elements/FAQ';
+import Footer from '@/components/elements/Footer';
+import GetInvolved from '@/components/elements/GetInvolved';
 import Hero from '@/components/elements/Hero';
 import Navbar from '@/components/elements/Navbar';
-import Schedule from '@/components/elements/Schedule';
-import Speakers from '@/components/elements/Speakers';
-import About from '@/components/elements/About';
-import Registration from '@/components/elements/Registration';
 import Partners from '@/components/elements/Partners';
-import Team from '@/components/elements/Team';
-import Footer from '@/components/elements/Footer';
-import BackToTop from '@/components/elements/BackToTop';
-import Countdown from '@/components/elements/Countdown';
-import FAQ from '@/components/elements/FAQ';
 import PastEvents from '@/components/elements/PastEvents';
-import CallForSpeakers from '@/components/elements/CallForSpeakers';
+import Pokhara from '@/components/elements/Pokhara';
+import Speakers from '@/components/elements/Speakers';
+import Team from '@/components/elements/Team';
 
 export default function HomePage() {
     return (
         <>
-            <main className='relative'>
-                <Navbar />
+            <Navbar />
+            <main>
                 <Hero />
+                <About />
+                <Pokhara />
+                <Speakers />
+                <Agenda />
+                <GetInvolved />
+                <Partners />
+                <PastEvents />
+                <Team />
+                <FAQ />
             </main>
-            <About />
-            <PastEvents />
-            <Countdown />
-            <Registration />
-            <Speakers />
-            <Schedule />
-            <CallForSpeakers />
-            <Partners />
-            <Team />
-            <FAQ />
             <Footer />
-            <BackToTop />
         </>
     );
 }
