@@ -1,200 +1,128 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { EASE } from '@/components/motion';
+import { EVENT, navLinks } from '@/constants/Event';
 import { cn } from '@/lib/utils';
 
-const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Events', href: '#past-events' },
-    { name: 'Register', href: '#register' },
-    { name: 'Speakers', href: '#speakers' },
-    { name: 'Schedule', href: '#schedule' },
-    { name: 'Partners', href: '#partners' },
-    { name: 'Team', href: '#team' },
-];
+/** Fishtail mark: Machhapuchhre's twin summit in two tones. */
+export const Mark = ({ className }: { className?: string }) => (
+    <svg viewBox='0 0 32 32' className={className} aria-hidden='true'>
+        <rect width='32' height='32' rx='9' fill='#0a0f1c' />
+        <path d='M5 25 L14 12 L16 7 L17.2 9 L18.4 7.6 L27 25 Z' fill='#3b4274' />
+        <path d='M16 7 L17.2 9 L18.4 7.6 L27 25 L19 25 L17.4 15 Z' fill='#ff9900' />
+    </svg>
+);
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-
-        handleScroll();
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        const onScroll = () => setScrolled(window.scrollY > 40);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    // Lock body scroll when mobile menu is open
     useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = open ? 'hidden' : '';
         return () => {
             document.body.style.overflow = '';
         };
-    }, [isMobileMenuOpen]);
+    }, [open]);
+
 
     return (
-        <header
-            className={cn(
-                'fixed top-0 inset-x-0 z-50 transition-all duration-300 py-4'
-            )}
-        >
-            <div className='page-container'>
-                <nav
-                    className={cn(
-                        'flex items-center justify-between rounded-2xl transition-all duration-300',
-                        isScrolled
-                            ? 'glass px-5 py-3 border border-border'
-                            : 'px-2 py-2'
-                    )}
-                >
-                    {/* Logo */}
-                    <a href='#home' className='flex items-center gap-2 group'>
-                        <div className='flex items-center gap-2'>
-                            <span className='text-lg font-bold tracking-tight'>
-                                <span className='text-[var(--aws-orange)]'>
-                                    AWS
-                                </span>
-                                <span
-                                    className={cn(
-                                        'ml-1.5 transition-colors duration-300',
-                                        isScrolled
-                                            ? 'text-neutral-800'
-                                            : 'text-white'
-                                    )}
-                                >
-                                    SCD
-                                </span>
-                            </span>
-                            <span
-                                className={cn(
-                                    'hidden sm:inline-block text-xs px-2 py-0.5 rounded-full font-medium transition-colors duration-300',
-                                    isScrolled
-                                        ? 'bg-[var(--aws-orange)]/10 text-[var(--aws-orange)]'
-                                        : 'bg-white/10 text-white/80'
-                                )}
-                            >
-                                Pokhara 2025
-                            </span>
-                        </div>
-                    </a>
+        <header className='fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4'>
+            <motion.nav
+                initial={{ y: -30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
+                className={cn(
+                    'mx-auto flex max-w-[1240px] items-center justify-between rounded-full border py-2 pl-3 pr-2 transition-[background,border,box-shadow] duration-500',
+                    scrolled && !open
+                        ? 'border-white/10 bg-ink/80 shadow-[0_16px_50px_-20px_rgba(10,15,28,0.6)] backdrop-blur-xl'
+                        : 'border-white/10 bg-ink/20 backdrop-blur-md'
+                )}
+            >
+                <a href='#home' className='flex items-center gap-2.5' aria-label='AWS SCD Pokhara — home'>
+                    <Mark className='size-8' />
+                    <span className='text-sm font-semibold tracking-tight text-white'>
+                        AWS SCD
+                        <span className='ml-1.5 font-normal text-white/55'>
+                            Pokhara ’{String(EVENT.year).slice(2)}
+                        </span>
+                    </span>
+                </a>
 
-                    {/* Desktop Navigation */}
-                    <div className='hidden lg:flex items-center gap-1'>
-                        {navLinks.map((link) => (
+                <ul className='hidden items-center gap-1 lg:flex'>
+                    {navLinks.map((l) => (
+                        <li key={l.href}>
                             <a
-                                key={link.name}
-                                href={link.href}
-                                className={cn(
-                                    'relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-xl',
-                                    isScrolled
-                                        ? 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                                        : 'text-white/70 hover:text-white hover:bg-white/10'
-                                )}
+                                href={l.href}
+                                className='rounded-full px-3.5 py-2 text-[13px] text-white/70 transition-colors hover:bg-white/10 hover:text-white'
                             >
-                                {link.name}
+                                {l.name}
                             </a>
-                        ))}
-                    </div>
+                        </li>
+                    ))}
+                </ul>
 
-                    {/* CTA Button */}
-                    <div className='hidden lg:block'>
-                        <a
-                            href='#register'
-                            className='inline-flex items-center gap-2 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-200'
-                        >
-                            Register
-                            <ArrowRight className='w-4 h-4' />
-                        </a>
-                    </div>
-
-                    {/* Mobile Menu Button */}
+                <div className='flex items-center gap-2'>
+                    <a href='#register' className='btn-glow hidden py-2.5 sm:inline-flex'>
+                        Get notified
+                        <ArrowUpRight className='size-4' />
+                    </a>
                     <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className={cn(
-                            'lg:hidden p-2.5 rounded-xl transition-colors duration-200',
-                            isScrolled
-                                ? 'text-foreground hover:bg-muted'
-                                : 'text-white hover:bg-white/10'
-                        )}
-                        aria-label='Toggle menu'
+                        onClick={() => setOpen((o) => !o)}
+                        aria-label={open ? 'Close menu' : 'Open menu'}
+                        aria-expanded={open}
+                        className='grid size-10 place-items-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden'
                     >
-                        {isMobileMenuOpen ? (
-                            <X className='h-5 w-5' />
-                        ) : (
-                            <Menu className='h-5 w-5' />
-                        )}
+                        {open ? <X className='size-5' /> : <Menu className='size-5' />}
                     </button>
-                </nav>
-            </div>
+                </div>
+            </motion.nav>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <>
-                        {/* Backdrop */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className='fixed inset-0 bg-black/20 backdrop-blur-sm lg:hidden'
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        />
-
-                        {/* Menu Panel */}
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{
-                                duration: 0.3,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
-                            className='absolute top-full left-4 right-4 mt-2 lg:hidden'
-                        >
-                            <div className='bg-white rounded-2xl shadow-xl border border-black/[0.04] overflow-hidden'>
-                                <div className='p-4 space-y-1'>
-                                    {navLinks.map((link, index) => (
-                                        <motion.a
-                                            key={link.name}
-                                            href={link.href}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: index * 0.05 }}
-                                            onClick={() =>
-                                                setIsMobileMenuOpen(false)
-                                            }
-                                            className='block px-4 py-3 text-base font-medium text-neutral-700 hover:text-[var(--aws-orange)] hover:bg-neutral-50 rounded-xl transition-colors'
-                                        >
-                                            {link.name}
-                                        </motion.a>
-                                    ))}
-                                </div>
-                                <div className='p-4 pt-2 border-t border-neutral-100'>
+                {open && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className='fixed inset-0 -z-10 bg-ink/95 backdrop-blur-xl lg:hidden'
+                    >
+                        <ul className='shell flex h-full flex-col justify-center gap-1'>
+                            {navLinks.map((l, i) => (
+                                <motion.li
+                                    key={l.href}
+                                    initial={{ opacity: 0, y: 24 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, ease: EASE, delay: 0.05 * i }}
+                                >
                                     <a
-                                        href='#register'
-                                        onClick={() =>
-                                            setIsMobileMenuOpen(false)
-                                        }
-                                        className='flex items-center justify-center gap-2 w-full bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white px-5 py-3 rounded-xl text-base font-semibold transition-colors duration-200'
+                                        href={l.href}
+                                        onClick={() => setOpen(false)}
+                                        className='flex items-baseline gap-4 py-2 text-4xl font-medium tracking-tight text-white/90 hover:text-glow'
                                     >
-                                        Register Now
-                                        <ArrowRight className='w-4 h-4' />
+                                        <span className='font-mono text-xs text-white/30'>
+                                            0{i + 1}
+                                        </span>
+                                        {l.name}
                                     </a>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </>
+                                </motion.li>
+                            ))}
+                            <li className='mt-8'>
+                                <a href='#register' onClick={() => setOpen(false)} className='btn-glow'>
+                                    Get notified <ArrowUpRight className='size-4' />
+                                </a>
+                            </li>
+                        </ul>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </header>

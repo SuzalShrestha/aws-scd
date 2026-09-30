@@ -1,129 +1,57 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { EVENT } from '@/constants/Event';
 
-const targetDate = new Date('2025-12-20T08:00:00').getTime();
+const target = new Date(EVENT.startsAt).getTime();
 
-type TimeLeft = {
-    days: string;
-    hours: string;
-    minutes: string;
-    seconds: string;
+const remaining = () => {
+    const s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    return [
+        { label: 'Days', value: Math.floor(s / 86400) },
+        { label: 'Hrs', value: Math.floor(s / 3600) % 24 },
+        { label: 'Min', value: Math.floor(s / 60) % 60 },
+        { label: 'Sec', value: s % 60 },
+    ];
 };
 
-const getTimeRemaining = (): TimeLeft => {
-    const now = Date.now();
-    const difference = Math.max(targetDate - now, 0);
-
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((difference / (1000 * 60)) % 60);
-    const seconds = Math.floor((difference / 1000) % 60);
-
-    const pad = (value: number) => value.toString().padStart(2, '0');
-
-    return {
-        days: pad(days),
-        hours: pad(hours),
-        minutes: pad(minutes),
-        seconds: pad(seconds),
-    };
-};
-
+/** Compact mono ticker; renders dashes until mounted to avoid hydration mismatch. */
 const Countdown = () => {
-    const [timeLeft, setTimeLeft] = useState<TimeLeft>(getTimeRemaining);
+    const [parts, setParts] = useState<ReturnType<typeof remaining> | null>(null);
 
     useEffect(() => {
-        const timer = window.setInterval(() => {
-            setTimeLeft(getTimeRemaining());
-        }, 1000);
-
-        return () => window.clearInterval(timer);
+        setParts(remaining());
+        const id = window.setInterval(() => setParts(remaining()), 1000);
+        return () => window.clearInterval(id);
     }, []);
 
-    const countdownItems = useMemo(
-        () => [
-            { label: 'Days', value: timeLeft.days },
-            { label: 'Hours', value: timeLeft.hours },
-            { label: 'Minutes', value: timeLeft.minutes },
-            { label: 'Seconds', value: timeLeft.seconds },
-        ],
-        [timeLeft]
-    );
+    const shown = parts ?? remaining().map((p) => ({ ...p, value: -1 }));
 
     return (
-        <section className='section-tight surface-muted' id='countdown'>
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className='page-container text-center'
-            >
-                {/* Header */}
-                <h1 className='section-title sm:text-4xl font-semibold tracking-tight mb-3 text-[var(--aws-orange)]'>
-                    Event Starts In
-                </h1>
-                <p className='text-muted-foreground text-base sm:text-lg mb-10 max-w-xl mx-auto'>
-                    December 20, 2025 • Ranjit Event Center, Pokhara
-                </p>
-
-                {/* Countdown Grid */}
-                <div className='grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6'>
-                    {countdownItems.map((item, index) => (
-                        <motion.div
-                            key={item.label}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{
-                                duration: 0.5,
-                                delay: index * 0.1,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
-                            className='rounded-2xl border border-border bg-card p-6 sm:p-7'
-                        >
-                            <div className='text-4xl sm:text-5xl font-semibold tabular-nums tracking-tight'>
-                                {item.value}
-                            </div>
-                            <span className='mt-2 block text-xs sm:text-sm uppercase tracking-[0.18em] text-muted-foreground font-medium'>
-                                {item.label}
-                            </span>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className='mt-12'
-                >
-                    <a
-                        href='#register'
-                        className='inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--aws-orange)] hover:bg-[var(--aws-orange-dark)] text-white font-semibold rounded-xl transition-colors duration-200'
-                    >
-                        Reserve Your Spot
-                        <svg
-                            className='w-4 h-4'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                            stroke='currentColor'
-                        >
-                            <path
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                                strokeWidth={2}
-                                d='M17 8l4 4m0 0l-4 4m4-4H3'
-                            />
-                        </svg>
-                    </a>
-                </motion.div>
-            </motion.div>
-        </section>
+        <div
+            role='timer'
+            aria-label='Time until the event'
+            className='inline-flex items-center gap-4 rounded-2xl border border-white/10 bg-ink/40 px-5 py-3.5 backdrop-blur-md'
+        >
+            <span className='eyebrow hidden text-white/45 sm:block'>
+                Doors open in
+            </span>
+            <span className='hidden h-8 w-px bg-white/10 sm:block' />
+            <div className='flex items-baseline gap-3.5 sm:gap-5'>
+                {shown.map((p) => (
+                    <div key={p.label} className='flex items-baseline gap-1'>
+                        <span className='font-mono text-2xl font-medium tabular-nums text-white'>
+                            {p.value < 0
+                                ? '--'
+                                : String(p.value).padStart(2, '0')}
+                        </span>
+                        <span className='font-mono text-[10px] uppercase text-white/40'>
+                            {p.label}
+                        </span>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 
