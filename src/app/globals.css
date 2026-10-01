@@ -28,6 +28,8 @@
   --animate-drift-slow: drift 110s linear infinite;
   --animate-glide: glide 26s ease-in-out infinite;
   --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-shoot: shoot 13s ease-in infinite;
+  --animate-flap: flap 0.9s ease-in-out infinite;
 
   @keyframes marquee {
     to { transform: translateX(-50%); }
@@ -41,6 +43,15 @@
     50%  { transform: translate(-12vw, 1vh) rotate(-2deg); }
     75%  { transform: translate(-5vw, 3vh) rotate(4deg); }
     100% { transform: translate(0, 0) rotate(-4deg); }
+  }
+  @keyframes shoot {
+    0%, 86% { opacity: 0; transform: translateX(0); }
+    88%     { opacity: 0.9; }
+    100%    { opacity: 0; transform: translateX(-340px); }
+  }
+  @keyframes flap {
+    0%, 100% { transform: scaleY(1); }
+    50%      { transform: scaleY(-0.35); }
   }
   @keyframes twinkle {
     0%, 100% { opacity: 0.9; }

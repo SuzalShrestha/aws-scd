@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, CalendarDays, MapPin, Ticket } from 'lucide-react';
 import { useRef } from 'react';
 import {
+    Birds,
     FarRange,
     Machhapuchhre,
     MidHills,
@@ -88,6 +89,10 @@ const Hero = () => {
                 style={{ animationDelay: '-9s', animationDuration: '34s' }}
             >
                 <Paraglider />
+            </div>
+
+            <div className='pointer-events-none absolute right-[9%] top-[41%] hidden w-14 animate-glide text-[#ffdcbc]/75 md:block' style={{ animationDuration: '40s', animationDelay: '-20s' }}>
+                <Birds />
             </div>
 
             {/* Cloud sea — rises on scroll and melts into the page */}
